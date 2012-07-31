@@ -1,0 +1,36 @@
+#CACHE{0}
+<div class="liste articles sommaire">
+    <h2 class="titre_tete">PHOTOTHEQUE pas dans la liste</h2>
+    <div id="descriptif_site_spip"><p>#SESSION{nom}, pour obtenir l'autorisation d'utilisation des images contactez <a href="#URL_PAGE{auteurs,id_auteur=9945}">Elodie PERRIOT</a></p></div>
+    <div id="gauche">
+        <h3 class="h3">France</h3>
+        <BOUCLE_art_rejoint(ARTICLES){id_article=3417}{tout_voir}{0,1}>
+            #SET{plop,#ID_ARTICLE}
+            <h3 class="h3">#TITRE</h3>
+            <BOUCLE_doc(DOCUMENTS){id_article}{extension==jpg|png|gif}{par hasard}{0,3}{tout_voir}>
+                [<a class="photo" href="#URL_PAGE{photo,id_article=#GET{plop}}">(#FICHIER||image_reduire{100})</a>]
+            </BOUCLE_doc>
+                <p><a href="#URL_PAGE{photo,id_article=#ID_ARTICLE}">Toutes les images de #TITRE</a></p>
+        </BOUCLE_art_rejoint>
+        <hr />
+        <BOUCLE_art_rejoint1(ARTICLES){id_article=1492}{0,1}>
+        <h3 class="h3">#TITRE</h3>
+        [(#LOGO_ARTICLE|#URL_ARTICLE||image_reduire{80})]
+        [(#LOGO_ARTICLE|#URL_ARTICLE||image_reduire{80})]
+        [(#LOGO_ARTICLE|#URL_ARTICLE||image_reduire{80})]
+        </BOUCLE_art_rejoint1>
+        <hr />
+        <BOUCLE_art_rejoint2(ARTICLES){id_article=1492}{0,1}>
+        [(#LOGO_ARTICLE|?{[(#LOGO_ARTICLE|left||image_reduire{100})],<img src="[(#CHEMIN{images/zozo1.jpg})]" style="float: left; padding: 5px" width="80px" height="80px" />})]
+        <a href="#URL_ARTICLE"><h3 class="h3">#TITRE</h3></a>[(#TEXTE|couper{180})]
+        </BOUCLE_art_rejoint2>
+        <hr />
+        <BOUCLE_art_rejoint3(ARTICLES){id_article=1492}{0,1}>
+        [(#LOGO_ARTICLE|?{[(#LOGO_ARTICLE|right||image_reduire{100})],<img src="[(#CHEMIN{images/zozo1.jpg})]" style="float: right; padding: 5px" width="80px" height="80px" />})]
+        <a href="#URL_ARTICLE"><h3 class="h3">#TITRE</h3></a>[(#TEXTE|couper{180})]
+        </BOUCLE_art_rejoint3>
+    </div>
+    <div id="droite">
+        
+    </div>
+</div>

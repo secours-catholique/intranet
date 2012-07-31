@@ -1,0 +1,70 @@
+<BOUCLE_contenu_rubrique(RUBRIQUES){id_rubrique}>
+#SET{secteur,#ID_SECTEUR}
+<BOUCLE_test_secteur(RUBRIQUES){id_rubrique=#GET{secteur}}{id_rubrique IN 746,104,1,113,103,681}>
+    #SET{puch,#GET{secteur}}
+</BOUCLE_test_secteur>
+    #SET{puch,104}
+<//B_test_secteur>
+[(#REM) Fil d'Ariane ]
+<div style="display:none">
+[(#ID_RUBRIQUE|=={37})#SET{rsstoemail,3}]
+
+</div>
+<div class="contenu-principal">
+
+    <div class="cartouche">#FORMULAIRE_FAVORI
+        [(#LOGO_RUBRIQUE||image_reduire{200,200})]
+        <h2 class="titre_tete#GET{puch}">[(#TITRE|majuscules )]<a href="#URL_PAGE{backend}&id_rubrique=#ID_RUBRIQUE"><img src="#CHEMIN{images/Picto.png}" /></a></h2>
+        
+    </div>
+    [<div class="#EDIT{texte} texte">(#TEXTE)</div>]
+</div>
+<BOUCLE_nous_connaitre(ARTICLES){id_rubrique}{titre_mot=nous_connaitre}>
+<div id="nous_connaitre">
+    <h2 class="titre_connaitre off_couleur_#GET{puch}">#TITRE</h2>
+    [(#LOGO_ARTICLE|right|#URL_ARTICLE||image_reduire{80,80})]
+    [(#INTRODUCTION|choixsivide{<p style="font-size:25px"><font color="red">Cet espace n’est pas encore ouvert. Les délégations ainsi que les directions et départements du siège ouvriront leurs espaces progressivement d’ici avril 2012.</font></p> , [(#DESCRIPTIF)<br /><a href="#URL_ARTICLE">Lire la suite</a>][(#CHAPO)<br /><a href="#URL_ARTICLE">Lire la suite</a>][(#CHAPO|choixsivide{[(#TEXTE*|couper{200}|propre)<br /><a href="#URL_ARTICLE">Lire la suite</a>]})]})]
+    [(#INCLURE{fond=inc-documents}{id_article}{env})]
+</div>
+</BOUCLE_nous_connaitre>
+
+<div id="agenda_portail#GET{puch}">
+    <BOUCLE_agenda_portail(ARTICLES){id_rubrique}{titre_mot=agenda}>
+    [(#TEXTE|choixsivide{#INCLURE{fond=inc-agenda,id_article},#INCLURE{fond=inc-zimbra,id_article}})]
+    </BOUCLE_agenda_portail>
+</div>
+
+<!-- fin orga_bloc -->
+<hr style="clear:both" />
+</div>
+<div id="suite">
+<div id="actu_portail#GET{puch}">
+    
+    
+        <h2 class="titre_tete#GET{puch}">LES ACTUALITES</h2>
+        <dl>
+    <BOUCLE_ss_rub_actu(RUBRIQUES){id_parent}> 
+        <BOUCLE_test_actu(RUBRIQUES){id_rubrique}>
+            <BOUCLE_cherche_actu(RUBRIQUES){id_rubrique}{titre_mot=actu_entite}>
+                <BOUCLE_stock_art(ARTICLES){id_rubrique}{doublons actu}></BOUCLE_stock_art>
+            </BOUCLE_cherche_actu>
+        </BOUCLE_test_actu>
+        <BOUCLE_re(BOUCLE_ss_rub_actu)></BOUCLE_re>
+    </BOUCLE_ss_rub_actu>
+    <B_affiche_actu>
+    #ANCRE_PAGINATION
+    <BOUCLE_affiche_actu(ARTICLES){!doublons actu}{!par date}{pagination 5}>
+        <dt><img src="#CHEMIN{images/fleche.png}" /><a href="#URL_ARTICLE">#TITRE</a></dt>
+        <dd><time>[(#DATE|date_relative)]</time> [(#INTRODUCTION{150})]</dd>
+        <hr class="sepa" />
+    </BOUCLE_affiche_actu>
+        </dl>
+    [<p class="pagination">(#PAGINATION)</p>]
+    </B_affiche_actu>
+    
+    
+</div>
+  
+
+
+</BOUCLE_contenu_rubrique>

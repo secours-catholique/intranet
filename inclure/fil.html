@@ -1,0 +1,33 @@
+[(#ENV{page}|=={rh}|oui)#SET{plus,'Espace salari&eacute;'}]
+[(#ENV{page}|=={espace-national}|oui)#SET{plus,'Espace national'}]
+[(#ENV{page}|=={collection}|oui)#SET{plus,' <a href="spip.php?rubrique104">Directions</a> > <a href="spip.php?rubrique98">COMMUNICATION</a> > Phototh&egrave;que'}]
+[(#ENV{page}|=={collection_video}|oui)#SET{plus,' <a href="spip.php?rubrique104">Directions</a> > <a href="spip.php?rubrique98">COMMUNICATION</a> > Vid&eacute;oth&egrave;que'}]
+[(#ENV{page}|=={collection_fadip}|oui)#SET{plus,' <a href="spip.php?rubrique104">Directions</a> > <a href="spip.php?rubrique98">COMMUNICATION</a> > Les outils de communications (FADIP)'}]
+
+
+
+
+[(#ENV{page}|=={fadip&id_article=#ID_ARTICLE}|oui)#SET{plus,' <a href="spip.php?rubrique104">Directions</a> > <a href="spip.php?rubrique98">COMMUNICATION</a> > <a href="spip.php?page=collection_fadip">[ &gt; <strong class="on">(#TITRE|couper{80})</strong>]'}]
+
+
+
+
+
+
+
+[(#ENV{page}|=={voir_offres}|oui)#SET{plus,' <a href="spip.php?rubrique104">Directions</a> > <a href="spip.php?rubrique100">RESSOURCES HUMAINES</a> > Offres d'emploi internes}]
+
+
+<BOUCLE_context_art(ARTICLES){id_article}>
+    <p id="hierarchie"><a href="#URL_SITE_SPIP/"><:accueil_site:></a><BOUCLE_ariane_art(HIERARCHIE){id_article}> &gt; <a href="#URL_RUBRIQUE">[(#TITRE|couper{80})]</a></BOUCLE_ariane_art>[ &gt; <strong class="on">(#TITRE|couper{80})</strong>]</p>
+</BOUCLE_context_art>
+<BOUCLE_context_rub(RUBRIQUES){id_rubrique}>
+    <p id="hierarchie"><a href="#URL_SITE_SPIP/"><:accueil_site:></a><BOUCLE_ariane_rub(HIERARCHIE){id_rubrique}> &gt; <a href="#URL_RUBRIQUE">[(#TITRE|couper{80})]</a></BOUCLE_ariane_rub>[ &gt; <strong class="on">(#TITRE|couper{80})</strong>]</p>
+</BOUCLE_context_rub>
+    [(#ENV{page}|oui)<p id="hierarchie"><a href="#URL_SITE_SPIP/"><:accueil_site:></a> &gt; [(#GET{plus}|?{#GET{plus},#ENV{page}})]</p>]
+    [(#ENV{page}|non)#INCLURE{fond=inclure/filbase,env}]
+<//B_context_rub>
+<//B_context_art>
+
+
+

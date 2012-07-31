@@ -1,0 +1,10 @@
+#SET{titre, #ENV*{titre}|typo}
+
+[(#ENV{appel_formulaire}|oui)
+	<div class="titre">#GET{titre}</div>
+	<div class="infos">#ENV{url}</div>
+]
+[(#ENV{appel_menu}|oui)
+	<li class="menu-entree[ (#ENV{css})]">
+		<a href="#ENV{url}" title="[(#GET{titre}|attribut_html)]"[ class="(#ENV{css_lien})"]>|&nbsp;&nbsp;&nbsp;#GET{titre}</a>
+]

@@ -1,0 +1,164 @@
+<div class="contenu-principal" style="">
+    <h2 class="titre_tete">Page de suivi des admins</h2>
+    #SET{auteurs_admin_restreint, #ARRAY}
+    <BOUCLE_admin_restreint(spip_auteurs_rubriques)>
+    #SET{auteurs_admin_restreint, #GET{auteurs_admin_restreint}|push{#ID_AUTEUR}}
+    </BOUCLE_admin_restreint>
+    
+    
+    <B_admin>
+        #TOTAL_BOUCLE administrateurs complets
+    <BOUCLE_admin(AUTEURS){statut=0minirezo}{!id_auteur IN #GET{auteurs_admin_restreint}}>
+        
+        <li><a href="#URL_AUTEUR">#NOM</a></li>
+        
+                
+    </BOUCLE_admin>
+    </B_admin>
+    
+    <hr />
+    
+    
+    
+    
+    
+    
+    
+    
+    
+<a id="blop" name="blop"></a>
+<h3>Menu d'accès aux listes</h3>  
+<ul>
+<li><a href="#auteurs104">Liste des admins restreints secteur 104: Siège</a></li>
+<li><a href="#auteurs1">Liste des admins restreints secteur 1: Délégations</a></li>
+</ul> 
+
+       
+        
+
+
+   
+    
+
+<!-- Liste des auteurs secteur 104: Siège -->
+<h3>------------------------------------<br />
+<a id="auteurs1" name="auteurs1"></a>
+Liste des mails des admins restreints: Délégations (tous les admins restreints, moins les auteurs du Siège)
+<br />------------------------------------</h3>  
+
+<B_siege>
+<p>#TOTAL_BOUCLE administrateurs restreints</p><br />       
+
+  
+<BOUCLE_siege(RUBRIQUES){id_secteur=104}{tout}>
+
+<BOUCLE_auteurs_rub_siege(AUTEURS){auteurs_admin_restreint.id_rubrique}{tout}{par nom}{doublons blop}>
+
+<li><a href="#URL_AUTEUR">#NOM</a> - #EMAIL</li>
+
+</BOUCLE_auteurs_rub_siege>
+
+
+</BOUCLE_siege><br />
+
+</B_siege>
+
+
+
+    
+    <hr /> 
+
+
+
+
+
+
+
+<!-- Liste des auteurs secteur 1: Délégations -->
+
+<B_deleg>
+        
+
+  
+<BOUCLE_deleg(RUBRIQUES){id_secteur=1}{tout}>
+
+
+
+<BOUCLE_auteurs_rub_deleg(AUTEURS){spip_auteurs_rubriques.id_rubrique}{tout}{doublons blip}>
+
+
+
+</BOUCLE_auteurs_rub_deleg>
+
+</BOUCLE_deleg><br />  
+
+</B_deleg>
+
+
+    
+
+
+
+ 
+    
+ 
+<h3>------------------------------------   <a href="#blop">retour au menu des listes</a>
+<br />
+<a id="auteurs104" name="auteurs104"></a>
+Liste des mails des admins restreints: Siège (tous les admins restreints, moins les auteurs de Délégation)<br />------------------------------------</h3>  
+
+    #SET{auteurs_admin_restreint, #ARRAY}
+    <BOUCLE4_admin_restreint(spip_auteurs_rubriques)>
+    #SET{auteurs_admin_restreint, #GET{auteurs_admin_restreint}|push{#ID_AUTEUR}}
+    
+        
+    </BOUCLE4_admin_restreint>
+    
+
+   
+    <B4_admin>
+        <p>#TOTAL_BOUCLE administrateurs restreints</p><br />
+        
+     
+        
+    <BOUCLE4_admin(AUTEURS){statut=0minirezo}{id_auteur IN #GET{auteurs_admin_restreint}}{doublons blip}>
+        
+       
+        
+        
+               
+        <li><a href="#URL_AUTEUR">#NOM</a> - #EMAIL</li>
+        
+        
+                
+    </BOUCLE4_admin>
+    
+           
+     
+    
+    </B4_admin>
+    
+    <hr /> 
+    
+
+  
+    
+    
+    
+    
+  
+  
+    
+    
+        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</div>

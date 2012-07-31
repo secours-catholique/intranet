@@ -1,0 +1,191 @@
+<BOUCLE_contenu_rubrique(RUBRIQUES){id_rubrique}>
+[(#REM) Fil d'Ariane ]
+<div style="display:none">
+[(#ID_RUBRIQUE|=={37})#SET{rsstoemail,3}]
+
+</div>
+<div class="contenu-principal">
+
+    <div class="cartouche">#FORMULAIRE_FAVORI
+        [(#LOGO_RUBRIQUE||image_reduire{200,200})]
+        <h2 class="titre_tete#ID_SECTEUR">[(#TITRE|majuscules )]#FORMULAIRE_FAVORI{rubrique,#ID_RUBRIQUE,notification}</h2>
+        
+    </div>
+    [<div class="#EDIT{texte} texte">(#TEXTE)</div>]
+</div>
+<BOUCLE_nous_connaitre(ARTICLES){id_rubrique}{titre_mot=nous_connaitre}>
+<div id="nous_connaitre">
+    <h2 class="titre_connaitre off_couleur_#ID_SECTEUR">#TITRE</h2>
+    [(#LOGO_ARTICLE|right|#URL_ARTICLE||image_reduire{80,80})]
+    [(#INTRODUCTION|choixsivide{<p style="font-size:25px"><font color="red">Cet espace n’est pas encore ouvert. Les délégations ainsi que les directions et départements du siège ouvriront leurs espaces progressivement d’ici avril 2012.</font></p> , [(#DESCRIPTIF)<br /><a href="#URL_ARTICLE">Lire la suite</a>][(#CHAPO)<br /><a href="#URL_ARTICLE">Lire la suite</a>][(#CHAPO|choixsivide{[(#TEXTE*|couper{200}|propre)<br /><a href="#URL_ARTICLE">Lire la suite</a>]})]})]
+    [(#INCLURE{fond=inc-documents}{id_article}{env})]
+</div>
+</BOUCLE_nous_connaitre>
+<div id="orga_bloc">
+
+<div id="organisation">
+<BOUCLE_organisation(ARTICLES){id_rubrique}{titre_mot=organisation}>
+    <h2 class="titre_connaitre off_couleur_#ID_SECTEUR">#TITRE</h2>
+    [(#DESCRIPTIF)<br /><a href="#URL_ARTICLE">Lire la suite</a>]
+    [(#CHAPO)<br /><a href="#URL_ARTICLE">Lire la suite</a>]
+    [(#CHAPO|choixsivide{[(#TEXTE*|couper{200}|propre)<br /><a href="#URL_ARTICLE">Lire la suite</a>]})]
+    [(#INCLURE{fond=inc-documents}{id_article}{env})]
+</BOUCLE_organisation>
+    <h2 class="titre_connaitre couleur_#ID_SECTEUR">Notre organisation</h2>
+    <p>Sed nec mollis neque! Vivamus lacinia, dolor aliquet cursus tempus, diam elit egestas ante, ac scelerisque metus mauris in elit. Cras a neque nulla. Pellentesque sed orci nibh, in vulputate risus. Ut gravida fringilla velit, ac adipiscing ligula convallis auctor? Nulla viverra aliquam lectus, eget pretium arcu congue eget. Aenean ac erat dolor, et elementum elit.</p>
+<//B_organisation>
+</div>
+
+<div id="projet">
+<BOUCLE_projet(ARTICLES){id_rubrique}{titre_mot=projet}>
+    <h2 class="titre_connaitre off_couleur_#ID_SECTEUR">#TITRE</h2>
+    [(#DESCRIPTIF)<br /><a href="#URL_ARTICLE">Lire la suite</a>]
+    [(#CHAPO)<br /><a href="#URL_ARTICLE">Lire la suite</a>]
+    [(#CHAPO|choixsivide{[(#TEXTE*|couper{200}|propre)<br /><a href="#URL_ARTICLE">Lire la suite</a>]})]
+    [(#INCLURE{fond=inc-documents}{id_article}{env})]
+</BOUCLE_projet>
+</div>
+<div id="rejoint_portail">
+    <h2 class="titre_connaitre off_couleur_#ID_SECTEUR">Ils nous ont rejoints</h2>
+<B_rejoint>
+    <section>
+        
+
+<div id="canadaprovinces" class="glidecontentwrapper ajax">
+<BOUCLE_rejoint(RUBRIQUES){id_parent}{titre_mot=rejoint}>
+    <B_art_rejoint>
+    <script type="text/javascript">
+
+featuredcontentglider.init({
+    gliderid: "canadaprovinces", //ID of main glider container
+    contentclass: "glidecontent", //Shared CSS class name of each glider content
+    togglerid: "p-select", //ID of toggler container
+    remotecontent: "", //Get gliding contents from external file on server? "filename" or "" to disable
+    selected: 0, //Default selected content index (0=1st)
+    persiststate: false, //Remember last content shown within browser session (true/false)?
+    speed: 1700, //Glide animation duration (in milliseconds)
+    direction: "downup", //set direction of glide: "updown", "downup", "leftright", or "rightleft"
+    autorotate: true, //Auto rotate contents (true/false)?
+    autorotateconfig: [10000, 2] //if auto rotate enabled, set [milliseconds_btw_rotations, cycles_before_stopping]
+})
+
+</script>
+    <BOUCLE_art_rejoint(ARTICLES){age<180}{id_rubrique}{!par date}>
+        <div class="glidecontent">
+            [(#LOGO_ARTICLE|left||image_reduire{80})]
+        <a href="#URL_ARTICLE"><h3 class="h3">#TITRE</h3></a>[(#CHAPO|couper{180}|sinon{[(#TEXTE|couper{180})]})]
+        </div>
+    </BOUCLE_art_rejoint>
+    <img src="[(#CHEMIN{images/zozo1.jpg})]" style="float: left; padding: 5px" width="80px" height="80px" />
+    Personne ne nous a rejoint r&eacute;cemment
+    <//B_art_rejoint>
+</BOUCLE_rejoint>
+</div>
+
+<div id="p-select" class="glidecontenttoggler">
+<a href="#" class="prev">Pr&eacute;c&eacute;dent</a> 
+<a href="#" class="next">Suivant</a>
+</div>
+
+    </section>
+</B_rejoint>
+<img src="[(#CHEMIN{images/zozo1.jpg})]" style="float: left; padding: 5px" width="80px" height="80px" />
+    Personne ne nous a rejoint r&eacute;cemment
+<//B_rejoint>
+</div>
+
+</div>
+<div id="agenda_portail#ID_SECTEUR">
+    <BOUCLE_agenda_portail(ARTICLES){id_rubrique}{titre_mot=agenda}>
+    [(#TEXTE|choixsivide{#INCLURE{fond=inc-agenda,id_article},#INCLURE{fond=inc-zimbra,id_article}})]
+    </BOUCLE_agenda_portail>
+</div>
+
+<!-- fin orga_bloc -->
+<hr style="clear:both" />
+</div>
+<div id="suite">
+<div id="actu_portail#ID_SECTEUR">
+    
+    
+        <h2 class="titre_tete#ID_SECTEUR">LES ACTUALITES</h2>
+        <dl>
+    <BOUCLE_ss_rub_actu(RUBRIQUES){id_parent}> 
+        <BOUCLE_test_actu(RUBRIQUES){id_rubrique}>
+            <BOUCLE_cherche_actu(RUBRIQUES){id_rubrique}{titre_mot=actu_entite}>
+                <BOUCLE_stock_art(ARTICLES){id_rubrique}{doublons actu}></BOUCLE_stock_art>
+            </BOUCLE_cherche_actu>
+        </BOUCLE_test_actu>
+        <BOUCLE_re(BOUCLE_ss_rub_actu)></BOUCLE_re>
+    </BOUCLE_ss_rub_actu>
+    <B_affiche_actu>
+    #ANCRE_PAGINATION
+    <BOUCLE_affiche_actu(ARTICLES){!doublons actu}{!par date}{pagination 5}>
+        <dt><img src="#CHEMIN{images/fleche.png}" /><a href="#URL_ARTICLE">#TITRE</a></dt>
+        <dd><time>[(#DATE|date_relative)]</time> [(#INTRODUCTION{150})]</dd>
+        <hr class="sepa" />
+    </BOUCLE_affiche_actu>
+        </dl>
+    [<p class="pagination">(#PAGINATION)</p>]
+    </B_affiche_actu>
+    
+    
+</div>
+<div id="outils#ID_SECTEUR">
+    #SET{mon_outil,#ID_RUBRIQUE}
+    <BOUCLE_rub_outils(RUBRIQUES){id_parent}{titre_mot=outils_entite}>
+        <h2 class="titre_tete#ID_SECTEUR">OUTILS & PUBLICATIONS</h2>
+        <dl>
+    <BOUCLE_10(ARTICLES){id_rubrique}{doublons rose}></BOUCLE_10>
+    <BOUCLE_20(RUBRIQUES){id_parent}>
+    <BOUCLE_30(ARTICLES){id_rubrique}{doublons rose}></BOUCLE_30>
+    </BOUCLE_20>
+    <BOUCLE_bif(RUBRIQUES){id_rubrique=#GET{mon_outil}}>
+    <BOUCLE_40(RUBRIQUES){id_parent}{titre_mot=theme}>
+        <BOUCLE_50(RUBRIQUES){id_parent}{titre_mot=outils_entite}>
+            <BOUCLE_60(ARTICLES){id_rubrique}{doublons rose}></BOUCLE_60>
+            <BOUCLE_70(RUBRIQUES){id_parent}>
+                <BOUCLE_80(ARTICLES){id_rubrique}{doublons rose}></BOUCLE_80>
+            </BOUCLE_70>
+        </BOUCLE_50>
+    </BOUCLE_40>
+    </BOUCLE_bif>
+    <B_aff_art_outils>
+    #ANCRE_PAGINATION
+    <BOUCLE_aff_art_outils(ARTICLES){!par date}{!doublons rose}{pagination 5}>
+        <dt><img src="#CHEMIN{images/fleche.png}" /><a href="#URL_ARTICLE">[(#TITRE|couper{30})]</a></dt>
+        <dd><time>[(#DATE|date_relative)]</time> [(#CHAPO|couper{100}|sinon{[(#TEXTE|couper{100})]})]</dd>
+    </BOUCLE_aff_art_outils>
+        </dl>
+        [<p class="pagination">(#PAGINATION)</p>]
+    </B_aff_art_outils>
+    <a href="[(#URL_PAGE{outils,id_rubrique=#GET{mon_outil}})]">Voir tous les documents</a>
+    </BOUCLE_rub_outils>
+    <h2 class="titre_tete#ID_SECTEUR">OUTILS & PUBLICATIONS</h2>
+    <BOUCLE_bif0(RUBRIQUES){id_rubrique=#GET{mon_outil}}>
+    <BOUCLE_400(RUBRIQUES){id_parent}{titre_mot=theme}>
+        <BOUCLE_500(RUBRIQUES){id_parent}{titre_mot=outils_entite}>
+            #SET{outils,#URL_RUBRIQUE}
+            <BOUCLE_600(ARTICLES){id_rubrique}{doublons pink}></BOUCLE_600>
+            <BOUCLE_700(RUBRIQUES){id_parent}>
+                <BOUCLE_800(ARTICLES){id_rubrique}{doublons pink}></BOUCLE_800>
+            </BOUCLE_700>
+        </BOUCLE_500>
+    </BOUCLE_400>
+    </BOUCLE_bif0>
+        <B_bobo>
+        <dl>
+            #ANCRE_PAGINATION
+            <BOUCLE_bobo(ARTICLES){!par date}{!doublons pink}{pagination 5}>
+            <dt><img src="#CHEMIN{images/fleche.png}" /><a href="#URL_ARTICLE">[(#TITRE|couper{30})]</a></dt>
+            <dd><time>[(#DATE|date_relative)]</time> [(#CHAPO|couper{100}|sinon{[(#TEXTE|couper{100})]})]</dd>
+            </BOUCLE_bobo>
+            [<p class="pagination">(#PAGINATION)</p>] 
+            <p><a href="#URL_PAGE{outils,id_rubrique=#GET{mon_outil}}">voir tous les outils et publications</a></p>  
+        </dl>
+        </B_bobo>
+    <//B_rub_outils>
+</div>  
+
+
+</BOUCLE_contenu_rubrique>

@@ -1,0 +1,27 @@
+<B_articles>
+<div class="liste articles">
+    #ANCRE_PAGINATION
+    <ul class="liste-items">
+        <BOUCLE_articles(ARTICLES){id_rubrique} {par num titre} {pagination 5}>
+        #INCLURE{fond=inclure/article-resume,id_article,env}
+        </BOUCLE_articles>
+    </ul>
+    [<p class="pagination">(#PAGINATION)</p>]
+</div>
+</B_articles>
+
+<B_sous_rubriques>
+<ul>
+    <BOUCLE_sous_rubriques(RUBRIQUES) {id_parent} {par num titre, titre}>
+        <li><a href="#URL_RUBRIQUE"[ class="(#EXPOSE)"]>[(#TITRE|couper{80})]</a>
+        <B_art_sous_rubriques>
+        <ul>
+            <BOUCLE_art_sous_rubriques(ARTICLES){id_rubrique}{par num titre, titre}>
+            <li><a href="#URL_ARTICLE">[(#TITRE|couper{80})]</a></li>
+            </BOUCLE_art_sous_rubriques>
+        </ul>
+        </B_art_sous_rubriques>
+        <BOUCLE_re(BOUCLE_sous_rubriques)></BOUCLE_re></li>
+    </BOUCLE_sous_rubriques>
+</ul>
+</B_sous_rubriques>

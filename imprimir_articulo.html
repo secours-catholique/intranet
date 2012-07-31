@@ -1,0 +1,161 @@
+#CACHE{0}
+<BOUCLE_article_principal(ARTICLES) {id_article}>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html dir="#LANG_DIR" lang="#LANG">
+
+<head>
+<title>[<:imprimirdocumento:imprimir:> : (#TITRE|supprimer_numero|textebrut)]</title>
+<meta http-equiv="Content-Type" content="text/html; charset=#CHARSET" />
+#INSERT_HEAD
+
+
+
+<style>
+
+dl.spip_documents,
+.spip_documents dl,
+.spip_documents dt,
+.spip_documents dd { 
+margin: 7px; 
+padding: 0; 
+background: 0; 
+border: 0; 
+}
+           
+</style>
+
+
+</head>
+
+<body dir="#LANG_DIR" style="background-color:#ffffff; color:black; border:0px; font-family: verdana, arial, helvetica, sans-serif">
+
+<div style="width:600px; margin:auto;">
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0" style="border-bottom: 2px solid gray; margin-bottom:36px;">
+<tr valign="bottom">
+<td valign="bottom">
+<div style="color:navy; font-size:90%;">#NOM_SITE_SPIP</div>
+</td>
+<td valign="bottom">
+<div style="font-size:68%; color: #999999; text-align:right">#URL_SITE_SPIP/#URL_ARTICLE
+</div>
+</td></tr></table>
+<span style="color:#666666; font-size:9px; outline-style: none;"><INCLURE{fond=inclure/fil_impr,env}></span>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+<tr valign="bottom">
+[<td style="padding-right:7px;">(#LOGO_ARTICLE||image_reduire{96,96})</td>]
+
+<td width="100%">
+<div style="border-bottom: 1px solid #999999;">  
+<div style="font-size:120%;">[(#TITRE|supprimer_numero)]</div>
+<i><div style="color:#333333; font-size:85%;">[<b>(#SURTITRE)</b> / ][(#SOUSTITRE)]</div>
+<span style="color:#666666; font-size:75%;">[(#MAJ|jour|=={[(#DATE|jour)]}|?{[(#DATE|nom_jour) ][(#DATE|affdate)],[Dernière mise à jour: (#MAJ|affdate)]})][, <:par_auteur:> (#LESAUTEURS)]</i></span>
+</div>
+</td>
+</tr>
+</table>
+
+<div style="margin-top:18px; margin-bottom:18px; font-size:75%">
+            	[(#CHAPO)]
+            	[(#TEXTE||image_reduire{600,0})]
+                [(#PS)]
+                [(#NOTES)]
+</div>
+<B_galeria>
+<hr />
+<font size="1" face="Verdana, Arial, Helvetica, sans-serif"><b><:imprimirdocumento:otras_imagenes:></b></font>
+
+                <table cellpadding="4">
+                  <tr>
+                    <BOUCLE_galeria(DOCUMENTS){id_article}{mode=image}{doublons} {par titre} {0,5}>
+                    <td align="center" valign="bottom" width="20%"> <font size="1" face="Arial, Helvetica, sans-serif" align="center"><img src="#URL_DOCUMENT" width="20%">[<br>
+            (#TITRE)][<br>
+            (#TYPE_DOCUMENT)][ - (#TAILLE|taille_en_octets)][<br>
+            (#LARGEUR)] x [(#HAUTEUR) p&iacute;xels]</font></td>
+                    </BOUCLE_galeria> 
+                  </tr>
+                  <tr>
+                    <td height="14"></td>
+                  </tr>
+                </table>
+                </B_galeria>
+
+                  <B_galeria3>
+                  <table width="20%" cellpadding="4">
+                  <tr>
+                    <BOUCLE_galeria3(DOCUMENTS){id_article}{mode=image}{doublons} {par titre} {0,5}>
+                    <td align="center" valign="bottom"> <font size="1" face="Arial, Helvetica, sans-serif" align="center"> <img src="#URL_DOCUMENT" width="20%">[<br>
+            (#TITRE)][<br>
+            (#TYPE_DOCUMENT)][ - (#TAILLE|taille_en_octets)][<br>
+            (#LARGEUR)] x [(#HAUTEUR) p&iacute;xels]</font></td>
+                    </BOUCLE_galeria3>
+                  </tr>
+                  <tr>
+                    <td height="14"></td>
+                  </tr>
+                  <BOUCLE_galeria2(BOUCLE_galeria3)>
+                  </BOUCLE_galeria2>
+                  </table>
+                  </B_galeria3>
+
+                <B_documents>
+                <hr />
+                <table width="100%" style="font-size: 70%; color:#333333;">
+				<tr>
+				<td valign="top">
+				<!--<:imprimirdocumento:documentos_descargar:>-->
+                        </td>
+                     </tr>
+                    <BOUCLE_documents(DOCUMENTS) {id_article} {mode=document} {doublons}>
+                      <tr>
+                        	<td> </td>
+                       </tr>
+                    </BOUCLE_documents>
+                    [(#REM) Gestion du portfolio et des documents ]
+					[(#INCLURE{fond=inclure/documents}{id_article})]
+                </table>
+                </B_documents>
+
+              <B_forums>
+<div>
+              <font size="5"><b><:imprimirdocumento:commentaires:></b></font>
+              <ul class="forum-total">
+                <BOUCLE_forums(FORUMS){id_article}{par date}>
+                <li>
+                  <div class="forum-fil"  style="font-size:10pt;"> <b> <br>
+                    </b> <font size="1" face="Arial, Helvetica, sans-serif"> <u> #TITRE, #NOM, <i> [(#DATE|affdate)] </i></u></font>
+                    <div class="forum-item"> #TEXTE
+                        <div class='forum-titre'>#NOM_SITE</div>
+                    </div>
+                    <B_forums_fils>
+                    <ul>
+                      <BOUCLE_forums_fils(FORUMS){id_parent}{par date}>
+                      <br>
+                      <li> <font size="2" face="Arial, Helvetica, sans-serif"> <u>#TITRE, #NOM, <i> [(#DATE|affdate)] </i> </u></font>
+                          <div class="forum-item"> #TEXTE
+                              <div class='forum-titre'>#NOM_SITE</div>
+                          </div>
+                          <BOUCLE_Forums_Boucle(boucle_forums_fils)>
+                          </BOUCLE_Forums_Boucle>
+                      </li>
+                      </BOUCLE_forums_fils>
+                    </ul>
+                    </B_forums_fils>
+                  </div>
+                </li>
+                </BOUCLE_forums>
+              </ul>
+   </div>
+              </B_forums>
+<hr />
+</div>
+
+        <script type="text/javascript">
+		window.print();
+	</script>
+
+[<div style="display:none">(#FORMULAIRE_ADMIN)</div>]
+
+</body>
+</html>
+</BOUCLE_article_principal>

@@ -1,0 +1,24 @@
+<div id="suite">
+    <h2 class="titre_tete">LISTE DES PAYS</h2>
+        <BOUCLE_hh(MOTS){id_groupe=5}>
+            <BOUCLE_mots(spip_mots_articles){id_mot}{fusion id_mot}>
+                [(#REM) Articles lies au mot-cle ]
+        
+        <div class="menu articles">
+            <dl class="faq">
+            <dt><h2>#TITRE</h2></dt>
+            <dd>
+            <B_articles>
+               
+                <BOUCLE_articles(ARTICLES) {id_mot} {par popularite}{inverse}>
+                <a href="#URL_ARTICLE">#TITRE</a><small>[ (#DATE|affdate_jourcourt)]</small><br />
+                </BOUCLE_articles>
+               
+            </B_articles>
+            </dd>
+            </dl>                
+        </div>
+            
+            </BOUCLE_mots>
+        </BOUCLE_hh>
+</div>

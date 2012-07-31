@@ -1,0 +1,22 @@
+[(#REM)
+
+  Squelette Presentation d'un article dans une liste
+  (c) 2009 Zpip
+  Distribue sous licence GPL
+
+]
+<BOUCLE_articles(ARTICLES) {id_article} {statut?}>
+<li class="item hentry">
+    <h3 class="h3 entry-title"><a href="[(#ENV{blop}|?{[(#URL_ARTICLE|parametre_url{blop,dev})],#URL_ARTICLE})]" rel="bookmark">[(#LOGO_ARTICLE_RUBRIQUE||image_reduire{150,100})]#TITRE</a></h3>
+    <div class="info-publi">[<abbr class="published" title="[(#DATE|date_iso)]">(#DATE|affdate_jourcourt)</abbr>][<span class="sep">, </span><span class="auteurs"><:par_auteur:> (#LESAUTEURS)</span>]</div>
+    <div class="#EDIT{intro} introduction entry-content">[ (#CHAPO)][ (#CHAPO|choixsivide{#TEXTE|couper{200}})]</div>
+    <div class="meta-publi">
+    <a class="lire-la-suite" href="#URL_ARTICLE"><:zpip:lire_la_suite:><span class="lire-la-suite-titre"><:zpip:lire_la_suite_de:> <em>#TITRE</em></span></a>
+    <BOUCLE_nb_commentaires(FORUMS) {id_article}{plat} />   [(#TOTAL_BOUCLE|oui)
+        <span class="sep">|</span>
+        <a[ href="(#URL_ARTICLE|ancre_url{forum})"] class="nb_commentaires">[(#TOTAL_BOUCLE)]&nbsp;[(#TOTAL_BOUCLE|=={1}|?{<:zpip:commentaire:>,<:zpip:commentaires:>})]</a>
+        ]
+    <//B_nb_commentaires>
+    </div>
+</li>
+</BOUCLE_articles>

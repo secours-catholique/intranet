@@ -1,0 +1,33 @@
+#CACHE{0}
+[(#REM) aide recherche ]
+<div class="liste forums">
+    <h2 class="titre_tete">Aide pour la recherche</h2>
+    <p>La casse (minuscule/majuscule) des mots recherchés est indifférente.</p>
+    <p>Les accents ne sont pas pris en compte (« déjà » ou « deja », retourneront à l'identique « déjà », « dejà », « déja »...)</p>
+    <p>La recherche utilise les opérateurs logiques les plus courants.</p>
+</div>
+<div class="liste forums">
+    <h2 class="titre_tete">Exemples d'utilisation</h2>
+    <p><input type="text" size="25" value="enfant étranger" /></p>
+    <p>Retourne les textes qui contiennent
+        <ul>
+            <li>SOIT « enfant »,</li>
+            <li>SOIT « étranger »,</li>
+            <li>SOIT « enfant » ET « étranger ».</li>
+        </ul>
+    </p>
+    <p><input type="text" size="25" value="enfan*" /></p>
+    <p>Retourne les textes qui contiennent
+        <ul>
+            <li>« enfant », </li>
+            <li>« enfants », </li>
+            <li>« enfance »,</li>
+            <li>« enfanter »,</li>
+            <li>« enfantillage »</li>
+            <li>....</li>
+        </ul>   
+        (« *fant » ne retournera rien: l'astérisque * doit être terminale.) </p>
+     <p><input type="text" size="25" value='"enfant étranger"' /></p>
+    <p>Retourne les textes qui contiennent exactement la séquence de mots « enfant étranger ». </p>
+</div>
+

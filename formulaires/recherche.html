@@ -1,0 +1,9 @@
+<BOUCLE_recherche(RUBRIQUES){id_rubrique}>#SET{rub,#ID_RUBRIQUE}</BOUCLE_recherche>
+[(#SESSION{id_auteur}|=={1}|oui)#ENV{id_rubrique}]
+<div class="formulaire_spip formulaire_recherche" id="formulaire_recherche">
+<form action="[(#ENV{action})]" method="get"><div>
+    [(#ENV{action}|form_hidden)]
+    [<input type="hidden" name="lang" value="(#ENV{lang})" />]
+    <input type="text" class="text" size="10" name="recherche" id="recherche"[ value="Rechercher #GET{rub}"] accesskey="4"  onfocus="this.value=''" /><input type="submit" class="submit" value="ok" title="<:info_rechercher:>" />
+</div></form>
+</div>

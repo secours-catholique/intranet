@@ -1,0 +1,132 @@
+#CACHE{0}
+[(#REM) Contenu principal : Resultats de la recherche ]
+            <table summary="recherche" border="0" cellspacing="0" cellpadding="0" width="310"><tr><td>
+                <img src="#CHEMIN{img_pack/search-logo.png}" alt="logo recherche avanc&eacute;e" />
+            </td>
+            [(#REM) Formulaire de recherche ou recherche avancee]
+
+            </tr></table>
+            <INCLURE{fond=formulaires/recherche-avancee}{recherche}{avancee}{depuis}{id_mot}{id_nomot}{id_groupe}{id_rubrique}{tri}{titre}>
+            
+
+<div class="contenu-principal">
+    
+                [(#REM) Calcul du pourcentage ]
+                <BOUCLE_a(ARTICLES){recherche} {par points} {inverse}{0,1}>
+                    [(#SET{pc,[(#EVAL{100/#POINTS})]})]
+                </BOUCLE_a>
+
+                [(#REM) Articles trouves ]
+                <B_articles>
+                <div class="liste-articles menu articles">
+                    #ANCRE_PAGINATION
+                    <div class="cartouche">
+                    <h1 class="surtitre"><:resultats_recherche:>
+                        <span class="titre">&#171;&nbsp;#RECHERCHE&nbsp;&#187;</span> : #GRAND_TOTAL [(#GRAND_TOTAL|=={1}|?{<:rechercheavancee:resultat_trouve:>.,<:rechercheavancee:resultats_trouves:>.})]</h1>
+                    </div>
+                    <dl class="faq">
+                        <BOUCLE_articles(ARTICLES) {recherche?} {!par #ENV{tri,points}} {!par date} {age<(#ENV{depuis,1E100})} {id_mot?}  {id_groupe?} {branche?} {pagination 20} >
+                        <dt>
+                        
+                        <a href="#URL_ARTICLE" title="Lire la suite de l'article &laquo;&nbsp;#TITRE&nbsp;&raquo;.">#TITRE</a>
+                        </dt>
+                        <dd>
+                        
+                            <small class="rdate">[le (#DATE|affdate)][, <:par_auteur:> (#LESAUTEURS)] </small>
+                            <br />
+                            [(#CHAPO|couper{600}|sinon{[(#TEXTE|couper{600})]})]  <a href="#URL_ARTICLE" title="Lire la suite de l'article &laquo;&nbsp;#TITRE&nbsp;&raquo;.">Lire l'article</a>
+                            <br /><hr />
+                            Chemin : <BOUCLE_ariane(HIERARCHIE){id_article}{!id_rubrique IN 111,105}> &gt; <a href="#URL_RUBRIQUE">[(#TITRE|couper{80})]</a></BOUCLE_ariane>
+                            <br />
+                            <B_mot>
+                            mots cl&eacute;s associ&eacute;s : 
+                            <BOUCLE_mot(MOTS){!id_groupe=1}{id_article}{" - "}>[<a href="#URL_MOT" title="Afficher les articles associ&eacute;s au mot-clef &laquo;&nbsp;#TITRE&nbsp;&raquo;.">(#TITRE)</a>]</BOUCLE_mot>
+                            <br /></B_mot>
+                            [(#SET{pt,[(#POINTS|mult{#GET{pc}})]})]
+                            [ (<:rechercheavancee:point:> : (#GET{pt}|round)%)]
+                            [ (<:popularite:> : (#POPULARITE_ABSOLUE))]
+                        
+                        [(#REM) faut-il un texte_script ou texte_backend ?]
+                        
+                        </dd>
+                        
+                        </BOUCLE_articles>
+                    </dl>
+                    
+
+                </div>[<p class="pagination">(#PAGINATION)</p>]
+                </B_articles>
+                    [<div class="cartouche">
+                    <h1 class="surtitre"><:rechercheavancee:pas_resultats_recherche:>
+                            <span class="titre">&#171;&nbsp;(#RECHERCHE)&nbsp;&#187;</span></h1>
+                    </div><hr />]
+                <//B_articles>
+
+            </div><!-- fin contre-encart -->
+            <B_auteur>
+            <div class="encart">
+                <div class="cartouche">
+                    <h1 class="surtitre"><:resultats_recherche:>
+                        <span class="titre">&#171;&nbsp;#RECHERCHE&nbsp;&#187;</span> : #GRAND_TOTAL [(#GRAND_TOTAL|=={1}|?{<:rechercheavancee:aut_trouve:>.,<:rechercheavancee:auts_trouves:>.})]</h1>
+                    </div>
+                    <B_auteur>
+                    <ul>
+                    <BOUCLE_auteur(AUTEURS){recherche}{tout}>
+                        
+                        <li>[<a href="#URL_PAGE{auteurs,id_auteur=#ID_AUTEUR}">(#NOM|strtolower|ucfirst)</a>]</li>
+                        
+                        
+                        
+                    </BOUCLE_auteur>
+                    </ul>
+                    </B_auteur>
+            </div>
+            </B_auteur>
+            <div class="encart">
+
+                
+                [(#REM) Messages trouves ]
+                <B_messages>
+                <div class="liste-articles">
+                    #ANCRE_PAGINATION
+                    <h1 class="surtitre"><:rechercheavancee:autres_resultats:><:messages_forum:></h1>
+                    
+                        <BOUCLE_messages(FORUMS) {recherche} {par date}{inverse} {pagination 5}>
+                        [(#DATE|affdate_court) : ]<a href="#URL_FORUM" title="Lire le message du forum &laquo;&nbsp;#TITRE&nbsp;&raquo;.">#TITRE</a>
+                        </BOUCLE_messages>
+                    [<p class="pagination">(#PAGINATION)</p>]<hr />
+                </div><hr />
+                </B_messages>
+                
+                [(#REM) documents trouves ]
+                <B_doc_rech>
+                <div class="liste-articles">
+                    #ANCRE_PAGINATION
+                                        <h1 class="surtitre"><:resultats_recherche:>
+                        <span class="titre">&#171;&nbsp;#RECHERCHE&nbsp;&#187;</span> : #GRAND_TOTAL [(#GRAND_TOTAL|=={1}|?{<:rechercheavancee:doc_trouve:>.,<:rechercheavancee:docs_trouves:>.})]</h1>
+
+                    <dl class="faq">
+                    <BOUCLE_doc_rech(DOCUMENTS) {recherche} {!par #ENV{tri,points}} {age<(#ENV{depuis,1E100})} {id_mot?}  {pagination 20}>
+                    <dt>
+                    <a href="#URL_DOCUMENT" title="Voir le document">[(#TITRE|sinon{[(#FICHIER|basename)]})]</a>
+                    </dt>
+                    <dd>[le (#DATE|affdate)]
+                    <br />
+                     &gt; <a href="#URL_DOCUMENT">Voir le document: #TITRE</a>
+                     <br />
+                    <BOUCLE_liens(spip_documents_liens){id_document}{objet=article}>
+                        <BOUCLE_art_doc(ARTICLES){id_article=#ID_OBJET}>
+                            Chemin: <BOUCLE_ariane_doc(HIERARCHIE){id_article}> &gt; <a href="#URL_RUBRIQUE">[(#TITRE|couper{80})]</a></BOUCLE_ariane_doc>
+                             &gt; <a href="#URL_ARTICLE">[(#TITRE|couper{80})]</a>...
+                        </BOUCLE_art_doc>
+                    </BOUCLE_liens>
+                    <br />
+                    Document: #TYPE_DOCUMENT - [(#TAILLE|taille_en_octets|texte_backend)] - [(#CREDITS|PtoBR)]
+                    </dd>
+                    </BOUCLE_doc_rech>
+                    </dl>
+                    [<p class="pagination">(#PAGINATION)</p>]<hr />
+                </div><hr />
+                </B_doc_rech>
+            </div>
+<h1>Ancienne recherche ...</h1>

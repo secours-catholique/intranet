@@ -1,0 +1,30 @@
+10  <div id="page">
+11          
+17         
+18          <div class="primary">
+19                  <div class="itemhead">
+20                          <h1>[(#ENV{date}|nom_jour|ucfirst) ][(#ENV{date}|affdate)]</h1>
+21                  </div><!-- itemhead -->
+22                  <B_event_list>
+23                  <ul style="list-style: none; margin: 0; padding: 0;">
+24                          <BOUCLE_event_list(EVENEMENTS) {agendafull date_debut, date_fin, jour, (#ENV{date}|annee), (#ENV{date}|mois), (#ENV{date}|jour)} {statut=publie}{par date_fin}>
+25                          <h2 class="agenda">[(#TITRE|supprimer_numero)]</h2>
+        <p class="date">[[(#DATE_DEBUT|nom_jour)] (#DATE_DEBUT|affdate_jourcourt)][(#DATE_FIN|affdate_jourcourt|=={[(#DATE_DEBUT|affdate_jourcourt)]}|?{' ',[ - (#DATE_FIN|affdate_jourcourt)]})]</p>
+        [<p>(#HORAIRE|=={oui}|?{Horaire: [(#DATE_DEBUT|heures)]H[(#DATE_DEBUT|minutes)],''})</p>]
+        <p class="#EDIT{descriptif}">[(#DESCRIPTIF)]</p>
+        [<p class="date">Lieu: (#LIEU|couper{300})] <br />
+        Adresse: #ADRESSE</p>
+        #FORMULAIRE_PARTICIPER_EVENEMENT{#ID_EVENEMENT}
+    <p><a href="#URL_PAGE{agenda}">Retour sur l'agenda</a></p>
+26                          </BOUCLE_event_list>
+27                  </ul>
+28                  </B_event_list>
+29                  <em>Aucun &eacute;v&eacute;nement SPIP annonc&eacute; le [(#ENV{date}|affdate)]&nbsp;!</em>
+30                  <//B_event_list>
+31          </div><!-- primary -->
+32          <div class="secondary">
+33                  [(#CALENDRIER_MINI{#ENV{date},'date',#SELF})]
+34                  
+38          </div><!-- secondary -->
+39          <div class="clear">&nbsp;</div>
+40  </div><!-- Close Page -->

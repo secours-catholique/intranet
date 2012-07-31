@@ -1,0 +1,18 @@
+#CACHE{0}#HTTP_HEADER{Content-type: text/html; charset=#CHARSET}
+<B_articles>#SET{news,''}
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Strict//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd'><html>
+<head><title>[(#ENV{date}|strtotime|=={82800}|?{#SET{news,"Les nouveautés n°1"},#SET{news,Les nouveautés depuis le #ENV{date}|affdate}})][(#GET{news}|textebrut)]</title></head>
+<body>
+<h1>@@NOM_LETTRE@@</h1>
+
+<div>@@DESCRIPTION@@</div>
+<BOUCLE_articles(ARTICLES){id_rubrique=112}{age_relatif<=0}{par date}{inverse}{0,20}>
+[<h2><a href="[(#URL_ARTICLE|url_absolue)]">(#TITRE)</a></h2>]
+<p>[par (#LESAUTEURS|textebrut)][ le (#DATE|affdate)]</p>
+[<div>
+(#CHAPO|sinon{#INTRODUCTION})</div>]
+</BOUCLE_articles>
+
+<p>Cliquez sur le lien suivant pour vous désinscrire : <a href="@@URL_DESINSCRIPTION@@">@@URL_DESINSCRIPTION@@</a></p>
+</body></html>
+</B_articles>

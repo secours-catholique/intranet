@@ -1,0 +1,21 @@
+[(#REM) Inscription au site ]
+#FORMULAIRE_INSCRIPTION
+
+[(#REM) Liens des forums ]
+
+<div class="liste forums">
+    <BOUCLE_712(RUBRIQUES){id_rubrique=712}>
+    <h2 class="titre_tete">#TITRE</h2>
+    <ul class="liste-items">
+        <BOUCLE_ss_712(RUBRIQUES){id_parent}>
+        <li>#TITRE
+            <ul>
+                <BOUCLE_art_712(ARTICLES){id_rubrique}{par num titre, titre}>
+                <li><a href="#URL_ARTICLE">#TITRE</a></li>
+                </BOUCLE_art_712>
+            </ul>
+        </li>
+        </BOUCLE_ss_712>
+    </ul>
+    </BOUCLE_712>
+</div>

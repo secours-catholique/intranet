@@ -1,0 +1,10 @@
+<BOUCLE_lecture(ARTICLES){id_article=#ENV{id_article}}>
+<div id="contenu103">
+    <div class="contenu-principal">
+        <h2 class="titre_tete103">#TITRE</h2>
+        <div class="texte" style="padding:5px;">#TEXTE
+        [(#INCLURE{fond=inclure/documents}{id_article})]
+        #FORMULAIRE_CORVART{article,#ID_ARTICLE}</div>        
+    </div>
+</div>
+</BOUCLE_lecture>

@@ -1,0 +1,13 @@
+<BOUCLE_(ARTICLES){id_article}><h2 class="titre_connaitre off_couleur_#ID_SECTEUR">L'agenda</h2>
+<dl>
+
+    <BOUCLE_recup_art_rub(EVENEMENTS){id_article}{age_fin<0}{doublons}></BOUCLE_recup_art_rub>
+    <B_evenements>#ANCRE_PAGINATION
+    <BOUCLE_evenements(EVENEMENTS){id_article}{!doublons}{par date_debut}{pagination 5}>
+        <dt><img src="#CHEMIN{images/fleche.png}" /><time>[(#DATE_DEBUT|Agenda_affdate_debut_fin{#DATE_FIN,#HORAIRE})]</time></dt>
+        <dd><a href="#URL_EVENEMENT" class='mediabox'>#TITRE</a></dd>
+    </BOUCLE_evenements>
+    [<p class="pagination">(#PAGINATION)</p>]
+    </B_evenements>
+</dl>
+<p><a href="#URL_ARTICLE">Voir notre calendrier</a></p></BOUCLE_>

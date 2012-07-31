@@ -1,0 +1,90 @@
+[(#REM) Cette balise (invisible) provoque le recalcul du forum
+la premiere fois qu'un message est poste (cf. inc/invalideur). ]
+[(#PARAMETRES_FORUM|?{''})]
+
+<div class="comments" id="comments">
+    [(#REM) Nombre total de messages ]
+    <BOUCLE_decompte(FORUMS) {id_rubrique ?}{id_article ?}{id_breve ?}{id_syndic ?} {plat} />[<h2 class="h2">(#TOTAL_BOUCLE|>{0}|?{#TOTAL_BOUCLE,''})
+    [(#TOTAL_BOUCLE|=={1}|?{<:message:>,<:messages_forum:>})]</h2>]<//B_decompte>
+
+    [(#REM) Messages du forum ]
+    <B_forums>
+    <ul class="forum comments-list">
+
+        <BOUCLE_forums(FORUMS) {id_rubrique ?}{id_article ?}{id_breve ?}{id_syndic ?} {par date}>
+
+        <li class="forum-fil comment[ (#COMPTEUR_BOUCLE|alterner{'odd','even'})][ (#COMPTEUR_BOUCLE|=={1}|oui)first][ (#EXPOSE)]">
+            <div class="comment-message forum-message">
+                <div class="comment-meta forum-chapo">
+                    <a href="#forum#ID_FORUM" title="#ID_FORUM" class="ancre permalink comment-number">#</a>
+                    <strong class="#EDIT{titre} forum-titre"><a href="#forum#ID_FORUM" name="forum#ID_FORUM" id="forum#ID_FORUM">#TITRE</a></strong>
+                    [(#DATE|oui)<abbr class="date"[ title="(#DATE|date_iso)"]>
+                        [(#SET{date,[(#DATE|affdate_jourcourt)]})]
+                        [(#SET{heure,[(#DATE|heures)][:(#DATE|minutes)]})]
+                        <:zpip:date_forum{date=#GET{date},heure=#GET{heure}}:></abbr>]
+                    [<span class="comment-author vcard">, <:par_auteur:> <strong class="fn n #EDIT{qui}"><a href="#URL_PAGE{auteurs,id_auteur=#ID_AUTEUR}">(#NOM)</a></strong></span>]
+                </div>
+                <div class="comment-content forum-texte">
+                    
+                    [<div class="#EDIT{texte} comment-texte">[(#LOGO_AUTEUR|left||image_reduire{100})](#TEXTE|lignes_longues)<hr style="clear:both" /></div>]
+                    [<div class="comment-notes">(#NOTES|safehtml|lignes_longues)</div>]
+                    [<p class="#EDIT{hyperlien} comment-external-link hyperlien"><:voir_en_ligne:> : <a href="(#URL_SITE)" class="spip_out">[(#NOM_SITE|sinon{[(#URL_SITE|couper{80})]})]</a></p>]
+                    <BOUCLE_doc(DOCUMENTS){id_forum}>
+                    [(#EXTENSION|match{'^(gif|jpg|png)$'}|?{
+                        [(#EMBED_DOCUMENT|image_reduire{300})]
+                    ,
+                        [(#LOGO_DOCUMENT|#URL_DOCUMENT)]
+                    })]
+                    </BOUCLE_doc>
+
+                    [<p class="comment-reply repondre"><a href="(#PARAMETRES_FORUM|url_reponse_forum)" rel="noindex nofollow">R&eacute;agissez &agrave; ce message</a></p>]
+                </div>
+            </div>
+
+            <B_forums_fils>
+            <ul>
+                <BOUCLE_forums_fils(FORUMS) {id_parent} {par date}>
+
+                <li class="forum-fil comment[ (#COMPTEUR_BOUCLE|alterner{'odd','even'})][ (#COMPTEUR_BOUCLE|=={1}|oui)first][ (#EXPOSE)]">
+                    <div class="comment-message forum-message">
+                        <div class="comment-meta forum-chapo">
+                            <a href="#forum#ID_FORUM" title="#ID_FORUM" class="ancre permalink comment-number">#</a>
+                            <strong class="#EDIT{titre} forum-titre"><a href="#forum#ID_FORUM" name="forum#ID_FORUM" id="forum#ID_FORUM">#TITRE</a></strong>
+                            [(#DATE|oui)<abbr class="date"[ title="(#DATE|date_iso)"]>
+                                [(#SET{date,[(#DATE|affdate_jourcourt)]})]
+                                [(#SET{heure,[(#DATE|heures)][:(#DATE|minutes)]})]
+                                <:zpip:date_forum{date=#GET{date},heure=#GET{heure}}:></abbr>]
+                            [<span class="comment-author vcard">, <:par_auteur:> <strong class="fn n #EDIT{qui}"><a href="#URL_PAGE{auteurs,id_auteur=#ID_AUTEUR}">(#NOM)</a></strong></span>]
+                        </div>
+                        <div class="comment-content forum-texte">
+                            
+                            [<div class="#EDIT{texte} comment-texte">[(#LOGO_AUTEUR|left||image_reduire{100})](#TEXTE|lignes_longues)<hr style="clear:both" /></div>]
+                            [<div class="comment-notes">(#NOTES|safehtml|lignes_longues)</div>]
+                            [<p class="#EDIT{hyperlien} comment-external-link hyperlien"><:voir_en_ligne:> : <a href="(#URL_SITE)" class="spip_out">[(#NOM_SITE|sinon{[(#URL_SITE|couper{80})]})]</a></p>]
+
+                            <BOUCLE_doc2(DOCUMENTS){id_forum}>
+                            [(#EXTENSION|match{'^(gif|jpg|png)$'}|?{
+                                [(#EMBED_DOCUMENT|image_reduire{300})]
+                            ,
+                                [(#LOGO_DOCUMENT|#URL_DOCUMENT)]
+                            })]
+                            </BOUCLE_doc2>
+
+                            [<p class="comment-reply repondre"><a href="(#PARAMETRES_FORUM|url_reponse_forum)" rel="noindex nofollow"><:repondre_message:></a></p>]
+                        </div>
+                    </div>
+
+                    <BOUCLE_forums_boucle(boucle_forums_fils)></BOUCLE_forums_boucle>
+
+                </li>
+
+                </BOUCLE_forums_fils>
+            </ul>
+            </B_forums_fils>
+
+        </li>
+        </BOUCLE_forums>
+
+    </ul>
+    </B_forums>
+</div>

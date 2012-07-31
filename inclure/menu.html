@@ -1,0 +1,55 @@
+
+<BOUCLE_menu(MENUS){id_menu?}{identifiant?}>
+    
+    <B_entrees>
+    <ul class="menu-liste[ (#CSS)]">
+        <BOUCLE_entrees(MENUS_ENTREES){id_menu}{par rang}>
+        #MENUS_AFFICHER_ENTREE
+            <BOUCLE_sous_menu(MENUS){id_menus_entree}>
+                #INCLURE{fond=inclure/menu, env, id_menu, identifiant}
+            </BOUCLE_sous_menu>
+        [(#REM)
+            On ferme le li si le type d'entrée accepte des sous-menus
+            et si on a bien quelque chose dans le li (cas des menus sur #SESSION)
+        ][(#TYPE_ENTREE|menus_type_refuser_sous_menu|non)
+            [(#MENUS_AFFICHER_ENTREE|trim|oui)</li>]
+        ]
+        </BOUCLE_entrees>
+    </ul>
+    </B_entrees>
+    
+</BOUCLE_menu>
+<div id="maison"><a href="./" alt="Accueil intranet"></a></div>
+<ul id="menu_haut">
+    <li class="menu_haut"><a href="#URL_PAGE{espace-national}">Espace national</a></li>
+    <li class="menu_haut">
+    <BOUCLE_a(AUTEURS){id_auteur=#SESSION{id_auteur}}{tout}>
+        <BOUCLE_b(spip_zones){id_auteur}{!id_zone IN '13'}{0,1}>#SET{zone,#ID_ZONE}</BOUCLE_b>
+    </BOUCLE_a>
+    <BOUCLE_c(spip_zones_rubriques){id_zone=#GET{zone}}>#SET{entite,#ID_RUBRIQUE}</BOUCLE_c>
+    <BOUCLE_d(RUBRIQUES){id_rubrique=#GET{entite}}>
+    <a href="#URL_RUBRIQUE">[(#ID_SECTEUR|=={1}|?{'Ma d&eacute;l&eacute;gation',''})][(#ID_SECTEUR|=={104}|?{'Ma direction',''})][(#ID_SECTEUR|=={113}|?{'Ma region',''})]
+        [(#ID_SECTEUR|=={746}|?{'Mon antenne',''})]</a>
+    </BOUCLE_d>
+    </li>
+    <BOUCLE_aa(AUTEURS){id_auteur=#SESSION{id_auteur}}{tout}>
+        <BOUCLE_bb(spip_zones){id_auteur}>
+            [(#ID_ZONE=={149}|oui)
+            <li class="menu_haut"><a href="#URL_PAGE{rh}">Espace salari&eacute;</a>
+            <!--<ul class="ss_menu_haut"><li><a href="#URL_PAGE{rh}#manager">Espace managers</a></li></ul>-->
+            </li>]
+        </BOUCLE_bb>
+    </BOUCLE_aa>
+    <li class="menu_haut"><a href="#URL_RUBRIQUE{681}">Aide</a></li>
+    <!--<li class="menu_haut"><a href="#URL_PAGE{menu_self}">Menu du self</a></li>-->
+    <li class="menu_haut"><a href="spip.php?page=elearning" title="e-learning">e-learning</a></li>
+</ul>
+<!--<ul>
+	<li>
+    <a href="spip.php?page=elearning" title="e-learning"><img src="/themes/intranet/images/Pictos-e-learning.png" align="bottom" /></a>
+    </li>        
+</ul>-->
+<ul id="connect">
+    <li class="black"><a onclick="switchMenu('myspace');" href="#">Mon espace</a></li>
+    <li class="black2"><a href="#URL_LOGOUT" rel="nofollow">Déconnexion</a></li>
+</ul>

@@ -1,0 +1,37 @@
+#SET{max,0}
+<BOUCLE_maxmot(MOTS) {id_groupe==^((#ENV{id_groupe,.*}))$} {id_groupe!==^((#ENV{notid,-1}))$}>
+        #SET{pop,0}
+        <BOUCLE_pop(ARTICLES) {id_mot}>
+                [(#SET{pop,[(#POPULARITE|plus{#GET{pop}})]})]
+        </BOUCLE_pop>
+        [(#GET{pop}|>{[(#GET{max})]}|oui)
+                [(#SET{max,[(#GET{pop})]})]
+        ]
+</BOUCLE_maxmot>
+
+<ul class="nuage">
+<BOUCLE_tags(MOTS){id_groupe==^((#ENV{id_groupe,.*}))$} {id_groupe!==^((#ENV{notid,-1}))$} {par num titre,titre}>
+    [(#REM) définir les mot exposés]
+    #SET{expose,''}
+    <BOUCLE_expose(ARTICLES){id_article}{id_mot}{0,1}>
+        #SET{expose,' '}
+    </BOUCLE_expose>
+    [(#ENV{id_mot}|=={#ID_MOT}|oui)
+        #SET{expose,' '}
+    ]
+
+    #SET{pop,0}
+    <BOUCLE_popularite(ARTICLES) {id_mot}>
+        [(#SET{pop,[(#POPULARITE|plus{#GET{pop}})]})]
+    </BOUCLE_popularite>
+
+ <li[(#GET{expose}|oui) class="expose"]>
+  <span class="frequence">
+    [(#GET{pop})/#GET{max}]
+  </span>
+  <a rel="tag" href="#URL_MOT" class="nuage[(#GET{pop}|nuage_note{#GET{max},10})] [(#GET{expose}|oui) on]">#TITRE</a>
+ </li>
+</BOUCLE_tags>
+<li><a rel="tag" href="#URL_PAGE{pays}" class="nuage5">Pays</a></li>
+</ul>
+</B_tags>

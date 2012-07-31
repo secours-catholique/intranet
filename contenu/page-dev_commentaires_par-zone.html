@@ -1,0 +1,91 @@
+<!-- Les managers voient tout -->
+
+<!-- Début "Espace manager" = zone n°19 Direction des ressources humaines -->
+<BOUCLE_comment0(spip_zones){id_zone=155}{id_auteur=#SESSION{id_auteur}}>
+
+
+
+<div id="box3">
+	<BOUCLE_art_exclu_forum(ARTICLES){id_secteur=681}>
+		<BOUCLE_exclu_forum(FORUMS){id_article}{doublons vert}></BOUCLE_exclu_forum>
+    </BOUCLE_art_exclu_forum>
+    <h2 class="bobox couleur_7"><:derniers_commentaires:> managers</h2>
+    <ul>
+    <BOUCLE_forums_liens(FORUMS?) {plat} {par date}{inverse} {0,10}{doublons vert}>
+		<li>[<time>(#DATE|affdate_jourcourt)</time> &ndash; ]<a href="#URL_FORUM"[ title="(#TITRE|attribut_html|couper{80})"]>[(#TEXTE|couper{40})]</a></li>
+    </BOUCLE_forums_liens>
+    </ul>
+</div>
+
+
+</BOUCLE_comment0>
+
+<!-- Fin "espace manager" -->
+
+
+
+<!-- Les salariées voient tout sauf manager -->
+
+	<!-- Début "Espace salarié" = zone n°19 Direction des ressources humaines, moins la zone n°155 Manager -->
+	<BOUCLE_comment1(spip_zones){id_zone=149}{id_auteur=#SESSION{id_auteur}}>
+	
+	
+
+<div id="box3">
+	<BOUCLE_rub_520(RUBRIQUES){id_rubrique=520}>
+		<BOUCLE_art_rub_520(ARTICLES){id_rubrique}>
+			<BOUCLE_forum_art_rub_520(FORUMS){id_article}{doublons jaune}></BOUCLE_forum_art_rub_520>
+		</BOUCLE_art_rub_520>
+			<BOUCLE_sousrub_520(RUBRIQUES){id_parent}{doublons jaune}>
+				<BOUCLE_art_sousrub_520(ARTICLES){id_rubrique}>
+				<BOUCLE_forum_art_sousrub_520(FORUMS){id_article}{doublons jaune}></BOUCLE_forum_art_sousrub_520>
+			</BOUCLE_art_sousrub_520>
+		</BOUCLE_sousrub_520>
+	</BOUCLE_rub_520>
+	<h2 class="bobox couleur_7"><:derniers_commentaires:> salariés</h2>
+    <ul>
+    <BOUCLE2_forums_liens(FORUMS?) {plat} {par date}{inverse} {0,10}{doublons jaune}>
+		<li>[<time>(#DATE|affdate_jourcourt)</time> &ndash; ]<a href="#URL_FORUM"[ title="(#TITRE|attribut_html|couper{80})"]>[(#TEXTE|couper{40})]</a></li>
+    </BOUCLE2_forums_liens>
+    </ul>
+</div>
+
+
+
+	</BOUCLE_comment1>
+	<!-- Fin zone n°149 Espace salarié -->
+
+
+
+
+
+<!-- Les autres voient tout sauf manager + salariée -->
+
+<div id="box3">
+	<BOUCLE_rub_111(RUBRIQUES){id_rubrique=111}>
+		<BOUCLE_art_rub_111(ARTICLES){id_rubrique}>
+			<BOUCLE_forum_art_rub_111(FORUMS){id_article}{doublons rouge}></BOUCLE_forum_art_rub_111>
+		</BOUCLE_art_rub_111>
+			<BOUCLE_sousrub_111(RUBRIQUES){id_parent}{doublons jaune}>
+				<BOUCLE_art_sousrub_111(ARTICLES){id_rubrique}>
+				<BOUCLE_forum_art_sousrub_111(FORUMS){id_article}{doublons rouge}></BOUCLE_forum_art_sousrub_111>
+			</BOUCLE_art_sousrub_111>
+		</BOUCLE_sousrub_111>
+	</BOUCLE_rub_111>
+	<h2 class="bobox couleur_7"><:derniers_commentaires:> bénévoles</h2>
+    <ul>
+    <BOUCLE3_forums_liens(FORUMS?) {plat} {par date}{inverse} {0,10}{doublons rouge}>
+		<li>[<time>(#DATE|affdate_jourcourt)</time> &ndash; ]<a href="#URL_FORUM"[ title="(#TITRE|attribut_html|couper{80})"]>[(#TEXTE|couper{40})]</a></li>
+    </BOUCLE3_forums_liens>
+    </ul>
+</div>
+
+
+
+
+<//B_comment1>
+
+<//B_comment0>
+
+
+

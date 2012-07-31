@@ -1,0 +1,12 @@
+<BOUCLE_(EVENEMENTS){id_evenement}>
+
+        <h2 class="agenda">[(#TITRE|supprimer_numero)]</h2>
+        <p class="date">[[(#DATE_DEBUT|nom_jour)] (#DATE_DEBUT|affdate_jourcourt)][(#DATE_FIN|affdate_jourcourt|=={[(#DATE_DEBUT|affdate_jourcourt)]}|?{' ',[ - (#DATE_FIN|affdate_jourcourt)]})]</p>
+        [<p>(#HORAIRE|=={oui}|?{Horaire: [(#DATE_DEBUT|heures)]H[(#DATE_DEBUT|minutes)],''})</p>]
+        <p class="#EDIT{descriptif}">[(#DESCRIPTIF)]</p>
+        [<p class="date">Lieu: (#LIEU|couper{300})] <br />
+        Adresse: #ADRESSE</p>
+        #FORMULAIRE_PARTICIPER_EVENEMENT{#ID_EVENEMENT}
+    <p><a href="#URL_PAGE{agenda}">Retour sur l'agendaa</a></p>
+
+</BOUCLE_>

@@ -1,0 +1,577 @@
+<!-- Partie du code commune à la zone 154 et aux autres  -->
+
+#CACHE{0}
+
+
+ 
+<div class="liste articles sommaire">
+
+<BOUCLE_nous_connaitre(ARTICLES){id_article=4275}{tout_voir}>
+  <h2 class="titre_tete#ID_SECTEUR">VIDEOTHEQUE</h2>
+  
+    
+
+<div id="nous_connaitre" style="width:470px; float:left">
+    <h2 class="titre_connaitre off_couleur_#ID_SECTEUR">#TITRE</h2>
+    [(#LOGO_ARTICLE|right|#URL_ARTICLE||image_reduire{80,80})]
+    [(#INTRODUCTION|choixsivide{<p style="font-size:25px"><font color="red">Cet espace n'est pas encore ouvert. Les délégations ainsi que les directions et départements du siège ouvriront leurs espaces progressivement d'ici avril 2012.</font></p> , [(#DESCRIPTIF)<br /><a href="#URL_ARTICLE">Lire la suite</a>][(#CHAPO)<br /><a href="#URL_ARTICLE">Lire la suite</a>][(#CHAPO|choixsivide{[(#TEXTE*|couper{200}|propre)<br /><a href="#URL_ARTICLE">Lire la suite</a>]})]})]
+    [(#INCLURE{fond=inc-documents}{id_article}{env})]
+</div>
+</BOUCLE_nous_connaitre>
+
+
+<BOUCLE_actu1(RUBRIQUES){titre_mot=video}>    
+<!--<div id="actu_phototheque">-->
+<div id="actu_phototheque" class="theme">
+        <h2 class="titre_connaitre off_couleur_#ID_SECTEUR">Actualit&eacute;s</h2>
+</BOUCLE_actu1>
+        
+<B_actu>
+    <section>
+        
+
+<div id="canadaprovinces" class="glidecontentwrapper ajax">
+<BOUCLE_actu(RUBRIQUES){titre_mot=actu_videotheque}>
+    <B_art_actu>
+    <script type="text/javascript">
+
+featuredcontentglider.init({
+    gliderid: "canadaprovinces", //ID of main glider container
+    contentclass: "glidecontent", //Shared CSS class name of each glider content
+    togglerid: "p-select", //ID of toggler container
+    remotecontent: "", //Get gliding contents from external file on server? "filename" or "" to disable
+    selected: 0, //Default selected content index (0=1st)
+    persiststate: false, //Remember last content shown within browser session (true/false)?
+    speed: 1700, //Glide animation duration (in milliseconds)
+    direction: "downup", //set direction of glide: "updown", "downup", "leftright", or "rightleft"
+    autorotate: true, //Auto rotate contents (true/false)?
+    autorotateconfig: [10000, 2] //if auto rotate enabled, set [milliseconds_btw_rotations, cycles_before_stopping]
+})
+
+</script>
+    <BOUCLE_art_actu(ARTICLES){age<180}{branche}{!par date}>
+        <div class="glidecontent">
+            [(#LOGO_ARTICLE_RUBRIQUE|left||image_reduire{50})]
+        <a href="#URL_ARTICLE"><h3 class="h3">#TITRE</h3></a>[(#CHAPO|couper{180}|sinon{[(#TEXTE|couper{180})]})]
+        </div>
+    </BOUCLE_art_actu>
+    Pas de nouvelles actualit&eacute;s r&eacute;cemment
+    <//B_art_actu>
+</BOUCLE_actu>
+</div>
+
+<div id="p-select" class="glidecontenttoggler">
+<a href="#" class="prev">Pr&eacute;c&eacute;dent</a> 
+<a href="#" class="next">Suivant</a>
+</div>
+
+    </section>
+</B_actu>
+
+    Pas de nouvelles actualit&eacute;s r&eacute;cemment
+<//B_actu>
+</div>    
+    
+    <hr />
+    
+    
+    
+    <div id="descriptif_site_spip" style="padding-left: 5px"> <!-- padding à intégrer aux css-->
+    
+
+
+    
+    
+    
+    <BOUCLE_corvart(AUTEURS_LIENS){id_objet=4287} {objet=article} {id_auteur=#SESSION{id_auteur}}{lecture=true}>
+
+    
+    <p>#SESSION{nom}, nous vous rappelons que vous avez valid&eacute; <a href="#URL_ARTICLE{4287}">la charte d'utilisation des images de la vid&eacute;oth&egrave;que</a> </p>
+    
+    </BOUCLE_corvart>
+    <INCLURE{fond=contenu/page-lecture,id_article=4287}>
+<//B_corvart>
+    
+
+
+
+
+    
+        
+
+
+<//B_bb0>
+
+<!-- retour à la Partie du code commune à la zone 154 et aux autres  -->  
+
+</div> <!--FIN div id="descriptif_site_spip"-->
+    
+    
+
+    
+     <div class="contenu-principal">
+   
+    <!-- code onglets -->
+
+		<!-- Tabs -->
+		<!--<h2>Tabs</h2>--><br />
+		<div id="tabs">
+			<ul>
+				<li><a href="#tabs-1"><BOUCLE_rub_video1(RUBRIQUES){id_rubrique=2195}{tout_voir}> <!--Vie de l'asso-->
+                
+            <h3 class="h3">#TITRE</h3></BOUCLE_rub_video1></a></li>
+            
+				<li><a href="#tabs-2"><BOUCLE_video2(RUBRIQUES){id_rubrique=2196}{tout_voir}> <!-- France -->
+            
+            <h3 class="h3">#TITRE</h3></BOUCLE_video2></a></li>
+            
+				<li><a href="#tabs-3"><BOUCLE_video3(RUBRIQUES){id_rubrique=2197}{tout_voir}> <!--International-->
+            
+            <h3 class="h3">#TITRE</h3></BOUCLE_video3></a></li>
+            
+			</ul>
+
+<!--
+Couleurs doublons:
+- tabs-1 "Vie de l'association" asso rub2195 : bleu vert
+- tabs-2 "France" fr rub2196 : orange gris
+- tabs-3 "International" it rub2197 : violet mauve
+-->
+
+			<div id="tabs-1">
+         
+
+            	
+        <BOUCLE_rub_asso_1(RUBRIQUES){id_rubrique=2195}{tout_voir}> <!--Vie de l'association-->
+        
+<!-- D'abord la racine de la rubrique -->
+
+<!-- On teste si article virtuel (=redirection) -->
+        
+            
+            
+            <BOUCLE_art_asso_1redir(ARTICLES){id_rubrique} {chapo == ^=}{tout_voir}{par num titre} {doublons bleu}>
+                
+                <a href="#URL_ARTICLE">
+                <div id="portfolio_docjoints_collections_rub">
+                <h3 class="h3">#TITRE</h3>
+                <BOUCLE_doc_asso_1redir(DOCUMENTS){id_article}  {extension IN flv,mp4,h264,ogg,webm,mkv}  {par date}{inverse}{0,3}{tout_voir}>
+                
+                	[(#LOGO_DOCUMENT||image_reduire{84})]
+                
+                </BOUCLE_doc_asso_1redir>
+                
+                <BOUCLE_doc_asso_1redir_(DOCUMENTS){id_article}  {extension IN flv,mp4,h264,ogg,webm,mkv}  {tout_voir}>
+                
+                </BOUCLE_doc_asso_1redir_>
+                <br />
+il y a #GRAND_TOTAL document(s), au total.
+                
+                </B_doc_asso_1redir_>
+                </div></a>
+            </BOUCLE_art_asso_1redir>
+            <!-- <hr /> -->
+            
+            
+
+<!-- si article normal  -->
+        
+            
+            
+            <BOUCLE_art_asso_1(ARTICLES){id_rubrique}{tout_voir}{par num titre} {doublons bleu}>
+                #SET{plup,#ID_ARTICLE}
+                <a href="#URL_PAGE{video,id_article=#GET{plup}}">
+                <div id="portfolio_docjoints_collections_rub">
+                <h3 class="h3">#TITRE</h3>
+                <BOUCLE_doc_asso_1(DOCUMENTS){id_article}  {extension IN flv,mp4,h264,ogg,webm,mkv}  {par date}{inverse}{0,3}{tout_voir}>
+                
+                	[(#LOGO_DOCUMENT||image_reduire{84})]
+                
+                </BOUCLE_doc_asso_1>
+                
+                <BOUCLE_doc_asso_1_(DOCUMENTS){id_article}  {extension IN flv,mp4,h264,ogg,webm,mkv}  {tout_voir}>
+                
+                </BOUCLE_doc_asso_1_>
+                <br />
+il y a #GRAND_TOTAL document(s), au total.
+                
+                </B_doc_asso_1_>
+                </div></a>
+            </BOUCLE_art_asso_1>
+            <hr />
+            
+           
+            
+
+<!-- Ensuite, les éventuelles sous-rubriques   -->
+
+<!-- On teste si article virtuel (=redirection) -->
+        
+            
+           
+            
+            <BOUCLE_sousrub_asso_1(RUBRIQUES){id_parent}{par titre}> 
+            	<h2 class="h2">#TITRE</h2>
+                <!--<hr class="sepa" />--><br />
+            <BOUCLE_art_sousrub_asso_1redir(ARTICLES) {chapo == ^=}{id_rubrique}{tout_voir}{par num titre} {doublons vert}>
+                
+                <a href="#URL_ARTICLE">
+                <div id="portfolio_docjoints_collections_rub">
+                <h3 class="h3">#TITRE</h3>
+                <BOUCLE_doc_sousrub_asso_1redir(DOCUMENTS){id_article}  {extension IN flv,mp4,h264,ogg,webm,mkv}  {par date}{inverse}{0,3}{tout_voir}>
+                
+                	[(#LOGO_DOCUMENT||image_reduire{84})]
+                
+                </BOUCLE_doc_sousrub_asso_1redir>
+                
+                <BOUCLE_doc_sousrub_asso_1redir_(DOCUMENTS){id_article}  {extension IN flv,mp4,h264,ogg,webm,mkv}  {tout_voir}>
+                
+                </BOUCLE_doc_sousrub_asso_1redir_>
+                <br />
+il y a #GRAND_TOTAL document(s), au total.
+                
+                </B_doc_sousrub_asso_1redir_>
+                </div></a>
+            </BOUCLE_art_sousrub_asso_1redir>
+            <!-- <hr /> -->
+            
+                        
+            
+
+<!-- si article normal  -->
+            
+            
+            
+            
+
+            <BOUCLE_art_sousrub_asso_1(ARTICLES){id_rubrique}{tout_voir}{par num titre} {doublons vert}>
+                #SET{plup,#ID_ARTICLE}
+                <a href="#URL_PAGE{video,id_article=#GET{plup}}">
+                <div id="portfolio_docjoints_collections_rub">
+                <h3 class="h3">#TITRE</h3>
+                <BOUCLE_doc_sousrub_asso_1(DOCUMENTS){id_article}  {extension IN flv,mp4,h264,ogg,webm,mkv}  {par date}{inverse}{0,3}{tout_voir}>
+                
+                	[(#LOGO_DOCUMENT||image_reduire{84})]
+                
+                </BOUCLE_doc_sousrub_asso_1>
+                
+                <BOUCLE_doc_sousrub_asso_1_(DOCUMENTS){id_article}  {extension IN flv,mp4,h264,ogg,webm,mkv}  {tout_voir}>
+                
+                </BOUCLE_doc_sousrub_asso_1_>
+                <br />
+il y a #GRAND_TOTAL document(s), au total.
+                
+                </B_doc_sousrub_asso_1_>
+                </div></a>
+            </BOUCLE_art_sousrub_asso_1>
+            <hr />
+            
+            </BOUCLE_sousrub_asso_1>          
+            
+            
+            
+        </BOUCLE_rub_asso_1>
+        
+                    
+            
+            
+            </div> <!-- FIN div id="tabs-1"-->
+            
+            
+            
+			<div id="tabs-2">
+         
+
+            	
+        <BOUCLE_rub_fr_1(RUBRIQUES){id_rubrique=2196}{tout_voir}> <!--France-->
+        
+<!-- D'abord la racine de la rubrique -->
+
+<!-- On teste si article virtuel (=redirection) -->
+        
+            
+            
+            <BOUCLE_art_fr_1redir(ARTICLES){id_rubrique} {chapo == ^=}{tout_voir}{par num titre} {doublons orange}>
+                
+                <a href="#URL_ARTICLE">
+                <div id="portfolio_docjoints_collections_rub">
+                <h3 class="h3">#TITRE</h3>
+                <BOUCLE_doc_fr_1redir(DOCUMENTS){id_article}  {extension IN flv,mp4,h264,ogg,webm,mkv}  {par date}{inverse}{0,3}{tout_voir}>
+                
+                	[(#LOGO_DOCUMENT||image_reduire{84})]
+                
+                </BOUCLE_doc_fr_1redir>
+                
+                <BOUCLE_doc_fr_1redir_(DOCUMENTS){id_article}  {extension IN flv,mp4,h264,ogg,webm,mkv}  {tout_voir}>
+                
+                </BOUCLE_doc_fr_1redir_>
+                <br />
+il y a #GRAND_TOTAL document(s), au total.
+                
+                </B_doc_fr_1redir_>
+                </div></a>
+            </BOUCLE_art_fr_1redir>
+            <!-- <hr /> -->
+            
+            
+
+<!-- si article normal  -->
+        
+            
+            
+            <BOUCLE_art_fr_1(ARTICLES){id_rubrique}{tout_voir}{par num titre} {doublons orange}>
+                #SET{plup,#ID_ARTICLE}
+                <a href="#URL_PAGE{video,id_article=#GET{plup}}">
+                <div id="portfolio_docjoints_collections_rub">
+                <h3 class="h3">#TITRE</h3>
+                <BOUCLE_doc_fr_1(DOCUMENTS){id_article}  {extension IN flv,mp4,h264,ogg,webm,mkv}  {par date}{inverse}{0,3}{tout_voir}>
+                
+                	[(#LOGO_DOCUMENT||image_reduire{84})]
+                
+                </BOUCLE_doc_fr_1>
+                
+                <BOUCLE_doc_fr_1_(DOCUMENTS){id_article}  {extension IN flv,mp4,h264,ogg,webm,mkv}  {tout_voir}>
+                
+                </BOUCLE_doc_fr_1_>
+                <br />
+il y a #GRAND_TOTAL document(s), au total.
+                
+                </B_doc_fr_1_>
+                </div></a>
+            </BOUCLE_art_fr_1>
+            <hr />
+            
+           
+            
+
+<!-- Ensuite, les éventuelles sous-rubriques   -->
+
+<!-- On teste si article virtuel (=redirection) -->
+        
+            
+           
+            
+            <BOUCLE_sousrub_fr_1(RUBRIQUES){id_parent}{par titre}> 
+            	<h2 class="h2">#TITRE</h2>
+                <!--<hr class="sepa" />--><br />
+            <BOUCLE_art_sousrub_fr_1redir(ARTICLES) {chapo == ^=}{id_rubrique}{tout_voir}{par num titre} {doublons gris}>
+                
+                <a href="#URL_ARTICLE">
+                <div id="portfolio_docjoints_collections_rub">
+                <h3 class="h3">#TITRE</h3>
+                <BOUCLE_doc_sousrub_fr_1redir(DOCUMENTS){id_article}  {extension IN flv,mp4,h264,ogg,webm,mkv}  {par date}{inverse}{0,3}{tout_voir}>
+                
+                	[(#LOGO_DOCUMENT||image_reduire{84})]
+                
+                </BOUCLE_doc_sousrub_fr_1redir>
+                
+                <BOUCLE_doc_sousrub_fr_1redir_(DOCUMENTS){id_article}  {extension IN flv,mp4,h264,ogg,webm,mkv}  {tout_voir}>
+                
+                </BOUCLE_doc_sousrub_fr_1redir_>
+                <br />
+il y a #GRAND_TOTAL document(s), au total.
+                
+                </B_doc_sousrub_fr_1redir_>
+                </div></a>
+            </BOUCLE_art_sousrub_fr_1redir>
+            <!-- <hr /> -->
+            
+                        
+            
+
+<!-- si article normal  -->
+            
+            
+            
+            
+
+            <BOUCLE_art_sousrub_fr_1(ARTICLES){id_rubrique}{tout_voir}{par num titre} {doublons gris}>
+                #SET{plup,#ID_ARTICLE}
+                <a href="#URL_PAGE{video,id_article=#GET{plup}}">
+                <div id="portfolio_docjoints_collections_rub">
+                <h3 class="h3">#TITRE</h3>
+                <BOUCLE_doc_sousrub_fr_1(DOCUMENTS){id_article}  {extension IN flv,mp4,h264,ogg,webm,mkv}  {par date}{inverse}{0,3}{tout_voir}>
+                
+                	[(#LOGO_DOCUMENT||image_reduire{84})]
+                
+                </BOUCLE_doc_sousrub_fr_1>
+                
+                <BOUCLE_doc_sousrub_fr_1_(DOCUMENTS){id_article}  {extension IN flv,mp4,h264,ogg,webm,mkv}  {tout_voir}>
+                
+                </BOUCLE_doc_sousrub_fr_1_>
+                <br />
+il y a #GRAND_TOTAL document(s), au total.
+                
+                </B_doc_sousrub_fr_1_>
+                </div></a>
+            </BOUCLE_art_sousrub_fr_1>
+            <hr />
+            
+            </BOUCLE_sousrub_fr_1>          
+            
+            
+            
+        </BOUCLE_rub_fr_1>
+        
+                    
+            
+            
+            </div> <!-- FIN div id="tabs-2"-->
+            
+            
+            
+			<div id="tabs-3">
+         
+
+            	
+        <BOUCLE_rub_it_1(RUBRIQUES){id_rubrique=2197}{tout_voir}> <!--International-->
+        
+<!-- D'abord la racine de la rubrique -->
+
+<!-- On teste si article virtuel (=redirection) -->
+        
+            
+            
+            <BOUCLE_art_it_1redir(ARTICLES){id_rubrique} {chapo == ^=}{tout_voir}{par num titre} {doublons violet}>
+                
+                <a href="#URL_ARTICLE">
+                <div id="portfolio_docjoints_collections_rub">
+                <h3 class="h3">#TITRE</h3>
+                <BOUCLE_doc_it_1redir(DOCUMENTS){id_article}  {extension IN flv,mp4,h264,ogg,webm,mkv}  {par date}{inverse}{0,3}{tout_voir}>
+                
+                	[(#LOGO_DOCUMENT||image_reduire{84})]
+                
+                </BOUCLE_doc_it_1redir>
+                
+                <BOUCLE_doc_it_1redir_(DOCUMENTS){id_article}  {extension IN flv,mp4,h264,ogg,webm,mkv}  {tout_voir}>
+                
+                </BOUCLE_doc_it_1redir_>
+                <br />
+il y a #GRAND_TOTAL document(s), au total.
+                
+                </B_doc_it_1redir_>
+                </div></a>
+            </BOUCLE_art_it_1redir>
+            <!-- <hr /> -->
+            
+            
+
+<!-- si article normal  -->
+        
+            
+            
+            <BOUCLE_art_it_1(ARTICLES){id_rubrique}{tout_voir}{par num titre} {doublons violet}>
+                #SET{plup,#ID_ARTICLE}
+                <a href="#URL_PAGE{video,id_article=#GET{plup}}">
+                <div id="portfolio_docjoints_collections_rub">
+                <h3 class="h3">#TITRE</h3>
+                <BOUCLE_doc_it_1(DOCUMENTS){id_article}  {extension IN flv,mp4,h264,ogg,webm,mkv}  {par date}{inverse}{0,3}{tout_voir}>
+                
+                	[(#LOGO_DOCUMENT||image_reduire{84})]
+                
+                </BOUCLE_doc_it_1>
+                
+                <BOUCLE_doc_it_1_(DOCUMENTS){id_article}  {extension IN flv,mp4,h264,ogg,webm,mkv}  {tout_voir}>
+                
+                </BOUCLE_doc_it_1_>
+                <br />
+il y a #GRAND_TOTAL document(s), au total.
+                
+                </B_doc_it_1_>
+                </div></a>
+            </BOUCLE_art_it_1>
+            <hr />
+            
+           
+            
+
+<!-- Ensuite, les éventuelles sous-rubriques   -->
+
+<!-- On teste si article virtuel (=redirection) -->
+        
+            
+           
+            
+            <BOUCLE_sousrub_it_1(RUBRIQUES){id_parent}{par titre}> 
+            	<h2 class="h2">#TITRE</h2>
+                <!--<hr class="sepa" />--><br />
+            <BOUCLE_art_sousrub_it_1redir(ARTICLES) {chapo == ^=}{id_rubrique}{tout_voir}{par num titre} {doublons mauve}>
+                
+                <a href="#URL_ARTICLE">
+                <div id="portfolio_docjoints_collections_rub">
+                <h3 class="h3">#TITRE</h3>
+                <BOUCLE_doc_sousrub_it_1redir(DOCUMENTS){id_article}  {extension IN flv,mp4,h264,ogg,webm,mkv}  {par date}{inverse}{0,3}{tout_voir}>
+                
+                	[(#LOGO_DOCUMENT||image_reduire{84})]
+                
+                </BOUCLE_doc_sousrub_it_1redir>
+                
+                <BOUCLE_doc_sousrub_it_1redir_(DOCUMENTS){id_article}  {extension IN flv,mp4,h264,ogg,webm,mkv}  {tout_voir}>
+                
+                </BOUCLE_doc_sousrub_it_1redir_>
+                <br />
+il y a #GRAND_TOTAL document(s), au total.
+                
+                </B_doc_sousrub_it_1redir_>
+                </div></a>
+            </BOUCLE_art_sousrub_it_1redir>
+            <!-- <hr /> -->
+            
+                        
+            
+
+<!-- si article normal  -->
+            
+            
+            
+            
+
+            <BOUCLE_art_sousrub_it_1(ARTICLES){id_rubrique}{tout_voir}{par num titre} {doublons mauve}>
+                #SET{plup,#ID_ARTICLE}
+                <a href="#URL_PAGE{video,id_article=#GET{plup}}">
+                <div id="portfolio_docjoints_collections_rub">
+                <h3 class="h3">#TITRE</h3>
+                <BOUCLE_doc_sousrub_it_1(DOCUMENTS){id_article}  {extension IN flv,mp4,h264,ogg,webm,mkv}  {par date}{inverse}{0,3}{tout_voir}>
+                
+                	[(#LOGO_DOCUMENT||image_reduire{84})]
+                
+                </BOUCLE_doc_sousrub_it_1>
+                
+                <BOUCLE_doc_sousrub_it_1_(DOCUMENTS){id_article}  {extension IN flv,mp4,h264,ogg,webm,mkv}  {tout_voir}>
+                
+                </BOUCLE_doc_sousrub_it_1_>
+                <br />
+il y a #GRAND_TOTAL document(s), au total.
+                
+                </B_doc_sousrub_it_1_>
+                </div></a>
+            </BOUCLE_art_sousrub_it_1>
+            <hr />
+            
+            </BOUCLE_sousrub_it_1>          
+            
+            
+            
+        </BOUCLE_rub_it_1>
+        
+                    
+            
+            
+            </div> <!-- FIN div id="tabs-3"-->            
+            
+            
+            		
+        </div> <!-- FIN div id="tabs" -->
+	
+
+						
+ <!-- FIN code onglets --> 
+ 
+ 
+ 
+    
+
+    </div>
+
+</div>
+

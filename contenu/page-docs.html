@@ -1,0 +1,21 @@
+[(#SESSION{id_auteur}|=={1}|oui)<a href="#URL_PAGE{outils}">Page complète</a>]
+#FORMULAIRE_EDITER_DOCUMENT{6412}
+<ul>
+<BOUCLE_1(RUBRIQUES){id_rubrique}>
+    <li><h1>#TITRE</h1>
+        <B_2>
+            <ul>
+            <BOUCLE_2(ARTICLES){id_rubrique}>
+                <li><h2><a href="#URL_ARTICLE">#TITRE</a></h2>
+                <B_3>
+                <ul>
+                <BOUCLE_3(DOCUMENTS){id_article}><li><a href="#URL_DOCUMENT">[(#TITRE|sinon{Il n'y a pas de titre au document})]</a></li></BOUCLE_3>
+                </ul>
+                </B_3>
+            </BOUCLE_2></li>
+            </ul>
+        </B_2>
+        
+    </li>
+</BOUCLE_1>
+</ul>

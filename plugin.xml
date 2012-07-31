@@ -1,0 +1,17 @@
+<plugin>
+	<nom>Intranet secours-catholique</nom>
+    <icon>vignette.png</icon>
+	<auteur>[Akilo->http://www.spip-contrib.net/achille]</auteur>
+    <version>0.1</version>
+	<licence><a href='http://www.gnu.org/licenses/gpl-3.0.txt' rel='licence'>GPL v3</a></licence>
+	<description>Un th&egrave;me pour l'intranet du secours-catholique</description>
+	<lien>[->http://www.spip-contrib.net/?article3558]</lien>
+  	<etat>stable</etat>
+	<categorie>theme</categorie>
+  	<prefix>theme</prefix>
+<utilise id="Z" version="[1.2.0;]" />
+<bouton id='cisticole' parent='bando_squelette'>
+	<titre>Intranet</titre>
+	<url>configurer_cisticole</url>
+</bouton>
+</plugin>

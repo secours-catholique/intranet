@@ -1,0 +1,35 @@
+<BOUCLE_(ARTICLES){id_article=#ENV{id_article}}{tout_voir}>
+<div id="suite">
+
+<h2 class="titre_tete">#TITRE</h2>
+<div class="surlignable">
+[<div class="#EDIT{chapo} chapo">(#CHAPO|image_reduire{300,300})</div>]
+[<div class="#EDIT{texte} texte">(#TEXTE|image_reduire{600,600})</div>]
+    <B_bb>
+    
+    <BOUCLE_bb(spip_zones){id_zone=154}{id_auteur=#SESSION{id_auteur}}>
+    
+[(#REM) Forum de l'article ]
+<a href="#forum" name="forum" id="forum"></a>
+<INCLURE{fond=inclure/forum}{id_article} />
+[<p class="repondre"><a href="(#PARAMETRES_FORUM|url_reponse_forum)" rel="noindex nofollow">R&eacute;agissez &agrave; cet article</a></p>]
+    
+        [(#INCLURE{fond=inclure/documents_collections}{id_article})]
+        
+        
+    </BOUCLE_bb>
+        <p>Pour obtenir l'autorisation d'utilisation des images contactez <a href="#URL_PAGE{auteurs,id_auteur=9945}">Elodie PERRIOT</a></p>
+        <BOUCLE_doc(DOCUMENTS){id_article}{extension==jpg|png|gif}{tout_voir}>
+            <a href="#"
+         [ title="(#TITRE|attribut_html|couper{80})-[©(#CREDITS)]"]>
+         [(#FICHIER
+        |image_reduire{0,100}
+        |inserer_attribut{class,spip_logos}
+        |inserer_attribut{alt,[(#TITRE|attribut_html|couper{80})]-[©(#CREDITS)]})]</a>
+        </BOUCLE_doc>
+    <//B_bb>
+
+</div><!--fin div class="surlignable"-->
+
+</div>
+</BOUCLE_>

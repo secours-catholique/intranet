@@ -1,0 +1,34 @@
+<BOUCLE_contenu_article(ARTICLES){id_article=5}>
+<div class="contenu-principal">
+	<div class="cartouche">#FORMULAIRE_FAVORI
+		[(#LOGO_ARTICLE||image_reduire{200,200})]
+		[<p class="#EDIT{surtitre} surtitre">(#SURTITRE)</p>]
+		<h1 class="h1 #EDIT{titre}">#TITRE</h1>
+		[<p class="#EDIT{soustitre} soustitre">(#SOUSTITRE)</p>]
+
+		<p class="info-publi"><abbr class="published" title="[(#DATE|date_iso)]">[(#DATE|nom_jour) ][(#DATE|affdate)]</abbr>[, <span class="auteurs"><:par_auteur:> (#LESAUTEURS)</span>]</p>
+		[(#REM) Inclure le modele des liens de traductions ]
+		#MODELE{article_traductions}
+	</div>
+
+	<div class="surlignable">
+		[<div class="#EDIT{chapo} chapo">(#CHAPO|image_reduire{500,0})</div>]
+		[<div class="#EDIT{texte} texte">(#TEXTE|image_reduire{500,0})</div>]
+	</div>
+
+	[<p class="#EDIT{hyperlien} hyperlien"><:voir_en_ligne:> : <a href="(#URL_SITE)" class="spip_out">[(#NOM_SITE|sinon{[(#URL_SITE|couper{80})]})]</a></p>]
+
+	[<div class="ps">
+		<h2 class="h2"><:info_ps:></h2>
+		<div class="#EDIT{ps} surlignable">(#PS|image_reduire{500,0})</div>
+	</div>]
+
+[(#REM) Gestion du portfolio et des documents ]
+[(#INCLURE{fond=inclure/documents}{id_article})]
+
+</div>
+[(#INCLURE{fond=inclure/article_precedent_suivant,id_article})]
+
+[<div class="notes surlignable"><h2 class="h2 pas_surlignable"><:info_notes:></h2>(#NOTES)</div>]
+
+</BOUCLE_contenu_article>

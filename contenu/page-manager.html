@@ -1,0 +1,77 @@
+<BOUCLE_a(AUTEURS){id_auteur=#SESSION{id_auteur}}{tout}>
+<BOUCLE_b(spip_zones){id_auteur}{id_zone=155}>
+<BOUCLE_520(RUBRIQUES){id_rubrique=520}>
+<div class="liste articles sommaire">
+    <h2 class="titre_tete">Espace manager</h2>
+    <div class="pousse">
+            <h2 class="biton"><a href="#URL_PAGE{rh}" title="Acc&eacute;s &agrave; l'espace salari&eacute;">Acc&eacute;s &agrave; l'espace salari&eacute;</a></h2>
+            <h2 class="biton1"><a href="#"><!--Acc&eacute;s &agrave; l'espace syndical-->************************</a></h2>
+            <h2 class="biton2"><a href="#URL_ARTICLE{23}">Votre conseillère sociale</a></h2>
+        </div>
+    <div id="gauche">
+        <h2 class="titre_connaitre couleur_8">Accompagner ses collaborateurs</h2>
+        <BOUCLE_521(RUBRIQUES){id_rubrique=521}>
+        <ul>
+            <BOUCLE_art_521(ARTICLES){id_rubrique}{par num titre, titre}>
+            <li><a href="[(#URL_ARTICLE|parametre_url{blop,rh})]">#TITRE</a></li>
+            </BOUCLE_art_521>
+            <BOUCLE_ss_rub_521(RUBRIQUES){id_parent}>
+            <li>#TITRE
+                <B_art_ss_rub>
+                <ul>
+                <BOUCLE_art_ss_rub(ARTICLES){id_rubrique}{par num titre, titre}>
+                <li><a href="[(#URL_ARTICLE|parametre_url{blop,rh})]">#TITRE</a></li>
+                </BOUCLE_art_ss_rub>
+                </ul>
+                </B_art_ss_rub>
+                
+            </li>
+            </BOUCLE_ss_rub_521>
+        </ul>
+        </BOUCLE_521>
+        <h2 class="titre_connaitre couleur_8">D&eacute;velopper vos comp&eacute;tences</h2>
+        <BOUCLE_522(RUBRIQUES){id_rubrique=522}>
+        <ul>
+            <BOUCLE_art_522(ARTICLES){id_rubrique}{par num titre, titre}>
+            <li><a href="[(#URL_ARTICLE|parametre_url{blop,rh})]">#TITRE</a></li>
+            </BOUCLE_art_522>
+        </ul>
+        
+    </div>
+    <div id="droite">
+        </BOUCLE_522>
+        <h2 class="titre_connaitre couleur_8">Actualités manageriales</h2>
+        <BOUCLE_523(RUBRIQUES){id_rubrique=523}>
+        <ul>
+            <BOUCLE_art_523(ARTICLES){id_rubrique}{par num titre, titre}>
+            <li><a href="[(#URL_ARTICLE|parametre_url{blop,rh})]">#TITRE</a></li>
+            </BOUCLE_art_523>
+        </ul>
+        </BOUCLE_523>
+        <h2 class="titre_connaitre couleur_8">Liens</h2>
+        <BOUCLE_682(RUBRIQUES){id_rubrique=682}>
+        <ul>
+            <BOUCLE_art_682(ARTICLES){id_rubrique}{par num titre, titre}>
+            <li><a href="[(#URL_ARTICLE|parametre_url{blop,rh})]">#TITRE</a></li>
+            </BOUCLE_art_682>
+        </ul>
+        </BOUCLE_682>
+        <h2 class="titre_connaitre couleur_8">Forums</h2>
+        <BOUCLE_683(RUBRIQUES){id_rubrique=683}>
+        <ul>
+            <BOUCLE_art_683(ARTICLES){id_rubrique}{par date}>
+            <li><a href="[(#URL_ARTICLE|parametre_url{blop,rh})]">#TITRE</a></li>
+            </BOUCLE_art_683>
+        </ul>
+        </BOUCLE_683>
+        <h2 class="titre_connaitre couleur_8">FAQ</h2>
+        <BOUCLE_art_faq(ARTICLES){id_article=818}{par num titre, titre}>
+            #TEXTE
+        </BOUCLE_art_faq>
+    </div>
+</div>
+</BOUCLE_520>
+</BOUCLE_b>
+    Vous n'avez pas acces à cette page
+<//B_b>
+</BOUCLE_a>

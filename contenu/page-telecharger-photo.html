@@ -1,0 +1,14 @@
+
+<BOUCLE_documents(DOCUMENTS) {id_document} {0,1} {mode=document}{extension IN png,jpg,gif} >
+    #SET{nom_fichier,
+        #TITRE
+        |choixsivide{image,#TITRE}
+        |concat{100,100,.#EXTENSION}}
+    [(#SET{lien_fichier,
+        #FICHIER
+        |extraire_attribut{src}
+        |url_absolue})]
+    [(#HTTP_HEADER{Content-type: #MIME_TYPE})]
+    [(#HTTP_HEADER{Content-Disposition: attachment; filename=#FICHIER})]
+    [(#EVAL{readfile('[(#GET{vinculo_archivo})]');})]   
+</BOUCLE_documents>

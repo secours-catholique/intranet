@@ -1,0 +1,145 @@
+
+#CACHE{0}
+
+
+ 
+<div class="liste articles sommaire">
+
+
+  <h2 class="titre_tete#ID_SECTEUR">OFFRES D'EMPLOI INTERNES</h2>
+  
+ 
+
+
+
+
+    
+ 
+    
+
+    
+     <div class="contenu-principal">
+   
+    <!-- code onglets -->
+
+		<!-- Tabs -->
+		<!--<h2>Tabs</h2>--><br />
+		<div id="tabs">
+			<ul>
+				<li><a href="#tabs-1">
+                
+            <h3 class="h3">M&eacute;tiers Administratifs et Techniques</h3></a></li>
+            
+				<li><a href="#tabs-2">
+            
+            <h3 class="h3">M&eacute;tiers de l'Animation</h3></a></li>
+            
+				<li><a href="#tabs-3">
+            
+            <h3 class="h3">M&eacute;tiers de l'Encadrement</h3></a></li>
+            
+			</ul>
+
+			<div id="tabs-1">
+			
+			#FORMULAIRE_FAVORI{rubrique,849,notification}<br /> <!-- rub849 => Métiers Administratifs et Techniques -->
+			<hr />
+			
+        <B_rub_admin_tech>
+            #ANCRE_PAGINATION
+        <BOUCLE_rub_admin_tech(RUBRIQUES){id_rubrique=849}{tout_voir}{pagination 3}>
+            
+            <!-- classement offres par ordre antéchronologique -->
+            <BOUCLE_art_admin_tech(ARTICLES){id_rubrique}{tout_voir} {par date}{inverse}>
+                
+                <a href="#URL_PAGE{voir_annonce,id_article=#ID_ARTICLE}"[ class="(#EXPOSE)"]>#TITRE</a>
+                <hr class="sepa" />
+                
+                
+                
+            </BOUCLE_art_admin_tech>
+            
+            
+        </BOUCLE_rub_admin_tech>        
+        [<p class="pagination">(#PAGINATION)</p>]
+            </B_rub_admin_tech>
+        Pas d'offre &agrave; ce jour dans les M&eacute;tiers Administratifs et Techniques
+        
+            <//B_rub_admin_tech>
+
+        
+            </div> <!-- FIN div id="tabs-1"-->
+            
+            <div id="tabs-2">
+			
+			#FORMULAIRE_FAVORI{rubrique,798,notification}<br /> <!-- rub798 => Métiers de l'animation -->
+			<hr />
+			
+        <B_rub_animation>
+            #ANCRE_PAGINATION 
+        <BOUCLE_rub_animation(RUBRIQUES){id_rubrique=798}{tout_voir}{pagination 3}>
+            
+            <!-- classement offres par ordre antéchronologique -->
+            <BOUCLE_art_animation(ARTICLES){id_rubrique}{tout_voir} {par date}{inverse}>
+                
+                
+                <a href="#URL_PAGE{voir_annonce,id_article=#ID_ARTICLE}"[ class="(#EXPOSE)"]>#TITRE</a>
+                <hr class="sepa" />
+                
+                
+            </BOUCLE_art_animation>
+            
+            
+        </BOUCLE_rub_animation>
+        [<p class="pagination">(#PAGINATION)</p>]
+            </B_rub_animation>
+        
+        Pas d'offre &agrave; ce jour dans les M&eacute;tiers de l'Animation
+        
+            <//B_rub_animation>            
+            
+            </div> <!-- FIN div id="tabs-2"-->
+            
+            <div id="tabs-3">
+			
+			#FORMULAIRE_FAVORI{rubrique,848,notification}<br /> <!-- rub848 => Métiers de l'encadredment -->
+			<hr />
+			
+        <B_rub_encadrement>
+            #ANCRE_PAGINATION
+        <BOUCLE_rub_encadrement(RUBRIQUES){id_rubrique=848}{tout_voir}{pagination 3}>
+            
+            <!-- classement offres par ordre antéchronologique -->
+            <BOUCLE_art_encadrement(ARTICLES){id_rubrique}{tout_voir} {par date}{inverse}>
+                
+                <a href="#URL_PAGE{voir_annonce,id_article=#ID_ARTICLE}"[ class="(#EXPOSE)"]>#TITRE</a>
+                <hr class="sepa" />
+                
+                
+            </BOUCLE_art_encadrement>
+            
+            
+        </BOUCLE_rub_encadrement>
+        [<p class="pagination">(#PAGINATION)</p>]
+            </B_rub_encadrement>
+        
+        Pas d'offre &agrave; ce jour dans les M&eacute;tiers de l'Encadrement
+        
+        <//B_rub_encadrement>            
+            
+            </div> <!-- FIN div id="tabs-3"-->
+		
+        </div> <!-- FIN div id="tabs" -->
+	
+
+						
+ <!-- FIN code onglets --> 
+ 
+ 
+ 
+    
+
+    </div>
+
+</div>
+

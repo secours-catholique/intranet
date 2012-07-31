@@ -1,0 +1,53 @@
+<script type="text/javascript">
+<!--
+function switchMenu(obj) {
+    var el = document.getElementById(obj);
+    if ( el.style.display != "none" ) {
+        el.style.display = 'none';
+    }
+    else {
+        el.style.display = '';
+    }
+}
+//-->
+</script>
+<BOUCLE_moi(AUTEURS){id_auteur=#SESSION{id_auteur}}{tout}>
+<div style="display:none" id="myspace" class="liste articles sommaire">
+    <div id="bauche">
+    <h2 class="titre_connaitre couleur_10">#NOM</h2>
+    [<div class="photo #EDIT{logo}">(#LOGO_AUTEUR||image_reduire{200,200}|sinon{(<a href="#">Charger votre photo</a>)})</div>]
+    
+    <div class="vcard">
+    <h3 class="fn">#NOM</h3>
+    <div class="texte note">#BIO</div>
+    <div class="adr">
+        <p><strong>Mon adresse:</strong></p>
+        <div class="street-adress"><p><span id="streetadress" class="#EDIT{streetadress} texte note">[(#STREETADRESS|sinon{<font color="blue">double click pour modifier</font>})]</span></p></div>
+        <div class="locality"><p><span id="locality" class="#EDIT{locality} texte note">[(#LOCALITY|sinon{<font color="blue">double click pour modifier</font>})]</span></p></div>
+        <div class="region"><p><span id="region" class="#EDIT{region} texte note">[(#REGION|sinon{<font color="blue">double click pour modifier</font>})]</span></p></div>
+    </div>
+    <div class="tel">
+        <p><strong>Mon téléphone: <br /></strong><span id="telperso" class="#EDIT{telperso} texte note">[(#TELPERSO|sinon{<font color="blue">double click pour modifier</font>})] </span></p>
+    </div>
+    <div class="fax"><p><strong>Mon fax: </strong><span id="fax" class="#EDIT{fax} texte note">[(#FAX|sinon{<font color="blue">double click pour modifier</font>})]</span></p></div>
+    <div class="email"><p><strong>Mon courriel: </strong>#SESSION{email}</p></div>
+    <div class="email"><p><strong>Mon courriel personnel: </strong><span id="courriel" class="#EDIT{courrielperso} texte note">[(#COURRIELPERSO|sinon{<font color="blue">double click pour modifier</font>})]</span></p></div>
+    </div>
+    <p><strong>Mon humeur du jour: </strong> <span id="humeur" class="#EDIT{humeur} texte note"> [(#HUMEUR|sinon{<font color="blue">double click pour modifier</font>})]</span></p>
+    <p><strong>Mes int&eacute;r&ecirc;ts professionnels: </strong> <span id="interetpro" class="#EDIT{interetpro} texte note"> [(#INTERETPRO|sinon{<font color="blue">double click pour modifier</font>})]</span></p>
+    <p><strong>Mes int&eacute;r&ecirc;ts personnels: </strong> <span id="interetperso" class="#EDIT{interetperso} texte note"> [(#INTERETPERSO|sinon{<font color="blue">double click pour modifier</font>})]</span></p>
+    
+    </div>
+    <div id="broite">
+    <!--<h2 class="titre_connaitre couleur_10">Mes abonnements</h2>
+    <ul>
+        <li>Un abonnement</li>
+        <li>Un abonnement</li>
+        <li>Un abonnement</li>
+        <li>Un abonnement</li>
+    </ul>-->
+    <h2 class="titre_connaitre couleur_10">Mes favoris</h2>
+    [(#INCLURE{fond=inclure/mesfavoris}{env}{id_auteur}{ajax})]
+    </div>
+</div>
+</BOUCLE_moi>

@@ -1,0 +1,33 @@
+#SET{hop,#ENV{id_rubrique}}
+
+<BOUCLE_x(RUBRIQUES){id_rubrique=#GET{hop}}>
+    <h2 class="titre_tete#ID_SECTEUR">TOUS LES DOCUMENTS</h2>
+    <B_y>
+        <dl>
+    <BOUCLE_y(ARTICLES){id_rubrique}>
+        <BOUCLE_z(DOCUMENTS){id_article}{extension !IN gif,jpg,png}>
+        <dt><a href="#FICHIER">#TITRE</a> #TYPE_DOCUMENT [(#TAILLE|taille_en_octets)]</dt>
+        <dd>#DESCRIPTIF</dd>
+        </BOUCLE_z>
+    </BOUCLE_y>
+        </dl>
+    </B_y>
+    <B_a>
+        <ul>
+    <BOUCLE_a(RUBRIQUES) {id_parent} {par titre}>
+        <li><h3><a href="#URL_RUBRIQUE">#TITRE</a></h3>
+            <B_b>
+                <dl>
+            <BOUCLE_b(ARTICLES){id_rubrique}>
+                <BOUCLE_c(DOCUMENTS){id_article}{extension !IN gif,jpg,png}{!par date}>
+                <dt><a href="#FICHIER">#TITRE</a> #TYPE_DOCUMENT [(#TAILLE|taille_en_octets)]</dt>
+                <dd>#DESCRIPTIF</dd>
+                </BOUCLE_c>
+            </BOUCLE_b>
+                </dl>
+            </B_b>
+        </li>
+    </BOUCLE_a>
+        </ul>
+    </B_a>
+</BOUCLE_x>

@@ -1,0 +1,6 @@
+<div id="credits">
+    <p><a href="#URL_PAGE{backend}">RSS</a> / <a href="#URL_PAGE{plan}">Plan du site</a> / <a href="#URL_ARTICLE{1257}">Charte intranet</a> / <BOUCLE_mentions(ARTICLES){id_article=959}><a href="#URL_ARTICLE">Mentions légales</a></BOUCLE_mentions> / <a href="#URL_ARTICLE{695}">Nous contacter</a> / <a href="#URL_SITE_SPIP/ecrire">espace privé</a> / <a href="#">Intranet V.1.0</a> /<a href="#URL_PAGE{backend}&id_rubrique=#ID_RUBRIQUE"><img src="#CHEMIN{images/feedIcon.png}" />flux rss de la rubrique</a>
+    [(#SESSION{id_auteur}|=={3}|oui)<INCLURE{fond=inclure/stats}{id_rubrique}>]
+    [(#SESSION{id_auteur}|=={1}|oui)<INCLURE{fond=inclure/stats}{id_rubrique}>]
+    </p>
+</div>

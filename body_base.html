@@ -1,0 +1,38 @@
+<div id="page">
+    <div id="entete">
+        <div class="page">
+            <INCLURE{fond=inclure/entete,env}>
+        </div>
+    </div>
+    <div class="page">
+        
+        <div id="conteneur">
+            <div id="bonjour">
+                
+                <INCLURE{fond=inclure/bonjour,env}>
+            </div>
+                <INCLURE{fond=inclure/myspace}>
+            <div id="contenu#ID_SECTEUR">
+                <INCLURE{fond=contenu/#ENV{type},env}>
+            </div>
+        </div>
+        <div id="navigation">
+            <INCLURE{fond=navigation/#ENV{type},env}>
+            <INCLURE{fond=inclure/barre-nav,env}>
+        </div>
+        <div id="extra">
+            <INCLURE{fond=extra/#ENV{type},env}>
+        </div>
+    </div>
+    <div id="pied">
+        
+        <div id="box">
+            <INCLURE{fond=inclure/box,env}>
+        </div>
+        
+    </div>
+    
+    <div id="footer">
+        <INCLURE{fond=inc-theme-copyleft,env}>
+    </div>
+</div>

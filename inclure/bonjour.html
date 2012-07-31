@@ -1,0 +1,3 @@
+<p>Bonjour #SESSION{nom} / Aujourd'hui: [(#DATE|affdate)] - <BOUCLE_rub_saint(RUBRIQUES){id_rubrique=105}><BOUCLE_nominis(SYNDIC_ARTICLES){id_rubrique}{!par date}{0,1}><a href="#URL_ARTICLE">#TITRE</a></BOUCLE_nominis></BOUCLE_rub_saint>
+
+[(#ENV{blop}|?{#INCLURE{fond=inclure/fildev,env},#INCLURE{fond=inclure/fil,env}})]

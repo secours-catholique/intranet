@@ -1,0 +1,38 @@
+#CACHE{#ENV{temps_cache,0}}
+[(#REM) 
+    Pour modifier l image utilisee, changez la valeur ci-dessous 
+    Plusieurs images sont proposees dans le repertoire 'img/' du plugin
+    mais vous pouvez utiliser les votres ;-)
+]
+#SET{tipafriend_img,#CHEMIN{img/mail_16.png}}
+<div class="spip_tipafriend">
+<a href="[(#ENV{java,oui}|=={oui}|?{#ENV{lien_href_accessible,#ENV{lien_href}},#ENV{lien_href}})]"
+    target="_blank"[ (#ENV{java,oui}|=={oui}|oui)onclick="taf_popup('#ENV{lien_href}', '<:tipafriend:tipafriend:>'); return false;" ]
+    title="<:tipafriend:bouton_send_by_mail_ttl:>"[ (#ENV{options})]>
+    <img src="#GET{tipafriend_img}" alt="<:tipafriend:tipafriend:>" title="<:tipafriend:bouton_send_by_mail_ttl:>"
+        class="spip_tipafriend_image" border="0" />
+        [(#ENV{type,complet}|=={complet}|oui)]
+</a>
+</div>
+<script type='text/javascript'>
+<!--
+function taf_get_url() {
+    var url = document.URL, d_index = url.indexOf("#"), 
+    t_url = (d_index!==-1) ? url.substring(0, d_index) : url;
+    return t_url;
+}
+function taf_popup(url, name) {
+    if(!name) name='<:tipafriend:tipafriend:>';
+    var width = #EVAL{_TIPAFRIEND_POPUP_WIDTH};
+    var height = #EVAL{_TIPAFRIEND_POPUP_HEIGHT};
+    var left = (screen.width - width)/2;
+    var top = (screen.height - height)/2;
+    var here = taf_get_url();
+    var new_f = window.open(
+        url+"&titre="+escape(document.title)+"&url="+escape(here), name, 
+        "menubar=0,directories=0,status=0,location=0,scrollbars=1,width="+width+",height="+height+",top="+top+",left="+left
+    );
+    new_f.focus();
+}
+//-->
+</script>

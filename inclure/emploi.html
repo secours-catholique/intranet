@@ -1,0 +1,24 @@
+<div class="liste forums">
+    <h2 class="titre_tete">OFFRES D'EMPLOI</h2>
+    <ul class="liste-items">
+    <BOUCLE_rub_emploi(RUBRIQUES){id_rubrique=778}>
+        <BOUCLE_ss_rub_emploi(RUBRIQUES){id_parent}>
+        #TITRE
+            <BOUCLE_emploi(ARTICLES){id_rubrique}{!par date}{0,3}>
+            [(#SESSION{id_auteur}|=={26035}|oui)<li><a href="spip.php?page=voir_annonce&id_article=#ID_ARTICLE" title="[(#DATE|date_relative)]">#TITRE</a></li>]<!-- mon num d'auteur 26035 -->
+            </BOUCLE_emploi>
+        </BOUCLE_ss_rub_emploi>
+    </BOUCLE_rub_emploi>
+    </ul>
+    
+    <p><a href="spip.php?page=voir_offres"><strong>Toutes les offres</strong></a></p>
+    
+    
+</div>
+
+
+
+
+
+
+

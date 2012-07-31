@@ -1,0 +1,6 @@
+    <composition>
+            <nom>Rubrique redirection vers collection Vidéothèque</nom>
+            <description>Composition pour la rubrique Vidéothèque</description>
+            <icon>images/rubrique-video.png</icon>
+            
+    </composition>

@@ -1,0 +1,46 @@
+[(#REM)
+    Barre de navigation, ouverte sur la hierarchie courante
+
+    On fait un plan, et, quand on avance vers une rubrique,
+    on l'affiche si son parent est expose ou est la racine du site. ]
+
+<nav class="menu rubriques">
+    
+    
+    <ul class="menu-liste">
+    
+        <li class="menu-entree couleur_1" id="menu1" onclick="afficheMenu(this)"><a href="#">Délégations</a>
+            <ul id="sousmenu1" style="display: none;">
+                <BOUCLE_menu_deleg(RUBRIQUES){id_parent=1}{par titre}>
+                    <li class="sousmenu"><a href="#URL_RUBRIQUE">[(#TITRE|strtolower|ucfirst)]</a></li>
+                </BOUCLE_menu_deleg>
+            </ul>
+        </li>
+        <li class="menu-entree couleur_2" id="menu2" onclick="afficheMenu(this)"><a href="#">Régions</a>
+            <ul id="sousmenu2" style="display: none;">
+                <BOUCLE_menu_region(RUBRIQUES){id_parent=113}{par titre}>
+                <li class="sousmenu"><a href="#URL_RUBRIQUE">[(#TITRE|strtolower|ucfirst)]</a></li>
+                </BOUCLE_menu_region>
+            </ul>
+        </li>
+        <li class="menu-entree couleur_3" id="menu3" onclick="afficheMenu(this)"><a href="#">Directions</a>
+            <ul id="sousmenu3" style="display: none;">
+                <BOUCLE_menu_direction(RUBRIQUES){id_parent=104}{par titre}>
+                <li class="sousmenu"><a href="#URL_RUBRIQUE">[(#TITRE|strtolower|ucfirst)]</a></li>
+                </BOUCLE_menu_direction>
+            </ul>
+        </li>
+        <li class="menu-entree couleur_4"><a href="#">Antennes</a></li>
+        <li class="menu-entree couleur_5"><a href="#">Mes groupes de travail</a></li>
+        <li class="menu-entree couleur_6" id="menu6" onclick="afficheMenu(this)"><a href="#">Annuaire</a>
+            <ul id="sousmenu6" style="display: none;">
+                <BOUCLE_annuaire(ARTICLES){id_article=958}>
+                    <BOUCLE_documents_joints(DOCUMENTS) {id_article}>
+                    <li class="sousmenu"><a href="#URL_DOCUMENT">#TITRE</a></li>
+                    </BOUCLE_documents_joints>
+                </BOUCLE_annuaire>
+            </ul>
+        </li>
+
+    </ul>
+</nav>

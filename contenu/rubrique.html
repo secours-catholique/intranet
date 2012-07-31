@@ -1,0 +1,87 @@
+<BOUCLE_rub_portail(RUBRIQUES){id_rubrique}{titre_mot IN 'portail','portail_deleg'}>
+    <INCLURE{fond=inclure/portail,env}>
+</BOUCLE_rub_portail>
+<BOUCLE_rh(RUBRIQUES){id_rubrique}{titre_mot IN 'rh'}>
+    <INCLURE{fond=contenu/page-rh,env}>
+</BOUCLE_rh>
+<BOUCLE_rub_theme(RUBRIQUES){id_rubrique}{titre_mot=theme}>
+    <INCLURE{fond=inclure/theme,env}>
+</BOUCLE_rub_theme>
+#SET{marub,#ID_RUBRIQUE}
+<BOUCLEn(HIERARCHIE){id_rubrique}{titre_mot=classeur}>
+    <BOUCLE_marub(RUBRIQUES){id_rubrique=#GET{marub}}>
+    <div class="contenu-principal">
+
+    <div class="cartouche">#FORMULAIRE_FAVORI
+        <h2 class="titre_tete[(#ENV{blop}|?{'',#ID_SECTEUR})]">#TITRE</h2>
+        
+    </div>
+
+    [<div class="#EDIT{texte} chapo">(#TEXTE)</div>]
+    <INCLURE{fond=inclure/aff_rub,env}>
+    <B_art_class>
+    <div id="classeur">
+            
+        <BOUCLE_art_class(ARTICLES){id_rubrique}{par num titre, titre}{0,1}>
+        <p><a href="#URL_ARTICLE"><img src="#CHEMIN{images/f_suivant.jpg}" /></a></p>
+        </BOUCLE_art_class>
+    </div>
+    </B_art_class>
+</div>
+</BOUCLE_marub>
+</BOUCLEn>
+<BOUCLE_contenu_rubrique(RUBRIQUES){id_rubrique}>
+[(#REM) Fil d'Ariane ]
+
+<div class="contenu-principal">
+
+    <div class="cartouche">#FORMULAIRE_FAVORI
+        <h2 class="titre_tete[(#ENV{blop}|?{'',#ID_SECTEUR})]">#TITRE</h2>
+        
+    </div>
+
+    [<div class="#EDIT{texte} chapo">(#TEXTE)</div>]
+</div>
+<B_articles>
+<div class="liste articles">
+    #ANCRE_PAGINATION
+    <ul class="liste-items">
+        <BOUCLE_articles(ARTICLES){id_rubrique} {!par date} {pagination 5}>
+        #INCLURE{fond=inclure/article-resume,id_article,env}
+        </BOUCLE_articles>
+    </ul>
+    [<p class="pagination">(#PAGINATION)</p>]
+</div>
+</B_articles>
+
+    [(#REM) Si aucun article, affiche un plan de la rubrique ]
+    <B_sous_rubriques>
+    <div class="menu rubriques">
+        <h2 class="h2"><:sous_rubriques:></h2>
+        <ul class="menu-liste">
+            <BOUCLE_sous_rubriques(RUBRIQUES) {id_parent} {par num titre, titre}>
+            <li class="menu-entree">
+                <a href="#URL_RUBRIQUE">[(#TITRE)]</a>
+
+                [(#REM) Une boucle recursive pour le mini plan]
+                <B_miniplan>
+                <ul class="menu-liste">
+                    <BOUCLE_miniplan(RUBRIQUES) {id_parent} {par num titre, titre}>
+                    <li class="menu-entree">
+                        <a href="#URL_RUBRIQUE">[(#TITRE)]</a>
+                        <BOUCLE_m2(BOUCLE_miniplan)></BOUCLE_m2>
+                    </li>
+                    </BOUCLE_miniplan>
+                </ul>
+                </B_miniplan>
+
+            </li>
+            </BOUCLE_sous_rubriques>
+        </ul>
+        </div>
+    </B_sous_rubriques>
+[<div class="notes"><h2 class="h2"><:info_notes:></h2>(#NOTES)</div>]
+</BOUCLE_contenu_rubrique>
+<//Bn>
+<//B_rub_theme>
+<//B_rub_portail>

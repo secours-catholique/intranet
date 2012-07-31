@@ -1,0 +1,83 @@
+<div id="box3"><!--Pour Managers-->
+<BOUCLE_rub_681_0a(RUBRIQUES){id_rubrique=681}{doublons vert}><!--rub681 "Aide"-->
+	<BOUCLE_sousrub_681_0a(RUBRIQUES){id_parent}{doublons vert}>
+#ID_RUBRIQUE<br />
+	</BOUCLE_sousrub_681_0a>
+</BOUCLE_rub_681_0a>
+
+		<h2 class="bobox couleur_7">Pr Managers</h2><!--<:derniers_commentaires:>-->
+		<ul>
+		<BOUCLE_forums_liens(FORUMS?) {plat} {par date}{inverse} {0,6}{doublons vert}>
+			<li>[<time>(#DATE|affdate_jourcourt)</time> &ndash; ]<a href="#URL_FORUM"[ title="(#TITRE|attribut_html|couper{80})"]>[(#TEXTE|couper{40})]</a>
+			</li>
+		</BOUCLE_forums_liens>
+		</ul>
+</div><!-- Fin div id="box3" -->
+
+
+<div id="box3"><!--Pour B&eacute;n&eacute;voles-->
+
+<BOUCLE_rub_681_1a(RUBRIQUES){id_rubrique=681}{doublons jaune}><!--rub681 "Aide"-->
+	<BOUCLE_sousrub_681_1a(RUBRIQUES){id_parent}{doublons jaune}>
+#ID_RUBRIQUE<br />
+	</BOUCLE_sousrub_681_1a>
+</BOUCLE_rub_681_1a>
+
+
+<BOUCLE_rub_111(RUBRIQUES){id_rubrique=111}{doublons jaune}><!--rub111 "Espace salari&eacute;s"-->
+	<BOUCLE_sousrub_111(RUBRIQUES){id_parent}{doublons jaune}>
+#ID_RUBRIQUE<br />
+	</BOUCLE_sousrub_111>
+</BOUCLE_rub_111>
+
+<BOUCLE_rub_exclu(RUBRIQUES){doublons jaune}><!-- sauf espace salari&eacute;s -->
+#ID_RUBRIQUE<br />
+
+	<BOUCLE_art_forum(ARTICLES){id_rubrique}>
+		
+	
+		<h2 class="bobox couleur_7">Pr B&eacute;n&eacute;voles</h2><!--<:derniers_commentaires:>-->
+		<ul>
+		<BOUCLE_forums_liens1(FORUMS?) {plat} {id_article} {par date}{inverse} {0,6}{doublons jaune}>
+			<li>[<time>(#DATE|affdate_jourcourt)</time> &ndash; ]<a href="#URL_FORUM"[ title="(#TITRE|attribut_html|couper{80})"]>[(#TEXTE|couper{40})]</a>
+			</li>
+		</BOUCLE_forums_liens1>
+		</ul>
+		
+	</BOUCLE_art_forum>
+	
+</BOUCLE_rub_exclu>
+</div><!-- Fin div id="box3" -->
+
+<div id="box3"><!--Pour Salari&eacute;s-->
+
+<BOUCLE_rub_681_2a(RUBRIQUES){id_rubrique=681}{doublons rouge}><!--rub681 "Aide"-->
+	<BOUCLE_sousrub_681_2a(RUBRIQUES){id_parent}{doublons rouge}>
+#ID_RUBRIQUE<br />
+	</BOUCLE_sousrub_681_2a>
+</BOUCLE_rub_681_2a>
+
+<BOUCLE_rub_520(RUBRIQUES){id_rubrique=520}{doublons rouge}><!--rub520 "Espace managers"-->
+	<BOUCLE_sousrub_520(RUBRIQUES){id_parent}{doublons rouge}>
+#ID_RUBRIQUE<br />
+	</BOUCLE_sousrub_520>
+</BOUCLE_rub_520>
+
+<BOUCLE_rub_exclu_2(RUBRIQUES){doublons rouge}> <!-- sauf espace managers -->
+#ID_RUBRIQUE<br />
+
+	<BOUCLE_art_forum2(ARTICLES){id_rubrique}>
+		
+	
+		<h2 class="bobox couleur_7">Pr Salari&eacute;s</h2><!--<:derniers_commentaires:>-->
+		<ul>
+		<BOUCLE_forums_liens2(FORUMS?) {plat} {id_article} {par date}{inverse} {0,6}{doublons rouge}>
+			<li>[<time>(#DATE|affdate_jourcourt)</time> &ndash; ]<a href="#URL_FORUM"[ title="(#TITRE|attribut_html|couper{80})"]>[(#TEXTE|couper{40})]</a>
+			</li>
+		</BOUCLE_forums_liens2>
+		</ul>
+		
+	</BOUCLE_art_forum2>
+	
+</BOUCLE_rub_exclu_2>
+</div><!-- Fin div id="box3" -->

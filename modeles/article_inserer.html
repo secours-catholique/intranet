@@ -1,0 +1,25 @@
+[(#REM)Affiche le texte de l'article]
+
+<BOUCLE_article(ARTICLES){id_article}>
+<div class="contenu-principal">
+<p class="garde">Reprise de l'article (#ID_ARTICLE) :<a href="#URL_ARTICLE">#TITRE</a></p>
+	<div class="surlignable">
+		[<div class="#EDIT{chapo} chapo">(#CHAPO|image_reduire{500,0})</div>]
+		[<div class="#EDIT{texte} texte">(#TEXTE|image_reduire{500,0})</div>]
+	</div>
+
+	[<p class="#EDIT{hyperlien} hyperlien"><:voir_en_ligne:> : <a href="(#URL_SITE)" class="spip_out">[(#NOM_SITE|sinon{[(#URL_SITE|couper{80})]})]</a></p>]
+
+	[<div class="ps">
+		<h2 class="h2"><:info_ps:></h2>
+		<div class="#EDIT{ps} surlignable">(#PS|image_reduire{500,0})</div>
+	</div>]
+
+[(#REM) Gestion du portfolio et des documents ]
+[(#INCLURE{fond=inclure/documents}{id_article})]
+
+</div>
+
+[<div class="notes surlignable"><h2 class="h2 pas_surlignable"><:info_notes:></h2>(#NOTES)</div>]
+
+</BOUCLE_article>

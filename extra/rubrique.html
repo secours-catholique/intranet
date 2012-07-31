@@ -1,0 +1,148 @@
+<BOUCLE_extra_rubrique(RUBRIQUES){id_rubrique}>
+    
+    #SET{secteur,#ID_SECTEUR}
+    <BOUCLE_test_secteur(RUBRIQUES){id_rubrique=#GET{secteur}}{id_rubrique IN 746,104,1,113,103,681}>
+        #SET{puch,#GET{secteur}}
+    </BOUCLE_test_secteur>
+        #SET{puch,104}
+    <//B_test_secteur>
+    
+    [(#REM) Menu de navigation themes ]
+    <B_extra_theme>
+    <div class="mots liste#GET{puch} ">
+    <h2 class="h2">THEMATIQUES</h2>
+    <ul>
+    <BOUCLE_extra_theme(RUBRIQUES){id_parent}{titre_mot=theme}>
+        <li><a href="#URL_RUBRIQUE">#TITRE</a></li>
+    </BOUCLE_extra_theme>
+    <BOUCLE_extra_theme-art(ARTICLES){id_rubrique}{titre_mot=theme}>
+        <li><a href="#URL_ARTICLE">#TITRE</a></li>
+    </BOUCLE_extra_theme-art>
+    </ul>
+    </div>
+    </B_extra_theme>
+    
+    [(#REM) Menu de navigation regions ]
+    <B_extra_region-art>
+    <div class="mots liste#GET{puch} ">
+    <h2 class="h2">REGIONS</h2>
+    <ul>
+    <BOUCLE_extra_region-art(ARTICLES){id_rubrique}{titre_mot=region}>
+        <li><a href="#URL_ARTICLE">#TITRE</a></li>
+    </BOUCLE_extra_region-art>
+    </ul>
+    </div>
+    </B_extra_region-art>
+   
+    
+    
+    [(#REM) Menu de navigation rubrique soeurs ]
+    [(#REM) test soeurs]
+    <BOUCLE_test_soeurs(RUBRIQUES){id_rubrique}{!id_rubrique IN 681,1961}>
+    <B_soeurs>
+    <div class="mots liste#GET{puch}">
+    <h2 class="h2">A VOIR AUSSI</h2>
+    <ul>
+    <BOUCLE_soeurs(RUBRIQUES){meme_parent}{!id_secteur IN 1,113,105}{!titre_mot IN rejoint,actu_entite,outils_entite,portail,exclu,syndic}{exclus}>
+        <li><a href="#URL_RUBRIQUE" title="#ID_RUBRIQUE">#TITRE</a></li>
+    </BOUCLE_soeurs>
+    </ul>
+    </div>
+    </B_soeurs>
+    </BOUCLE_test_soeurs>
+    [(#REM) Menu de navigation rubrique deleg ]
+    <B_extra_deleg>
+    <div class="mots liste#GET{puch} ">
+    <h2 class="h2">LES DELEGATIONS</h2>
+    <ul>
+    <BOUCLE_extra_deleg(RUBRIQUES){id_parent}{titre_mot=delegation_region}>
+        <BOUCLE_art_deleg(ARTICLES){id_rubrique}>
+        <li><a href="#URL_ARTICLE">#TITRE</a></li>
+        </BOUCLE_art_deleg>
+    </BOUCLE_extra_deleg>
+    </ul>
+    </div>
+    </B_extra_deleg>
+    [(#REM) on affiche un lien vers le forum]
+    <BOUCLE_forums(RUBRIQUES){id_parent}{titre_mot=forum}>
+    <div class="mots liste#GET{puch} ">
+    <h2 class="h2">FORUMS</h2>
+    <ul>    
+    <BOUCLE_art_forum(ARTICLES){id_rubrique}>
+        <li><a href="#URL_ARTICLE">#TITRE</a></li>
+    </BOUCLE_art_forum>
+    </ul>
+    </div>
+    </BOUCLE_forums>
+    [(#REM)on affiche un lien vers le classeur]
+    <B_classeur>
+    <div class="mots liste#GET{puch}">
+    <h2 class="h2">CLASSEURS</h2>
+    <ul>
+    <BOUCLE_classeur(RUBRIQUES){id_parent}{titre_mot=classeur}>
+        <BOUCLE_ss_classeur(RUBRIQUES){id_parent}{par num titre}>
+        <li><a href="#URL_RUBRIQUE">#TITRE</a></li>
+        </BOUCLE_ss_classeur>
+    </BOUCLE_classeur>
+    </ul>
+    </div>
+    </B_classeur>
+    [(#REM) on affiche un lien vers la page faq ]
+    <B_faq>
+    <div class="mots liste#GET{puch}">
+    <h2 class="h2">Foire aux questions</h2>
+    <ul>
+    <BOUCLE_faq(ARTICLES){id_rubrique}{titre_mot=faq}>
+        <li><a href="#URL_ARTICLE">#TITRE</a></li>
+    </BOUCLE_faq>
+    </ul>
+    </div>
+    </B_faq>
+    <BOUCLE_coordonees(RUBRIQUES){id_rubrique}{titre_mot IN Portail_deleg,theme}>
+        <B_art_coordonees>
+        <div class="mots chop liste#GET{puch}">
+    <BOUCLE_art_coordonees(ARTICLES){id_rubrique}{titre_mot=coordonees}>
+    <h2 class="h2">#TITRE</h2>
+    [(#TEXTE|image_reduire{200})]
+    <hr style="clear:both" />
+    </BOUCLE_art_coordonees>
+    </div>
+    </B_art_coordonees>
+    </BOUCLE_coordonees>
+    [(#REM) Menu de navigation mots-cles ]
+    <BOUCLE_(KRISTOF?)>
+    <div class="mots liste[(#ENV{blop}|?{'',#GET{puch}})] ">
+        <h2 class="h2">MOTS CLES</h2>
+        <ul>
+            <BOUCLE_rub_mots(ARTICLES){id_rubrique}>
+                <BOUCLE_mots(MOTS) {id_article}{!id_groupe=1} {par titre}>
+                <li class="nuage"><a href="#URL_MOT" rel="tag">#TITRE</a></li>
+                </BOUCLE_mots>
+            </BOUCLE_rub_mots>
+            <BOUCLE_ss_rub_mots_parent(RUBRIQUES){id_parent}>
+                <BOUCLE_ss_art_mots(ARTICLES){id_rubrique}>
+                <BOUCLE_ss_mots(MOTS) {id_article}{!id_groupe=1} {par titre}{doublons}>
+                <li><a href="#URL_MOT" rel="tag">#TITRE</a></li>
+                </BOUCLE_ss_mots>
+                </BOUCLE_ss_art_mots>
+            </BOUCLE_ss_rub_mots_parent>
+        </ul>
+    </div></BOUCLE_>
+     [<div class="mots liste[(#ENV{blop}|?{'',#GET{puch}})]">
+        <h2 class="h2">MOTS CLES</h2>
+   (#MODELE{nuage_popularite_branche}{notid=1|5})
+    </div>]
+</BOUCLE_extra_rubrique>
+<BOUCLE_vv(RUBRIQUES){id_rubrique}>
+    #SET{monclasseur,#ID_RUBRIQUE}
+    <BOUCLEn(HIERARCHIE){id_rubrique}{titre_mot=classeur}>
+        <BOUCLE_classeur1(RUBRIQUES){id_rubrique=#GET{monclasseur}}>
+            #SET{boss,#ID_RUBRIQUE}
+            <BOUCLE_enfant(RUBRIQUES){id_enfant}{!titre_mot=classeur}>
+            [(#INCLURE{fond=inc-liste,id_rubrique})]
+            </BOUCLE_enfant>
+            [(#INCLURE{fond=inc-liste,id_rubrique=#GET{boss}})]
+            <//B_enfant>
+        </BOUCLE_classeur1>
+    </BOUCLEn>
+</BOUCLE_vv>

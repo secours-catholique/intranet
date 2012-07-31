@@ -1,0 +1,55 @@
+<BOUCLE_(RUBRIQUES){id_rubrique}>
+<div class="contenu-principal">
+
+    <div class="cartouche">#FORMULAIRE_FAVORI
+        <h2 class="titre_tete[(#ENV{blop}|?{'',#ID_SECTEUR})]">Outils & publications de #TITRE</h2>
+        
+    </div>
+
+    [<div class="#EDIT{texte} chapo">(#TEXTE)</div>]
+</div>
+<div id="suite">
+    <BOUCLE_900(RUBRIQUES){id_parent}{titre_mot=outils_entite}>
+    <B_art_outils>
+    <div class="liste articles">
+    #ANCRE_PAGINATION
+    <ul>
+    <BOUCLE_art_outils(ARTICLES){id_rubrique}{pagination 5}>
+        <li class="menu-entree"><a href="#URL_ARTICLE">[(#TITRE)]</a></li>
+    </BOUCLE_art_outils>
+    [<p class="pagination">(#PAGINATION)</p>]
+    </ul>
+    </div>
+    </B_art_outils>
+        <B_sous_rub_900>
+        <ul>    
+        <BOUCLE_sous_rub_900(RUBRIQUES){id_parent}>
+            <li class="menu-entree">
+            <a href="#URL_RUBRIQUE">[(#TITRE)]</a>
+            </li>
+        </BOUCLE_sous_rub_900>
+        </ul>
+        </B_sous_rub_900>
+        <hr class="spip" />
+            
+    </BOUCLE_900>
+    <B_400>
+    <ul>
+    <BOUCLE_400(RUBRIQUES){id_parent}{titre_mot=theme}>
+        <li><h2>#TITRE</h2>
+            <ul>
+            <BOUCLE_500(RUBRIQUES){id_parent}{titre_mot=outils_entite}>
+                <li class="menu-entree">
+                    <a href="#URL_RUBRIQUE">[(#TITRE)]</a>
+                </li>
+            </BOUCLE_500>
+            </ul>
+        </li>
+    </BOUCLE_400>
+    </ul>
+    </B_400>
+    
+    
+    
+</div>
+</BOUCLE_>

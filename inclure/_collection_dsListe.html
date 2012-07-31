@@ -1,0 +1,17 @@
+#CACHE{0}
+<BOUCLE_corvart(AUTEURS_LIENS){id_objet=3477} {objet=article} {id_auteur=#SESSION{id_auteur}}{lecture=true}>
+
+<div class="liste articles sommaire">
+    <h2 class="titre_tete">PHOTOTHEQUE dans la liste</h2>
+    <div class="contenu-principal">
+    
+        <div id="descriptif_site_spip"><p>#SESSION{nom}, nous vous rappelons que vous avez valider <a href="#URL_ARTICLE{3477}">la charte d'utilisation des images de la photothèque</a> </p></div>
+    
+
+
+</div>
+
+
+</BOUCLE_corvart>
+    <INCLURE{fond=contenu/page-lecture,id_article=3477}>
+<//B_corvart>

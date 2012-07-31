@@ -1,0 +1,20 @@
+[(#REM)
+
+  Squelette
+  (c) 2009 xxx
+  Distribue sous licence GPL
+
+]
+<B_selections>
+	[<p class="pagination">(#PAGINATION)</p>]
+		<ul class="liste-items">
+			<BOUCLE_selections(FAVORIS){!par maj}{id_auteur}{pagination 10}>
+				<li class="item">
+					[(#BOUTON_ACTION{X,#URL_ACTION_AUTEUR{supprimer_favori,#ID_FAVORI,#SELF},ajax})]
+					<a href="#INFO_URL{#OBJET,#ID_OBJET}">#INFO_TITRE{#OBJET,#ID_OBJET}</a>
+					<br />
+				</li>
+			</BOUCLE_selections>
+		</ul>
+		[<p class="pagination">(#PAGINATION)</p>]
+</B_selections>

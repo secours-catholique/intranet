@@ -1,0 +1,41 @@
+#CACHE{0}
+<BOUCLE_corvart(AUTEURS_LIENS){id_objet=3477} {objet=article} {id_auteur=#SESSION{id_auteur}}{lecture=true}>
+<div class="liste articles sommaire">
+    <h2 class="titre_tete">PHOTOTHEQUE dans la liste</h2>
+    <div class="contenu-principal">
+        <div id="descriptif_site_spip"><p>#SESSION{nom}, nous vous rappelons que vous avez valider <a href="#URL_ARTICLE{3477}">la charte d'utilisation des images de la photothèque</a> </p></div>
+    </div>
+    <div id="gauche">
+        <BOUCLE_rub_fr(RUBRIQUES){id_rubrique=1967}{tout_voir}>
+            
+            <h3 class="h3">#TITRE</h3>
+            <BOUCLE_art_fr(ARTICLES){id_rubrique}{tout_voir}{par num titre}>
+                #SET{plop,#ID_ARTICLE}
+                <h3 class="h3"><a href="#URL_ARTICLE">#TITRE</a></h3>
+                <BOUCLE_doc(DOCUMENTS){id_article}{extension==jpg|png|gif}{par hasard}{0,3}{tout_voir}>
+                [<a class="photo" href="#URL_PAGE{photo,id_article=#GET{plop}}">(#FICHIER||image_reduire{90})</a>]
+                </BOUCLE_doc>
+                <p><a href="#URL_PAGE{photo,id_article=#ID_ARTICLE}">Toutes les images de #TITRE</a></p>
+            </BOUCLE_art_fr>
+            <hr />
+        </BOUCLE_rub_fr>
+    </div>
+    <div id="droite">
+        <BOUCLE_rub_it(RUBRIQUES){id_rubrique=1968}{tout_voir}>
+            
+            <h3 class="h3">#TITRE</h3>
+            <BOUCLE_art_it(ARTICLES){id_rubrique}{tout_voir}{par num titre}>
+                #SET{plip,#ID_ARTICLE}
+                <h3 class="h3"><a href="#URL_ARTICLE">#TITRE</a></h3>
+                <BOUCLE_doc_it(DOCUMENTS){id_article}{extension==jpg|png|gif}{par hasard}{0,3}{tout_voir}>
+                [<a class="photo" href="#URL_PAGE{photo,id_article=#GET{plip}}">(#FICHIER||image_reduire{90})</a>]
+                </BOUCLE_doc_it>
+                <p><a href="#URL_PAGE{photo,id_article=#ID_ARTICLE}">Toutes les images de #TITRE</a></p>
+            </BOUCLE_art_it>
+            <hr />
+        </BOUCLE_rub_it>
+    </div>
+</div>
+</BOUCLE_corvart>
+    <INCLURE{fond=contenu/page-lecture,id_article=3477}>
+<//B_corvart>

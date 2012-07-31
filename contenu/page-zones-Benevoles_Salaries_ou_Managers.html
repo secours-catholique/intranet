@@ -1,0 +1,74 @@
+
+
+
+
+
+
+<div id="box3">
+
+<!--Pour Managers-->
+
+<!-- Début "Espace manager" = zone n°19 Direction des ressources humaines -->
+<BOUCLE_comment0(spip_zones){id_zone=155}{id_auteur=#SESSION{id_auteur}}>
+
+
+
+<h2 class="bobox couleur_7">Pr Managers</h2><!--<:derniers_commentaires:>-->
+
+
+
+ici contenu pour managers
+
+
+
+
+
+
+
+
+</BOUCLE_comment0>
+
+<!-- Fin "espace manager" -->
+
+	
+
+<!-- Pour Salariés-->
+
+	<!-- Début "Espace salarié" = zone n°19 Direction des ressources humaines, moins la zone n°155 Manager -->
+	<BOUCLE_comment1(spip_zones){id_zone=149}{id_auteur=#SESSION{id_auteur}}>
+	
+	
+
+<h2 class="bobox couleur_7">Pr Salariés</h2><!--<:derniers_commentaires:>-->
+
+
+
+ici contenu pour salariés
+
+
+
+	</BOUCLE_comment1>
+	<!-- Fin zone n°149 Espace salarié -->
+
+
+
+
+
+<!--Pour B&eacute;n&eacute;voles-->
+
+
+<h2 class="bobox couleur_7">Pr B&eacute;n&eacute;voles</h2><!--<:derniers_commentaires:>-->
+
+
+
+ici contenu pour bénvoles
+
+
+
+<//B_comment1>
+
+<//B_comment0>
+
+
+
+</div><!-- Fin div id="box3" -->

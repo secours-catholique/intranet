@@ -1,0 +1,81 @@
+<BOUCLE_contenu_article(ARTICLES){id_article=#ENV{id_article}}>
+    <BOUCLE_emploi(HIERARCHIE){id_rubrique}{2,1}>#SET{rubNV3,#ID_RUBRIQUE}</BOUCLE_emploi>
+<div class="contenu-principal">
+    <div class="cartouche">#FORMULAIRE_FAVORI
+        <BOUCLE_rub_mere(RUBRIQUES){id_rubrique=#ID_RUBRIQUE}>
+        <h2 class="titre_tete[(#ENV{blop}|?{'',#ID_SECTEUR})]">#TITRE<span class="pictos"><!--<a onClick="window.print();return false"><img src="#CHEMIN{images/impr.png}"></a>-->  #IMPRIMIR_DOCUMENTO** #TIPAFRIEND</span></h2>
+        </BOUCLE_rub_mere>
+        <BOUCLEn(HIERARCHIE){id_rubrique}{titre_mot=classeur}>
+        
+        </BOUCLEn>
+        <!--Ajout Hervé : ligne 12 et 16 : <div style="margin-left:5px"> ....... </div>-->
+        <div style="margin-left:5px">[[(#LOGO_ARTICLE|image_reduire{100,100})]<h1 class="">(#TITRE)</h1>]
+        
+        <p class="info-publi"><abbr class="published" title="[(#DATE|date_iso)]">[(#MAJ|jour|=={[(#DATE|jour)]}|?{[(#DATE|nom_jour) ][(#DATE|affdate)],[Dernière mise à jour: (#MAJ|affdate)]})]</abbr>[, <span class="auteurs"><:par_auteur:> (#LESAUTEURS)</span>]</p>
+        [(#REM) Inclure le modele des liens de traductions ]
+        #MODELE{article_traductions}</div>
+    </div>
+
+    <div class="surlignable">
+        
+        [<div class="#EDIT{chapo} chapo">(#CHAPO|image_reduire{300,300})</div>]
+        
+        <BOUCLE_recup_art_rub(EVENEMENTS){id_article}{age_fin<0}{doublons}></BOUCLE_recup_art_rub>
+    <B_evenements>
+        <div id="agenda_portail#ID_SECTEUR">
+            <h2 class="titre_connaitre off_couleur_#ID_SECTEUR">Les événements</h2>
+        #ANCRE_PAGINATION
+        <dl>
+    <BOUCLE_evenements(EVENEMENTS){id_article}{!doublons}{par date_debut}{pagination 5}>
+        <dt><img src="#CHEMIN{images/fleche.png}" /><time>[(#DATE_DEBUT|Agenda_affdate_debut_fin{#DATE_FIN,#HORAIRE})]</time></dt>
+        <dd><a href="#URL_EVENEMENT" class='mediabox'>#TITRE</a></dd>
+    </BOUCLE_evenements>
+    </dl>
+    [<p class="pagination">(#PAGINATION)</p>]
+    </div>
+    </B_evenements>
+        
+        [<div class="#EDIT{texte} texte">(#TEXTE|image_reduire{300,300})</div>]
+        <div id="form_cv">[(#GET{rubNV3}|=={778}|oui)[(#SESSION{id_auteur}|=={26035}|oui)#FORMULAIRE_CV{#ID_ARTICLE}]]
+        [(#SESSION{id_auteur}|=={26035}|oui)]</div>
+        <hr style="clear:both" />
+    </div>
+
+    [<p class="#EDIT{hyperlien} hyperlien"><:voir_en_ligne:> : <a href="(#URL_SITE)" class="spip_out">[(#NOM_SITE|sinon{[(#URL_SITE|couper{80})]})]</a></p>]
+
+    [<div class="ps">
+        <h2 class="h2"><:info_ps:></h2>
+        <div class="#EDIT{ps} surlignable">(#PS|image_reduire{300,0})</div>
+    </div>]
+
+[(#REM) Gestion du portfolio et des documents ]
+[(#INCLURE{fond=inclure/documents}{id_article})]
+[(#ID_RUBRIQUE|=={778}|oui)<div class="ajax">#FORMULAIRE_CV{#ID_ARTICLE}</div>]<!-- il y avait avant: (#ID_RUBRIQUE|=={798}|oui) -->
+</div>
+#SET{monart,#ID_ARTICLE}
+<BOUCLEnn(HIERARCHIE){id_rubrique}{titre_mot=classeur}>
+<BOUCLE_monart(ARTICLES){id_article=#GET{monart}}>
+<BOUCLE_article_precedent(ARTICLES) {id_rubrique} {par num titre} {precedent}>
+    <div id="classeur">
+    <a href="#URL_ARTICLE"><img src="#CHEMIN{images/f_precedent.jpg}" title="Précédent : #TITRE" /> </a>
+    </BOUCLE_article_precedent>
+    <BOUCLE_article_suivant(ARTICLES) {id_rubrique} {par num titre} {suivant}>
+    <a href="#URL_ARTICLE"><img src="#CHEMIN{images/f_suivant.jpg}" title="Suivant : #TITRE" /> </a>
+    </div><br/>
+    </BOUCLE_article_suivant>
+    </div>
+    <//B_article_suivant>
+</BOUCLE_monart>
+</BOUCLEnn>
+[(#REM) Petition :
+La petition ayant une PAGINATION il faut absolument {env}
+et pourquoi pas ajax
+][(#PETITION|oui)<INCLURE{fond=inclure/petition}{id_article}{env}{ajax}>]
+
+[<div class="notes surlignable"><h2 class="h2 pas_surlignable"><:info_notes:></h2>(#NOTES)</div>]
+[(#REM) Forum de l'article ]
+<a href="#forum" name="forum" id="forum"></a>
+<INCLURE{fond=inclure/forum}{id_article} />
+[<p class="repondre"><a href="(#PARAMETRES_FORUM|url_reponse_forum)" rel="noindex nofollow">R&eacute;agissez &agrave; cet article</a></p>]
+
+</BOUCLE_contenu_article>

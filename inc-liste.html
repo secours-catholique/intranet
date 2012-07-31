@@ -1,0 +1,38 @@
+<BOUCLE_classeur(RUBRIQUES){id_rubrique}>
+<div class="liste#ID_SECTEUR mots">
+
+    <h2 class="titre_tete">CLASSEUR</h2>
+<ul>
+    <li><a href="#URL_RUBRIQUE">#TITRE</a>
+    <B_art_classeur>
+        #ANCRE_PAGINATION
+        <ul>
+    <BOUCLE_art_classeur(ARTICLES){id_rubrique}{par num titre}{pagination 10}>
+            <li><a href="#URL_ARTICLE">#TITRE</a></li>
+    </BOUCLE_art_classeur>
+        </ul>
+        [<p class="pagination">(#PAGINATION)</p>]
+    </B_art_classeur>
+    <B_ss_classeur>
+        <ul>
+    <BOUCLE_ss_classeur(RUBRIQUES){id_parent}{par num titre}>
+            <li><a href="#URL_RUBRIQUE">#TITRE</a>
+                <B_art_ss_classeur>
+                    #ANCRE_PAGINATION
+                <ul>
+                <BOUCLE_art_ss_classeur(ARTICLES){id_rubrique}{par num titre}{pagination 10}>
+                    <li><a href="#URL_ARTICLE">#TITRE</a></li>
+                </BOUCLE_art_ss_classeur>
+                </ul>
+                [<p class="pagination">(#PAGINATION)</p>]
+                </B_art_ss_classeur>
+            </li>
+    </BOUCLE_ss_classeur>
+        </ul>
+    </B_ss_classeur>
+    
+    </li>
+</ul>
+</div>
+</BOUCLE_classeur>
+

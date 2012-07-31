@@ -1,0 +1,29 @@
+<div class="formulaire_spip formulaire_configurer formulaire_#FORM">
+	[<p class="reponse_formulaire reponse_formulaire_ok">(#ENV*{message_ok})</p>]
+	[<p class="reponse_formulaire reponse_formulaire_erreur">(#ENV*{message_erreur})</p>]
+	<form method="post" action="#ENV{action}"><div>
+		#ACTION_FORMULAIRE{#ENV{action}}
+		<fieldset>
+			<legend><:cisticole:base_couleur:></legend>
+			<p class="explication"><:cisticole:choix_feuille_style_couleur:></p>
+			<ul>
+				<li class="cisticole_couleur_base">
+					<label for="color"><:cisticole:couleur_generale:></label>
+							<select name="color" id="color">
+								<option value="default"><:cisticole:default:></option>
+								<option value="lava"[(#ENV{color}|=={lava}|?{selected="selected"})]><:cisticole:lava:></option>
+								<option value="dreams"[(#ENV{color}|=={dreams}|?{selected="selected"})]><:cisticole:dreams:></option>
+								<option value="sugar"[(#ENV{color}|=={sugar}|?{selected="selected"})]><:cisticole:sugar:></option>
+								<option value="clairedelune"[(#ENV{color}|=={clairedelune}|?{selected="selected"})]><:cisticole:clairedelune:></option>
+								<option value="olivebranch"[(#ENV{color}|=={olivebranch}|?{selected="selected"})]><:cisticole:olivebranch:></option>
+								<option value="evergreen"[(#ENV{color}|=={evergreen}|?{selected="selected"})]><:cisticole:evergreen:></option>
+								<option value="starrynight"[(#ENV{color}|=={starrynight}|?{selected="selected"})]><:cisticole:starrynight:></option>
+							</select>
+				</li>
+			</ul>
+		</fieldset>
+		<p class="boutons">
+			<input type="submit" name="enregistrer" class="submit" value="<:enregistrer:>" />
+		</p>
+	</div></form>
+</div>

@@ -1,0 +1,177 @@
+<div id="box3">
+                        <BOUCLE_art_exclu_forum_z(ARTICLES){id_secteur=681}>
+                            <BOUCLE_exclu_forum_z(FORUMS){id_article}{doublons}></BOUCLE_exclu_forum_z>
+                        </BOUCLE_art_exclu_forum_z>
+                            <h2 class="bobox couleur_7"><:derniers_commentaires:><small style="color:white;"> V. actuelle</small></h2>
+                            <ul>
+                                <BOUCLE_forums_liens_z(FORUMS?) {plat} {par date}{inverse}{doublons}>
+                                <li>[<time>(#DATE|affdate_jourcourt)</time> &ndash; ]<a href="#URL_FORUM"[ title="(#TITRE|attribut_html|couper{80})"]>[(#TEXTE|couper{40})]</a></li>
+                                </BOUCLE_forums_liens_z>
+		
+		
+                                	<br />
+                				<li>il y a #GRAND_TOTAL commentaire(s), au total.</li>
+		
+                             </ul>
+
+                                </B_forums_liens_z>
+        
+        
+</div>
+
+
+
+
+
+
+<div id="box3">
+
+<BOUCLE_art_681_0a(ARTICLES){id_secteur=681}>
+	<BOUCLE_681_0a(FORUMS){id_article}{doublons vert}></BOUCLE_681_0a>
+</BOUCLE_art_681_0a>
+
+<!-- Début "Espace manager" = zone n°19 Direction des ressources humaines -->
+<BOUCLE_comment0(spip_zones){id_zone=155}{id_auteur=#SESSION{id_auteur}}>
+
+
+
+<!--Pour Managers-->
+
+<h2 class="bobox couleur_7">Pr Managers</h2><!--<:derniers_commentaires:>-->
+
+
+		
+		<ul>
+		<BOUCLE_forums_liens(FORUMS?) {plat} {par date}{inverse}{doublons vert} >
+			<li>[<time>(#DATE|affdate_jourcourt)</time> &ndash; ]<a href="#URL_FORUM"[ title="(#TITRE|attribut_html|couper{80})"]>[(#TEXTE|couper{40})]</a>
+			</li>
+		</BOUCLE_forums_liens>
+		
+		
+<br />
+            <li>il y a #GRAND_TOTAL commentaire(s), au total.</li>
+		
+         </ul>
+
+         </B_forums_liens>
+        
+
+
+
+
+
+</BOUCLE_comment0>
+
+<!-- Fin "espace manager" -->
+	
+	
+
+<!--<div id="box3">Pour Salariés-->
+
+	<!-- Début "Espace salarié" = zone n°19 Direction des ressources humaines, moins la zone n°155 Manager -->
+	<BOUCLE_comment1(spip_zones){id_zone=149}{id_auteur=#SESSION{id_auteur}}>
+	
+
+<h2 class="bobox couleur_7">Pr Salariés</h2><!--<:derniers_commentaires:>-->
+
+
+
+<BOUCLE_rub_520(RUBRIQUES){id_rubrique=520}{doublons orange}><!--rub520 "Espace managers"-->
+	<BOUCLE_sousrub_520(RUBRIQUES){id_parent}>
+
+<BOUCLE_art_520_0a(ARTICLES){id_rubrique}>
+	<BOUCLE_520_0a(FORUMS){id_article}></BOUCLE_520_0a>
+</BOUCLE_art_520_0a>
+
+
+	</BOUCLE_sousrub_520>
+</BOUCLE_rub_520>
+
+<BOUCLE_rub_exclu_2(RUBRIQUES){doublons orange}> <!-- sauf espace managers -->
+<!-- #ID_RUBRIQUE<br /> -->
+
+	<BOUCLE_art_forum2(ARTICLES){id_rubrique}>
+		
+	
+		<!--<h2 class="bobox couleur_7">Pr Salari&eacute;s</h2><:derniers_commentaires:>-->
+		<ul>
+		<BOUCLE_forums_liens2(FORUMS?) {plat} {par date}{inverse}  {doublons orange}>
+			<li>[<time>(#DATE|affdate_jourcourt)</time> &ndash; ]<a href="#URL_FORUM"[ title="(#TITRE|attribut_html|couper{80})"]>[(#TEXTE|couper{40})]</a>
+			</li>
+		</BOUCLE_forums_liens2>
+		</ul>	
+	</BOUCLE_art_forum2>
+	
+</BOUCLE_rub_exclu_2>
+		
+		
+                                	<br />
+                				il y a #GRAND_TOTAL commentaire(s), au total.
+		
+                             
+
+                                </B_rub_exclu_2>
+<!--</div> Fin div id="box3" -->
+
+
+
+	</BOUCLE_comment1>
+	<!-- Fin zone n°149 Espace salarié -->
+
+
+
+
+
+<!--<div id="box3">Pour B&eacute;n&eacute;voles-->
+
+
+<h2 class="bobox couleur_7">Pr B&eacute;n&eacute;voles</h2><!--<:derniers_commentaires:>-->
+
+
+
+
+<BOUCLE_rub_111(RUBRIQUES){id_rubrique=111}{doublons jaune}><!--rub111 "Espace salari&eacute;s"-->
+	<BOUCLE_sousrub_111(RUBRIQUES){id_parent}{doublons jaune}>
+<!-- #ID_RUBRIQUE<br /> -->
+	</BOUCLE_sousrub_111>
+</BOUCLE_rub_111>
+
+<BOUCLE_rub_exclu(RUBRIQUES){doublons jaune}><!-- sauf espace salari&eacute;s -->
+<!-- #ID_RUBRIQUE<br /> -->
+
+	<BOUCLE_art_forum(ARTICLES){id_rubrique}>
+		
+	
+		<!--<h2 class="bobox couleur_7">Pr B&eacute;n&eacute;voles</h2><:derniers_commentaires:>-->
+		<ul>
+		<BOUCLE_forums_liens1(FORUMS?) {plat} {par date}{inverse} {doublons vert}{doublons jaune}>
+			<li>[<time>(#DATE|affdate_jourcourt)</time> &ndash; ]<a href="#URL_FORUM"[ title="(#TITRE|attribut_html|couper{80})"]>[(#TEXTE|couper{40})]</a>
+			</li>
+		</BOUCLE_forums_liens1>
+		
+		
+		
+				
+	</BOUCLE_art_forum>
+	
+</BOUCLE_rub_exclu>
+		
+		
+                                	<br />
+                				<li>il y a #GRAND_TOTAL commentaire(s), au total.</li>
+		
+                             </ul>
+
+                                </B_rub_exclu>
+
+
+
+<//B_comment1>
+
+
+
+<//B_comment0>
+
+
+
+</div><!-- Fin div id="box3" -->

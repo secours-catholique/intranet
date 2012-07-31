@@ -1,0 +1,62 @@
+<div id="calendar">
+    <h2><BOUCLE_titre(ARTICLES){id_article}>#TITRE</BOUCLE_titre><:icone_calendrier:><//B_titre></h2>
+    <table summary="<:icone_calendrier:>">
+        <caption>[
+            <a
+                href="(#ENV{self}|parametre_url{#ENV{var_date},[(#ENV{#ENV{var_date},#ENV{date}}|Agenda_moisdecal{-1,'Y-m'})]})"
+                title="[(#ENV{#ENV{var_date},#ENV{date}}|Agenda_moisdecal{-1,'Y-m'}|affdate_mois_annee)]"
+            >&#171;</a>][
+            (#ENV{#ENV{var_date},#ENV{date}}|affdate_mois_annee)][
+            <a
+                href="(#ENV{self}|parametre_url{#ENV{var_date},[(#ENV{#ENV{var_date},#ENV{date}}|Agenda_moisdecal{1,'Y-m'})]})"
+                title="[(#ENV{#ENV{var_date},#ENV{date}}|Agenda_moisdecal{1,'Y-m'}|affdate_mois_annee)]"
+            >&#187;</a>]
+        </caption>
+        <thead>
+            <tr>
+                <th scope="col"><abbr title="<:date_jour_2:>"><:date_jour_2|spip_substr{0,1}|strtoupper:></abbr></th>
+                <th scope="col"><abbr title="<:date_jour_3:>"><:date_jour_3|spip_substr{0,1}|strtoupper:></abbr></th>
+                <th scope="col"><abbr title="<:date_jour_4:>"><:date_jour_4|spip_substr{0,1}|strtoupper:></abbr></th>
+                <th scope="col"><abbr title="<:date_jour_5:>"><:date_jour_5|spip_substr{0,1}|strtoupper:></abbr></th>
+                <th scope="col"><abbr title="<:date_jour_6:>"><:date_jour_6|spip_substr{0,1}|strtoupper:></abbr></th>
+                <th scope="col"><abbr title="<:date_jour_7:>"><:date_jour_7|spip_substr{0,1}|strtoupper:></abbr></th>
+                <th scope="col"><abbr title="<:date_jour_1:>"><:date_jour_1|spip_substr{0,1}|strtoupper:></abbr></th>
+            </tr>
+        </thead>
+        <tbody>
+            [(#REM)
+            Simplification: On commence par calculer les evenements qui:
+                    (1) commencent avant le debut du mois suivant le mois demande (borne_fin_mois est en fait le 1er jour du mois suivant)
+                        ET
+                    (2) finissent apres le debut du mois demande (1er jour inclus)
+                Sont donc inclus:
+                    (a) les evenements qui commencent dans le mois demande (test 1)
+                        et dont la fin est necessairement apres le debut du mois demande (test 2 vrai aussi)
+                    (b) les evenements qui finissent dans le mois demande (test 2)
+                        et dont le debut est necessairement avant la fin du mois demande (test 1 vrai aussi)
+                    (c) les evenements qui commencent avant le mois demande (test 1) ET finissent apres le mois demande (test 2)
+                Plus simple depuis qu'on dispose du calcul des bornes de debut et fin de mois... et plus de doublons :-)
+            Correction: on tronque le jour de la date pour bien partir du debut de mois quelle que soit la date demandee:
+                    2009-12-15 donne quand meme borne_debut_mois==2009-12-01 et borne_fin_mois==2010-01-01
+                        au lieu de borne_debut_mois==2009-12-15 et borne_fin_mois==2010-01-15
+            ]
+            #SET{'borne_debut_mois', (#ENV{#ENV{var_date},#ENV{date}}|affdate{'Y-m'}|Agenda_moisdecal{0,'Y-m-d'})}
+            #SET{'borne_fin_mois', (#ENV{#ENV{var_date},#ENV{date}}|affdate{'Y-m'}|Agenda_moisdecal{1,'Y-m-d'})}
+            <!-- le debut de mois est #GET{'borne_debut_mois'}, le debut du suivant est #GET{'borne_fin_mois'} -->
+            <BOUCLE_calendrier(EVENEMENTS)
+            {id_article=49}
+            {date_debut < #GET{'borne_fin_mois'}} 
+            {date_fin >= #GET{'borne_debut_mois'}}>[
+            (#DATE_DEBUT|Agenda_memo_full{#DATE_FIN,[(#TITRE|addslashes)],
+                #DESCRIPTIF,#LIEU,
+                #URL_PAGE{agenda},'',#ENV{var_date}})
+            ]</BOUCLE_calendrier>
+            [(#REM) le "courante" ci-dessus peut etre remplace par "debut" pour retrouver l'ancien comportement]
+            
+            [(#REM) Puis on les affiche dans un agenda]
+            [(#ENV{#ENV{var_date},#ENV{date}}|agenda_mini)]
+            
+        </tbody>
+    </table>
+    <span>&nbsp;</span>
+</div>

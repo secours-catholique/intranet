@@ -1,0 +1,25 @@
+<BOUCLE_corvart(AUTEURS_LIENS){id_objet=1257} {objet=article} {id_auteur=#SESSION{id_auteur}}{lecture=true}>
+    
+    
+    
+    
+    #SET{secteur,#ID_SECTEUR}
+<BOUCLE_test_secteur(RUBRIQUES){id_rubrique=#GET{secteur}}>
+    <BOUCLE_test_secteur2(RUBRIQUES){id_rubrique=#GET{secteur}}{id_rubrique IN 746,104,1,113,103,681}>
+    #SET{puch,#GET{secteur}}
+    </BOUCLE_test_secteur2>
+        #SET{puch,104}
+    <//B_test_secteur2>
+</BOUCLE_test_secteur>
+    #SET{puch,''}
+<//B_test_secteur>
+    
+    
+    
+    
+            <div id="contenu[(#ENV{blop}|?{'',#GET{puch}})]">
+                <INCLURE{fond=contenu/#ENV{type},env}>
+            </div>
+            </BOUCLE_corvart>
+            <INCLURE{fond=contenu/page-lecture,id_article=1257}>
+            <//B_corvart>

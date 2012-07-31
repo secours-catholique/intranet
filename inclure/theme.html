@@ -1,0 +1,111 @@
+<BOUCLE_contenu_rubrique(RUBRIQUES){id_rubrique}>
+    
+    #SET{secteur,#ID_SECTEUR}
+<BOUCLE_test_secteur(RUBRIQUES){id_rubrique=#GET{secteur}}{id_rubrique IN 746,104,1,113,103,681}>
+    #SET{puch,#GET{secteur}}
+</BOUCLE_test_secteur>
+    #SET{puch,104}
+<//B_test_secteur>
+    
+[(#REM) Fil d'Ariane ]
+
+<div class="contenu-principal">
+
+    <div class="cartouche">#FORMULAIRE_FAVORI
+        [(#LOGO_RUBRIQUE||image_reduire{200,200})]
+        <h2 class="titre_tete#GET{puch}">[(#TITRE|majuscules )]#FORMULAIRE_FAVORI{rubrique,#ID_RUBRIQUE,notification}</h2>
+        
+    </div>
+
+    [<div class="#EDIT{texte} texte">(#TEXTE)</div>]
+</div>
+<BOUCLE_nous_connaitre(ARTICLES){id_rubrique}{titre_mot=nous_connaitre}{0,1}>
+<div id="nous_connaitre" class="theme">
+    <h2 class="titre_connaitre off_couleur_#GET{puch}">#TITRE</h2>
+    [(#AUTORISER{modifier, article,#ID_ARTICLE})[(#ID_RUBRIQUE|=={681}|oui)<a href="#URL_PAGE{travail}">Suivre le travail sur l'intranet</a>]]
+    [(#TEXTE|choixsivide{<p style="font-size:25px"><font color="red">Cet espace n’est pas encore ouvert. Les délégations ainsi que les directions et départements du siège ouvriront leurs espaces progressivement d’ici avril 2012.</font></p> , [(#DESCRIPTIF)<br /><a href="#URL_ARTICLE">Lire la suite</a>][(#DESCRIPTIF|choixsivide{[(#TEXTE*|couper{200}|propre)<br /><a href="#URL_ARTICLE">Lire la suite</a>]})]})]
+    [(#INCLURE{fond=inc-documents}{id_article}{env})]
+    
+</div>
+</BOUCLE_nous_connaitre>
+
+<div id="agenda_portail#GET{puch}">
+    <BOUCLE_agenda_portail(ARTICLES){id_rubrique}{titre_mot=agenda}>
+    [(#TEXTE|choixsivide{#INCLURE{fond=inc-agenda,id_article},#INCLURE{fond=inc-zimbra,id_article}})]
+    </BOUCLE_agenda_portail>
+</div>
+
+<!-- fin orga_bloc -->
+<hr style="clear:both" />
+</div>
+<div id="suite">
+<div id="actu_portail#GET{puch}">
+    <BOUCLE_rub_actu(RUBRIQUES){id_parent}{titre_mot=actu_entite}>
+    <B_actu_portail>
+        <h2 class="titre_tete#GET{puch}">LES ACTUALITES</h2>
+        #ANCRE_PAGINATION
+        <dl>
+    <BOUCLE_actu_portail(ARTICLES){id_rubrique}{!par date}{pagination 5}>
+        <dt><img src="#CHEMIN{images/fleche.png}" /><a href="#URL_ARTICLE">#TITRE</a></dt>
+        <dd><time>[(#DATE|date_relative)]</time> [(#INTRODUCTION{150})]</dd>
+        <hr class="sepa" />
+    </BOUCLE_actu_portail>
+        [<p class="pagination">(#PAGINATION)</p>]
+        </dl>
+    </B_actu_portail>
+    
+    </BOUCLE_rub_actu>
+    <h2 class="titre_tete#GET{puch}">LES ACTUALITES</h2>
+    <dl>
+        <dt><img src="#CHEMIN{images/fleche.png}" /><a href="#">Mon titre d'actu</a></dt>
+        <dd><time>26/06/09</time> avec un peu de texte, avec un peu de texte,avec un peu de texte,avec un peu de texte,</dd>
+        <hr class="sepa" />
+        <dt><img src="#CHEMIN{images/fleche.png}" /><a href="#">Mon titre d'actu</a></dt>
+        <dd><time>26/06/09</time> avec un peu de texte, avec un peu de texte,avec un peu de texte,avec un peu de texte,</dd>
+        <hr class="sepa" />
+        <dt><img src="#CHEMIN{images/fleche.png}" /><a href="#">Mon titre d'actu</a></dt>
+        <dd><time>26/06/09</time> avec un peu de texte, avec un peu de texte,avec un peu de texte,avec un peu de texte,</dd>
+        <hr class="sepa" />
+        <dt><img src="#CHEMIN{images/fleche.png}" /><a href="#">Mon titre d'actu</a></dt>
+        <dd><time>26/06/09</time> avec un peu de texte, avec un peu de texte,avec un peu de texte,avec un peu de texte,</dd>
+        <hr class="sepa" />
+        <dt><img src="#CHEMIN{images/fleche.png}" /><a href="#">Mon titre d'actu</a></dt>
+        <dd><time>26/06/09</time> avec un peu de texte, avec un peu de texte,avec un peu de texte,avec un peu de texte,</dd>
+        <hr class="sepa" />
+    </dl>
+    <//B_rub_actu>
+</div>
+<div id="outils#GET{puch}">
+    <BOUCLE_rub_outils(RUBRIQUES){id_parent}{titre_mot=outils_entite}>
+        <h2 class="titre_tete#GET{puch}">OUTILS & PUBLICATIONS</h2>
+        <dl>
+    <BOUCLE_art_outils(ARTICLES){id_rubrique}{doublons rose}></BOUCLE_art_outils>
+    <BOUCLE_ss_rub_outils(RUBRIQUES){id_parent}>
+    <BOUCLE_ss_art_outils(ARTICLES){id_rubrique}{doublons rose}></BOUCLE_ss_art_outils>
+    </BOUCLE_ss_rub_outils>
+    <B_aff_art_outils>#ANCRE_PAGINATION
+    <BOUCLE_aff_art_outils(ARTICLES){!doublons rose}{!par date}{pagination 5}>
+        <dt><img src="#CHEMIN{images/fleche.png}" /><a href="#URL_ARTICLE">[(#TITRE|couper{30})]</a></dt>
+        <dd><time>[(#DATE|date_relative)]</time> [(#TEXTE|couper{100})]</dd>
+    </BOUCLE_aff_art_outils>
+    [<p class="pagination">(#PAGINATION)</p>]
+    <a href="#URL_RUBRIQUE">Tous les outils & publications</a>
+    </B_aff_art_outils>
+        </dl>
+
+    </BOUCLE_rub_outils>
+    <h2 class="titre_tete#GET{puch}">OUTILS & PUBLICATIONS</h2>
+        <dl>
+            <dt><img src="#CHEMIN{images/fleche.png}" /><a href="#">Mon titre d'actu</a></dt>
+            <dd><time>26/06/09</time> avec un peu de texte, avec un peu de texte,avec un peu de texte,avec un peu de texte,</dd>
+            <dt><img src="#CHEMIN{images/fleche.png}" /><a href="#">Mon titre d'actu</a></dt>
+            <dd><time>26/06/09</time> avec un peu de texte, avec un peu de texte,avec un peu de texte,avec un peu de texte,</dd>
+            <dt><img src="#CHEMIN{images/fleche.png}" /><a href="#">Mon titre d'actu</a></dt>
+            <dd><time>26/06/09</time> avec un peu de texte, avec un peu de texte,avec un peu de texte,avec un peu de texte,</dd>
+            <dt><img src="#CHEMIN{images/fleche.png}" /><a href="#">Mon titre d'actu</a></dt>
+            <dd><time>26/06/09</time> avec un peu de texte, avec un peu de texte,avec un peu de texte,avec un peu de texte,</dd>
+            
+        </dl>
+    <//B_rub_outils>
+</div>
+</BOUCLE_contenu_rubrique>

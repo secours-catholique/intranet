@@ -1,0 +1,6 @@
+[(#REM) Menu de navigation par rubriques ]
+<BOUCLE_(RUBRIQUES){id_rubrique}>
+Recherche dans #TITRE</BOUCLE_>
+#FORMULAIRE_RECHERCHE{#URL_PAGE{recherche}|parametre_url{id_rubrique,#ID_RUBRIQUE},env}
+
+<INCLURE{fond=inclure/rubriques}{id_rubrique}>

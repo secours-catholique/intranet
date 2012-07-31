@@ -1,0 +1,96 @@
+<BOUCLE_a(AUTEURS){id_auteur=#SESSION{id_auteur}}{tout}>
+<BOUCLE_b(spip_zones){id_auteur}{id_zone=149}>
+    
+<BOUCLE_espace_rh(RUBRIQUES){id_rubrique=111}>
+<div class="liste articles sommaire">
+    <h2 class="titre_tete">#TITRE</h2>
+    
+        <div class="pousse">
+            <BOUCLE_toc(RUBRIQUES){id_rubrique=520}>
+            <h2 class="biton"><a href="#URL_PAGE{manager}" title="acc&eacute;s pour les managers">Acc&eacute;s &agrave; l'espace manager</a></h2>
+            </BOUCLE_toc>
+            <h2 class="biton1"><a href="#"><!--Acc&eacute;s &agrave; l'espace syndical-->************************</a></h2>
+            <h2 class="biton2"><a href="#URL_ARTICLE{23}">Votre conseillère sociale</a></h2>
+        </div>
+    
+    <div id="gauche">
+        <BOUCLE_424(RUBRIQUES){id_rubrique=424}>
+        <h2 class="titre_connaitre couleur_8">#TITRE</h2>
+        <ul>
+        <BOUCLE_art_424(RUBRIQUES){id_parent}{par num titre}>
+            <li><a href="[(#URL_RUBRIQUE|parametre_url{blop,rh})]">#TITRE</a></li>
+        </BOUCLE_art_424>
+        </ul>
+        </BOUCLE_424>
+    </div>
+    <!-- fin gauche -->
+    <div id="droite">
+        <h2 class="titre_connaitre couleur_8">Agenda</h2>
+        <dl>
+            <BOUCLE_agenda_portail(ARTICLES){id_rubrique}{titre_mot=agenda}>
+    <BOUCLE_recup_art_rub(EVENEMENTS){id_article}{age_fin<0}{doublons}></BOUCLE_recup_art_rub>
+    <B_evenements>#ANCRE_PAGINATION
+    <BOUCLE_evenements(EVENEMENTS){id_article}{!doublons}{par date_debut}{pagination 5}>
+        <dt><img src="#CHEMIN{images/fleche.png}" /><time>[(#DATE_DEBUT|Agenda_affdate_debut_fin{#DATE_FIN,#HORAIRE})]</time></dt>
+        <dd><a href="#URL_EVENEMENT" class='mediabox'>#TITRE</a></dd>
+    </BOUCLE_evenements>
+    [<p class="pagination">(#PAGINATION)</p>]
+    </B_evenements>
+    #_agenda_portail:TEXTE
+    <//B_evenements>
+</BOUCLE_agenda_portail>
+        </dl>
+    </div>
+    <!-- fin droite -->
+</div>
+<!-- fin liste articles sommaire -->
+<div id="actu_nat">
+    <BOUCLE_rub_actu(RUBRIQUES){id_rubrique=500}>
+    <B_actu_portail>
+        <h2 class="titre_tete">LES ACTUALITES</h2>
+        <dl>
+    <BOUCLE_actu_portail(ARTICLES){id_rubrique}{!par date}>
+        <dt><img src="#CHEMIN{images/fleche.png}" />[(#LOGO_ARTICLE|left|image_reduire{100,100})]<a href="[(#URL_ARTICLE|parametre_url{blop,rh})]">#TITRE</a></dt>
+        <dd><time>[(#MAJ|jour|=={[(#DATE|jour)]}|?{[(#DATE|date_relative)],[Dernière mise à jour: (#MAJ|date_relative)]})]</time> [(#TEXTE|couper{350})]</dd>
+        <hr class="sepa" />
+    </BOUCLE_actu_portail>
+        </dl>
+    </B_actu_portail>
+    
+    </BOUCLE_rub_actu>
+</div>
+<div id="metier">
+<BOUCLE_metiers_competence(RUBRIQUES){id_rubrique=502}>
+    <h2 class="titre_tete">#TITRE</h2>
+        <ul>
+            <BOUCLE_ss_metiers_competence(RUBRIQUES){id_parent}{par num titre, titre}>
+            <li><a href="#URL_RUBRIQUE">#TITRE</a>
+                <ul>
+                <BOUCLE_art_ss_502(ARTICLES){id_rubrique}{par num titre, titre}>
+                    <li><a href="#URL_ARTICLE">#TITRE</a></li>
+                </BOUCLE_art_ss_502>
+                </ul>
+            </li>
+            </BOUCLE_ss_metiers_competence>
+        </ul>
+        </BOUCLE_metiers_competence>
+    
+</div>
+<div id="indic">
+    <BOUCLE_indicateurs(RUBRIQUES){titre_mot=indicateurs}>
+    <h2 class="titre_tete">#TITRE</h2>
+    <div id="ma_actu">
+        <ul>
+            <BOUCLE_art_indic(ARTICLES){id_rubrique}{par num titre, titre}>
+            <li><a href="[(#URL_ARTICLE|parametre_url{blop,rh})]">#TITRE</a></li>
+            </BOUCLE_art_indic>
+        </ul>
+    </div>
+    </BOUCLE_indicateurs>
+</div>
+
+</BOUCLE_espace_rh>
+</BOUCLE_b>
+    Vous n'avez pas acces à cette page
+<//B_b>
+</BOUCLE_a>

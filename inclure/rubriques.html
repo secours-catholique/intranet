@@ -1,0 +1,56 @@
+[(#REM)
+    Barre de navigation, ouverte sur la hierarchie courante
+
+    On fait un plan, et, quand on avance vers une rubrique,
+    on l'affiche si son parent est expose ou est la racine du site. ]
+
+<div class="menu">
+<div class="couleur_1">
+<h3>D&eacute;l&eacute;gations</h3>
+<p><BOUCLE_menu_deleg(RUBRIQUES){id_parent=1}{par titre}>
+    <a href="#URL_RUBRIQUE">[(#TITRE|strtolower|ucfirst)]</a>
+</BOUCLE_menu_deleg>
+</p>
+</div>
+
+<div class="couleur_2">
+<h3>R&eacute;gions</h3>
+<p><BOUCLE_menu_region(RUBRIQUES){id_parent=113}{par titre}>
+    <a href="#URL_RUBRIQUE">[(#TITRE|strtolower|ucfirst)]</a>
+</BOUCLE_menu_region>
+</p>
+</div>
+
+<div class="couleur_3">
+<h3>Directions</h3>
+<p>
+<BOUCLE_menu_direction(RUBRIQUES){id_parent=104}{par titre}>
+    <a href="#URL_RUBRIQUE">[(#TITRE|strtolower|ucfirst)]</a>
+</BOUCLE_menu_direction>
+</p>
+</div>
+
+<div class="couleur_4">
+<h3>Antennes</h3>
+<p> 
+<BOUCLE_menu_antenne(RUBRIQUES){id_parent=746}>
+    <a href="#URL_RUBRIQUE">[(#TITRE)]</a>
+</BOUCLE_menu_antenne>
+</p>
+</div>
+<div class="couleur_5">
+<h3>Mes groupes</h3>
+</div>
+
+<div class="couleur_6">
+<h3>Annuaire</h3>
+<BOUCLE_annuaire(ARTICLES){id_article=958}>
+    <p>
+    <BOUCLE_documents_joints(DOCUMENTS) {id_article}>
+    <a href="#URL_DOCUMENT">#TITRE</a>
+    </BOUCLE_documents_joints>
+    </p>
+</BOUCLE_annuaire>
+</div>
+
+</div>

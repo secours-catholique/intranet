@@ -1,0 +1,6 @@
+    <composition>
+            <nom>Rubrique redirection vers collection Photothèque</nom>
+            <description>Composition pour la rubrique Photothèque</description>
+            <icon>images/rubrique-photo.png</icon>
+            
+    </composition>

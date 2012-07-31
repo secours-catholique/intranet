@@ -1,0 +1,12 @@
+[(#ENV{page}|=={rh}|oui)#SET{plus,'espace salarie'}]
+[(#ENV{page}|=={espace-national}|oui)#SET{plus,'espace national'}]
+<BOUCLE_context_art(ARTICLES){id_article}>
+    <:accueil_site:><BOUCLE_ariane_art(HIERARCHIE){id_article}> &gt; [(#TITRE|couper{80})]</BOUCLE_ariane_art>[ &gt; <strong class="on">(#TITRE|couper{80})</strong>]
+</BOUCLE_context_art>
+<BOUCLE_context_rub(RUBRIQUES){id_rubrique}>
+    <:accueil_site:><BOUCLE_ariane_rub(HIERARCHIE){id_rubrique}> &gt; [(#TITRE|couper{80})]</BOUCLE_ariane_rub>[ &gt; <strong class="on">(#TITRE|couper{80})</strong>]
+</BOUCLE_context_rub>
+    [(#ENV{page}|oui)<:accueil_site:> &gt; [(#GET{plus}|?{#GET{plus},#ENV{page}})]]
+    [(#ENV{page}|non)#INCLURE{fond=inclure/filbase,env}]
+<//B_context_rub>
+<//B_context_art>

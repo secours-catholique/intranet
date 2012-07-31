@@ -1,0 +1,32 @@
+
+<BOUCLE_extra_article(ARTICLES){id_article=1245}>
+    [(#REM) Articles dans la meme rubrique ]
+    <B_articles_rubrique>
+        #ANCRE_PAGINATION
+    <div class="liste[(#ENV{blop}|?{'',#ID_SECTEUR})] articles">
+        <BOUCLE_rub_mere_extra(RUBRIQUES){id_rubrique=#ID_RUBRIQUE}>
+        <h2 class="titre_tete[(#ENV{blop}|?{'',#ID_SECTEUR})]">#TITRE :<br />
+autres offres</h2>
+        </BOUCLE_rub_mere_extra>
+        <ul class="liste-items">
+            <BOUCLE_articles_rubrique(ARTICLES) {id_rubrique}  {exclus} {par date}{inverse} {pagination 5}>
+            <!--BOUCLE_articles_rubrique(ARTICLES) {id_rubrique} {exclus}{par date}{inverse} {pagination 5}-->
+            <li class="item"><a href="#URL_PAGE{voir_annonce,id_article=#ID_ARTICLE}"[ class="(#EXPOSE)"]>#TITRE</a></li>
+            </BOUCLE_articles_rubrique>
+        </ul>
+        [<p class="pagination">(#PAGINATION)</p>]
+    </div>
+    </B_articles_rubrique>
+    
+    
+    
+
+    
+ <h2 class="voir_ttes_offres"><a href="spip.php?page=voir_offres" title="e-learning">Voir toutes<br />
+ les Offres d'emploi internes</a></h2>
+    
+ 
+    
+
+
+</BOUCLE_extra_article>
