@@ -18,4 +18,5 @@ Pour l'utiliser voici la liste des plugins qui sont instaler:
 	- cfg : moteur de configuration 1.16.0
 	- Champs Extras2 1.9.0
 	- Changez de navigateur ! 1.2
-	- 
+	- Compositions 2.1.6
+	
