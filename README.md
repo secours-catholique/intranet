@@ -2,6 +2,7 @@ intranet
 ========
 
 Thème de l'intranet pour le secours-catholique.
+
 ---ATTENTION---
 
 Tout une partie est quasiment en dur
