@@ -94,8 +94,8 @@
     <ul>
         <B_even_une>
         #ANCRE_PAGINATION
-        <BOUCLE_even_une(ARTICLES){id_rubrique}{pagination 5}>
-        <li><time>[(#DATE|date_relative)]</time><a href="#URL_ARTICLE"> #TITRE</a></li>
+        <BOUCLE_even_une(ARTICLES){!par date}{id_rubrique}{pagination 5}>
+        <li><a href="#URL_ARTICLE"> #TITRE</a></li>
         </BOUCLE_even_une>
         [<p class="pagination">(#PAGINATION)</p>]
         </B_even_une>
@@ -109,8 +109,8 @@
     <ul>
         <B_even_unep>
         #ANCRE_PAGINATION
-        <BOUCLE_even_unep(RUBRIQUES){id_parent}{pagination 5}>
-        <li><time>[(#DATE|date_relative)]</time><a href="#URL_RUBRIQUE"> #TITRE</a></li>
+        <BOUCLE_even_unep(RUBRIQUES){id_parent}{!par num titre}{pagination 5}>
+        <li><a href="#URL_RUBRIQUE"> #TITRE</a></li>
         </BOUCLE_even_unep>
         [<p class="pagination">(#PAGINATION)</p>]
         </B_even_unep>

@@ -36,8 +36,14 @@
     </B_evenements>
         
         [<div class="#EDIT{texte} texte">(#TEXTE|image_reduire{300,300})</div>]
-        <div id="form_cv">[(#GET{rubNV3}|=={778}|oui)[(#SESSION{id_auteur}|=={26035}|oui)#FORMULAIRE_CV{#ID_ARTICLE}]]
-        [(#SESSION{id_auteur}|=={26035}|oui)]</div>
+        
+        <BOUCLE_bb0(spip_zones){id_zone=149}{id_auteur=#SESSION{id_auteur}}> <!-- zone 149 espace salarié -->
+        
+                <div id="form_cv">[(#GET{rubNV3}|=={778}|oui)#FORMULAIRE_CV{#ID_ARTICLE}]
+        </div>
+        
+        </BOUCLE_bb0>
+        
         <hr style="clear:both" />
     </div>
 

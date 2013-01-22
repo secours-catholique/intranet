@@ -164,13 +164,13 @@ Couleurs doublons:
                 <a href="#URL_ARTICLE">
                 <div id="portfolio_docjoints_collections_rub">
                 <h3 class="h3">#TITRE</h3>
-                <BOUCLE_doc_out_permt_1redir(DOCUMENTS){id_article}  {extension IN pdf,doc,dot,xls,xlt,ppt,pot,pps,docx,dotx,xlsx,xltx,pptx,potx,ppsx,jpg,jpeg}  {par date}{inverse}{0,3}{tout_voir}>
+                <BOUCLE_doc_out_permt_1redir(DOCUMENTS){id_article}  {extension IN pdf,doc,dot,xls,xlt,ppt,pot,pps,docx,dotx,xlsx,xltx,pptx,potx,ppsx,jpg,jpeg,zip}  {par date}{inverse}{0,3}{tout_voir}>
                 <ul>
                 	<li style="list-style-position:inside;">[(#TITRE|sinon{#FICHIER|basename})]</li>
                 </ul>
                 </BOUCLE_doc_out_permt_1redir>
                 
-                <BOUCLE_doc_out_permt_1redir_(DOCUMENTS){id_article}  {extension IN pdf,doc,dot,xls,xlt,ppt,pot,pps,docx,dotx,xlsx,xltx,pptx,potx,ppsx,jpg,jpeg}  {tout_voir}>
+                <BOUCLE_doc_out_permt_1redir_(DOCUMENTS){id_article}  {extension IN pdf,doc,dot,xls,xlt,ppt,pot,pps,docx,dotx,xlsx,xltx,pptx,potx,ppsx,jpg,jpeg,zip}  {tout_voir}>
                 
                 </BOUCLE_doc_out_permt_1redir_>
                 <br />
@@ -192,13 +192,13 @@ il y a #GRAND_TOTAL document(s), au total.
                 <a href="#URL_PAGE{fadip,id_article=#GET{plup}}">
                 <div id="portfolio_docjoints_collections_rub">
                 <h3 class="h3">#TITRE</h3>
-                <BOUCLE_doc_out_permt_1(DOCUMENTS){id_article}  {extension IN pdf,doc,dot,xls,xlt,ppt,pot,pps,docx,dotx,xlsx,xltx,pptx,potx,ppsx,jpg,jpeg}  {par date}{inverse}{0,3}{tout_voir}>
+                <BOUCLE_doc_out_permt_1(DOCUMENTS){id_article}  {extension IN pdf,doc,dot,xls,xlt,ppt,pot,pps,docx,dotx,xlsx,xltx,pptx,potx,ppsx,jpg,jpeg'zip}  {par date}{inverse}{0,3}{tout_voir}>
                 <ul>
                 	<li style="list-style-position:inside;">[(#TITRE|sinon{#FICHIER|basename})]</li>
                 </ul>
                 </BOUCLE_doc_out_permt_1>
                 
-                <BOUCLE_doc_out_permt_1_(DOCUMENTS){id_article}  {extension IN pdf,doc,dot,xls,xlt,ppt,pot,pps,docx,dotx,xlsx,xltx,pptx,potx,ppsx,jpg,jpeg}  {tout_voir}>
+                <BOUCLE_doc_out_permt_1_(DOCUMENTS){id_article}  {extension IN pdf,doc,dot,xls,xlt,ppt,pot,pps,docx,dotx,xlsx,xltx,pptx,potx,ppsx,jpg,jpeg,zip}  {tout_voir}>
                 
                 </BOUCLE_doc_out_permt_1_>
                 <br />
@@ -227,13 +227,13 @@ il y a #GRAND_TOTAL document(s), au total.
                 <a href="#URL_ARTICLE">
                 <div id="portfolio_docjoints_collections_rub">
                 <h3 class="h3">#TITRE</h3>
-                <BOUCLE_doc_sousrub_out_permt_1redir(DOCUMENTS){id_article}  {extension IN pdf,doc,dot,xls,xlt,ppt,pot,pps,docx,dotx,xlsx,xltx,pptx,potx,ppsx,jpg,jpeg}  {par date}{inverse}{0,3}{tout_voir}>
+                <BOUCLE_doc_sousrub_out_permt_1redir(DOCUMENTS){id_article}  {extension IN pdf,doc,dot,xls,xlt,ppt,pot,pps,docx,dotx,xlsx,xltx,pptx,potx,ppsx,jpg,jpeg,zip}  {par date}{inverse}{0,3}{tout_voir}>
                 <ul>
                 	<li style="list-style-position:inside;">[(#TITRE|sinon{#FICHIER|basename})]</li>
                 </ul>
                 </BOUCLE_doc_sousrub_out_permt_1redir>
                 
-                <BOUCLE_doc_sousrub_out_permt_1redir_(DOCUMENTS){id_article}  {extension IN pdf,doc,dot,xls,xlt,ppt,pot,pps,docx,dotx,xlsx,xltx,pptx,potx,ppsx,jpg,jpeg}  {tout_voir}>
+                <BOUCLE_doc_sousrub_out_permt_1redir_(DOCUMENTS){id_article}  {extension IN pdf,doc,dot,xls,xlt,ppt,pot,pps,docx,dotx,xlsx,xltx,pptx,potx,ppsx,jpg,jpeg,zip}  {tout_voir}>
                 
                 </BOUCLE_doc_sousrub_out_permt_1redir_>
                 <br />
@@ -258,13 +258,13 @@ il y a #GRAND_TOTAL document(s), au total.
                 <a href="#URL_PAGE{fadip,id_article=#GET{plup}}">
                 <div id="portfolio_docjoints_collections_rub">
                 <h3 class="h3">#TITRE</h3>
-                <BOUCLE_doc_sousrub_out_permt_1(DOCUMENTS){id_article}  {extension IN pdf,doc,dot,xls,xlt,ppt,pot,pps,docx,dotx,xlsx,xltx,pptx,potx,ppsx,jpg,jpeg}  {par date}{inverse}{0,3}{tout_voir}>
+                <BOUCLE_doc_sousrub_out_permt_1(DOCUMENTS){id_article}  {extension IN pdf,doc,dot,xls,xlt,ppt,pot,pps,docx,dotx,xlsx,xltx,pptx,potx,ppsx,jpg,jpeg,zip}  {par date}{inverse}{0,3}{tout_voir}>
                 <ul>
                 	<li style="list-style-position:inside;">[(#TITRE|sinon{#FICHIER|basename})]</li>
                 </ul>
                 </BOUCLE_doc_sousrub_out_permt_1>
                 
-                <BOUCLE_doc_sousrub_out_permt_1_(DOCUMENTS){id_article}  {extension IN pdf,doc,dot,xls,xlt,ppt,pot,pps,docx,dotx,xlsx,xltx,pptx,potx,ppsx,jpg,jpeg}  {tout_voir}>
+                <BOUCLE_doc_sousrub_out_permt_1_(DOCUMENTS){id_article}  {extension IN pdf,doc,dot,xls,xlt,ppt,pot,pps,docx,dotx,xlsx,xltx,pptx,potx,ppsx,jpg,jpeg,zip}  {tout_voir}>
                 
                 </BOUCLE_doc_sousrub_out_permt_1_>
                 <br />
@@ -306,13 +306,13 @@ il y a #GRAND_TOTAL document(s), au total.
                 <a href="#URL_ARTICLE">
                 <div id="portfolio_docjoints_collections_rub">
                 <h3 class="h3">#TITRE</h3>
-                <BOUCLE_doc_fr_1redir(DOCUMENTS){id_article}  {extension IN pdf,doc,dot,xls,xlt,ppt,pot,pps,docx,dotx,xlsx,xltx,pptx,potx,ppsx,jpg,jpeg}  {par date}{inverse}{0,3}{tout_voir}>
+                <BOUCLE_doc_fr_1redir(DOCUMENTS){id_article}  {extension IN pdf,doc,dot,xls,xlt,ppt,pot,pps,docx,dotx,xlsx,xltx,pptx,potx,ppsx,jpg,jpeg,zip}  {par date}{inverse}{0,3}{tout_voir}>
                 <ul>
                 	<li style="list-style-position:inside;">[(#TITRE|sinon{#FICHIER|basename})]</li>
                 </ul>
                 </BOUCLE_doc_fr_1redir>
                 
-                <BOUCLE_doc_fr_1redir_(DOCUMENTS){id_article}  {extension IN pdf,doc,dot,xls,xlt,ppt,pot,pps,docx,dotx,xlsx,xltx,pptx,potx,ppsx,jpg,jpeg}  {tout_voir}>
+                <BOUCLE_doc_fr_1redir_(DOCUMENTS){id_article}  {extension IN pdf,doc,dot,xls,xlt,ppt,pot,pps,docx,dotx,xlsx,xltx,pptx,potx,ppsx,jpg,jpeg,zip}  {tout_voir}>
                 
                 </BOUCLE_doc_fr_1redir_>
                 <br />
@@ -334,13 +334,13 @@ il y a #GRAND_TOTAL document(s), au total.
                 <a href="#URL_PAGE{fadip,id_article=#GET{plup}}">
                 <div id="portfolio_docjoints_collections_rub">
                 <h3 class="h3">#TITRE</h3>
-                <BOUCLE_doc_fr_1(DOCUMENTS){id_article}  {extension IN pdf,doc,dot,xls,xlt,ppt,pot,pps,docx,dotx,xlsx,xltx,pptx,potx,ppsx,jpg,jpeg}  {par date}{inverse}{0,3}{tout_voir}>
+                <BOUCLE_doc_fr_1(DOCUMENTS){id_article}  {extension IN pdf,doc,dot,xls,xlt,ppt,pot,pps,docx,dotx,xlsx,xltx,pptx,potx,ppsx,jpg,jpeg,zip}  {par date}{inverse}{0,3}{tout_voir}>
                 <ul>
                 	<li style="list-style-position:inside;">[(#TITRE|sinon{#FICHIER|basename})]</li>
                 </ul>
                 </BOUCLE_doc_fr_1>
                 
-                <BOUCLE_doc_fr_1_(DOCUMENTS){id_article}  {extension IN pdf,doc,dot,xls,xlt,ppt,pot,pps,docx,dotx,xlsx,xltx,pptx,potx,ppsx,jpg,jpeg}  {tout_voir}>
+                <BOUCLE_doc_fr_1_(DOCUMENTS){id_article}  {extension IN pdf,doc,dot,xls,xlt,ppt,pot,pps,docx,dotx,xlsx,xltx,pptx,potx,ppsx,jpg,jpeg,zip}  {tout_voir}>
                 
                 </BOUCLE_doc_fr_1_>
                 <br />
@@ -369,13 +369,13 @@ il y a #GRAND_TOTAL document(s), au total.
                 <a href="#URL_ARTICLE">
                 <div id="portfolio_docjoints_collections_rub">
                 <h3 class="h3">#TITRE</h3>
-                <BOUCLE_doc_sousrub_fr_1redir(DOCUMENTS){id_article}  {extension IN pdf,doc,dot,xls,xlt,ppt,pot,pps,docx,dotx,xlsx,xltx,pptx,potx,ppsx,jpg,jpeg}  {par date}{inverse}{0,3}{tout_voir}>
+                <BOUCLE_doc_sousrub_fr_1redir(DOCUMENTS){id_article}  {extension IN pdf,doc,dot,xls,xlt,ppt,pot,pps,docx,dotx,xlsx,xltx,pptx,potx,ppsx,jpg,jpeg,zip}  {par date}{inverse}{0,3}{tout_voir}>
                 <ul>
                 	<li style="list-style-position:inside;">[(#TITRE|sinon{#FICHIER|basename})]</li>
                 </ul>
                 </BOUCLE_doc_sousrub_fr_1redir>
                 
-                <BOUCLE_doc_sousrub_fr_1redir_(DOCUMENTS){id_article}  {extension IN pdf,doc,dot,xls,xlt,ppt,pot,pps,docx,dotx,xlsx,xltx,pptx,potx,ppsx,jpg,jpeg}  {tout_voir}>
+                <BOUCLE_doc_sousrub_fr_1redir_(DOCUMENTS){id_article}  {extension IN pdf,doc,dot,xls,xlt,ppt,pot,pps,docx,dotx,xlsx,xltx,pptx,potx,ppsx,jpg,jpeg,zip}  {tout_voir}>
                 
                 </BOUCLE_doc_sousrub_fr_1redir_>
                 <br />
@@ -400,13 +400,13 @@ il y a #GRAND_TOTAL document(s), au total.
                 <a href="#URL_PAGE{fadip,id_article=#GET{plup}}">
                 <div id="portfolio_docjoints_collections_rub">
                 <h3 class="h3">#TITRE</h3>
-                <BOUCLE_doc_sousrub_fr_1(DOCUMENTS){id_article}  {extension IN pdf,doc,dot,xls,xlt,ppt,pot,pps,docx,dotx,xlsx,xltx,pptx,potx,ppsx,jpg,jpeg}  {par date}{inverse}{0,3}{tout_voir}>
+                <BOUCLE_doc_sousrub_fr_1(DOCUMENTS){id_article}  {extension IN pdf,doc,dot,xls,xlt,ppt,pot,pps,docx,dotx,xlsx,xltx,pptx,potx,ppsx,jpg,jpeg,zip}  {par date}{inverse}{0,3}{tout_voir}>
                 <ul>
                 	<li style="list-style-position:inside;">[(#TITRE|sinon{#FICHIER|basename})]</li>
                 </ul>
                 </BOUCLE_doc_sousrub_fr_1>
                 
-                <BOUCLE_doc_sousrub_fr_1_(DOCUMENTS){id_article}  {extension IN pdf,doc,dot,xls,xlt,ppt,pot,pps,docx,dotx,xlsx,xltx,pptx,potx,ppsx,jpg,jpeg}  {tout_voir}>
+                <BOUCLE_doc_sousrub_fr_1_(DOCUMENTS){id_article}  {extension IN pdf,doc,dot,xls,xlt,ppt,pot,pps,docx,dotx,xlsx,xltx,pptx,potx,ppsx,jpg,jpeg,zip}  {tout_voir}>
                 
                 </BOUCLE_doc_sousrub_fr_1_>
                 <br />
@@ -448,13 +448,13 @@ il y a #GRAND_TOTAL document(s), au total.
                 <a href="#URL_ARTICLE">
                 <div id="portfolio_docjoints_collections_rub">
                 <h3 class="h3">#TITRE</h3>
-                <BOUCLE_doc_it_1redir(DOCUMENTS){id_article}  {extension IN pdf,doc,dot,xls,xlt,ppt,pot,pps,docx,dotx,xlsx,xltx,pptx,potx,ppsx,jpg,jpeg}  {par date}{inverse}{0,3}{tout_voir}>
+                <BOUCLE_doc_it_1redir(DOCUMENTS){id_article}  {extension IN pdf,doc,dot,xls,xlt,ppt,pot,pps,docx,dotx,xlsx,xltx,pptx,potx,ppsx,jpg,jpeg,zip}  {par date}{inverse}{0,3}{tout_voir}>
                 <ul>
                 	<li style="list-style-position:inside;">[(#TITRE|sinon{#FICHIER|basename})]</li>
                 </ul>
                 </BOUCLE_doc_it_1redir>
                 
-                <BOUCLE_doc_it_1redir_(DOCUMENTS){id_article}  {extension IN pdf,doc,dot,xls,xlt,ppt,pot,pps,docx,dotx,xlsx,xltx,pptx,potx,ppsx,jpg,jpeg}  {tout_voir}>
+                <BOUCLE_doc_it_1redir_(DOCUMENTS){id_article}  {extension IN pdf,doc,dot,xls,xlt,ppt,pot,pps,docx,dotx,xlsx,xltx,pptx,potx,ppsx,jpg,jpeg,zip}  {tout_voir}>
                 
                 </BOUCLE_doc_it_1redir_>
                 <br />
@@ -476,13 +476,13 @@ il y a #GRAND_TOTAL document(s), au total.
                 <a href="#URL_PAGE{fadip,id_article=#GET{plup}}">
                 <div id="portfolio_docjoints_collections_rub">
                 <h3 class="h3">#TITRE</h3>
-                <BOUCLE_doc_it_1(DOCUMENTS){id_article}  {extension IN pdf,doc,dot,xls,xlt,ppt,pot,pps,docx,dotx,xlsx,xltx,pptx,potx,ppsx,jpg,jpeg}  {par date}{inverse}{0,3}{tout_voir}>
+                <BOUCLE_doc_it_1(DOCUMENTS){id_article}  {extension IN pdf,doc,dot,xls,xlt,ppt,pot,pps,docx,dotx,xlsx,xltx,pptx,potx,ppsx,jpg,jpeg,zip}  {par date}{inverse}{0,3}{tout_voir}>
                 <ul>
                 	<li style="list-style-position:inside;">[(#TITRE|sinon{#FICHIER|basename})]</li>
                 </ul>
                 </BOUCLE_doc_it_1>
                 
-                <BOUCLE_doc_it_1_(DOCUMENTS){id_article}  {extension IN pdf,doc,dot,xls,xlt,ppt,pot,pps,docx,dotx,xlsx,xltx,pptx,potx,ppsx,jpg,jpeg}  {tout_voir}>
+                <BOUCLE_doc_it_1_(DOCUMENTS){id_article}  {extension IN pdf,doc,dot,xls,xlt,ppt,pot,pps,docx,dotx,xlsx,xltx,pptx,potx,ppsx,jpg,jpeg,zip}  {tout_voir}>
                 
                 </BOUCLE_doc_it_1_>
                 <br />
@@ -511,13 +511,13 @@ il y a #GRAND_TOTAL document(s), au total.
                 <a href="#URL_ARTICLE">
                 <div id="portfolio_docjoints_collections_rub">
                 <h3 class="h3">#TITRE</h3>
-                <BOUCLE_doc_sousrub_it_1redir(DOCUMENTS){id_article}  {extension IN pdf,doc,dot,xls,xlt,ppt,pot,pps,docx,dotx,xlsx,xltx,pptx,potx,ppsx,jpg,jpeg}  {par date}{inverse}{0,3}{tout_voir}>
+                <BOUCLE_doc_sousrub_it_1redir(DOCUMENTS){id_article}  {extension IN pdf,doc,dot,xls,xlt,ppt,pot,pps,docx,dotx,xlsx,xltx,pptx,potx,ppsx,jpg,jpeg,zip}  {par date}{inverse}{0,3}{tout_voir}>
                 <ul>
                 	<li style="list-style-position:inside;">[(#TITRE|sinon{#FICHIER|basename})]</li>
                 </ul>
                 </BOUCLE_doc_sousrub_it_1redir>
                 
-                <BOUCLE_doc_sousrub_it_1redir_(DOCUMENTS){id_article}  {extension IN pdf,doc,dot,xls,xlt,ppt,pot,pps,docx,dotx,xlsx,xltx,pptx,potx,ppsx,jpg,jpeg}  {tout_voir}>
+                <BOUCLE_doc_sousrub_it_1redir_(DOCUMENTS){id_article}  {extension IN pdf,doc,dot,xls,xlt,ppt,pot,pps,docx,dotx,xlsx,xltx,pptx,potx,ppsx,jpg,jpeg,zip}  {tout_voir}>
                 
                 </BOUCLE_doc_sousrub_it_1redir_>
                 <br />
@@ -542,13 +542,13 @@ il y a #GRAND_TOTAL document(s), au total.
                 <a href="#URL_PAGE{fadip,id_article=#GET{plup}}">
                 <div id="portfolio_docjoints_collections_rub">
                 <h3 class="h3">#TITRE</h3>
-                <BOUCLE_doc_sousrub_it_1(DOCUMENTS){id_article}  {extension IN pdf,doc,dot,xls,xlt,ppt,pot,pps,docx,dotx,xlsx,xltx,pptx,potx,ppsx,jpg,jpeg}  {par date}{inverse}{0,3}{tout_voir}>
+                <BOUCLE_doc_sousrub_it_1(DOCUMENTS){id_article}  {extension IN pdf,doc,dot,xls,xlt,ppt,pot,pps,docx,dotx,xlsx,xltx,pptx,potx,ppsx,jpg,jpeg,zip}  {par date}{inverse}{0,3}{tout_voir}>
                 <ul>
                 	<li style="list-style-position:inside;">[(#TITRE|sinon{#FICHIER|basename})]</li>
                 </ul>
                 </BOUCLE_doc_sousrub_it_1>
                 
-                <BOUCLE_doc_sousrub_it_1_(DOCUMENTS){id_article}  {extension IN pdf,doc,dot,xls,xlt,ppt,pot,pps,docx,dotx,xlsx,xltx,pptx,potx,ppsx,jpg,jpeg}  {tout_voir}>
+                <BOUCLE_doc_sousrub_it_1_(DOCUMENTS){id_article}  {extension IN pdf,doc,dot,xls,xlt,ppt,pot,pps,docx,dotx,xlsx,xltx,pptx,potx,ppsx,jpg,jpeg,zip}  {tout_voir}>
                 
                 </BOUCLE_doc_sousrub_it_1_>
                 <br />
@@ -590,13 +590,13 @@ il y a #GRAND_TOTAL document(s), au total.
                 <a href="#URL_ARTICLE">
                 <div id="portfolio_docjoints_collections_rub">
                 <h3 class="h3">#TITRE</h3>
-                <BOUCLE_doc_camp_1redir(DOCUMENTS){id_article}  {extension IN pdf,doc,dot,xls,xlt,ppt,pot,pps,docx,dotx,xlsx,xltx,pptx,potx,ppsx,jpg,jpeg}  {par date}{inverse}{0,3}{tout_voir}>
+                <BOUCLE_doc_camp_1redir(DOCUMENTS){id_article}  {extension IN pdf,doc,dot,xls,xlt,ppt,pot,pps,docx,dotx,xlsx,xltx,pptx,potx,ppsx,jpg,jpeg,zip}  {par date}{inverse}{0,3}{tout_voir}>
                 <ul>
                 	<li style="list-style-position:inside;">[(#TITRE|sinon{#FICHIER|basename})]</li>
                 </ul>
                 </BOUCLE_doc_camp_1redir>
                 
-                <BOUCLE_doc_camp_1redir_(DOCUMENTS){id_article}  {extension IN pdf,doc,dot,xls,xlt,ppt,pot,pps,docx,dotx,xlsx,xltx,pptx,potx,ppsx,jpg,jpeg}  {tout_voir}>
+                <BOUCLE_doc_camp_1redir_(DOCUMENTS){id_article}  {extension IN pdf,doc,dot,xls,xlt,ppt,pot,pps,docx,dotx,xlsx,xltx,pptx,potx,ppsx,jpg,jpeg,zip}  {tout_voir}>
                 
                 </BOUCLE_doc_camp_1redir_>
                 <br />
@@ -618,13 +618,13 @@ il y a #GRAND_TOTAL document(s), au total.
                 <a href="#URL_PAGE{fadip,id_article=#GET{plup}}">
                 <div id="portfolio_docjoints_collections_rub">
                 <h3 class="h3">#TITRE</h3>
-                <BOUCLE_doc_camp_1(DOCUMENTS){id_article}  {extension IN pdf,doc,dot,xls,xlt,ppt,pot,pps,docx,dotx,xlsx,xltx,pptx,potx,ppsx,jpg,jpeg}  {par date}{inverse}{0,3}{tout_voir}>
+                <BOUCLE_doc_camp_1(DOCUMENTS){id_article}  {extension IN pdf,doc,dot,xls,xlt,ppt,pot,pps,docx,dotx,xlsx,xltx,pptx,potx,ppsx,jpg,jpeg,zip}  {par date}{inverse}{0,3}{tout_voir}>
                 <ul>
                 	<li style="list-style-position:inside;">[(#TITRE|sinon{#FICHIER|basename})]</li>
                 </ul>
                 </BOUCLE_doc_camp_1>
                 
-                <BOUCLE_doc_camp_1_(DOCUMENTS){id_article}  {extension IN pdf,doc,dot,xls,xlt,ppt,pot,pps,docx,dotx,xlsx,xltx,pptx,potx,ppsx,jpg,jpeg}  {tout_voir}>
+                <BOUCLE_doc_camp_1_(DOCUMENTS){id_article}  {extension IN pdf,doc,dot,xls,xlt,ppt,pot,pps,docx,dotx,xlsx,xltx,pptx,potx,ppsx,jpg,jpeg,zip}  {tout_voir}>
                 
                 </BOUCLE_doc_camp_1_>
                 <br />
@@ -653,13 +653,13 @@ il y a #GRAND_TOTAL document(s), au total.
                 <a href="#URL_ARTICLE">
                 <div id="portfolio_docjoints_collections_rub">
                 <h3 class="h3">#TITRE</h3>
-                <BOUCLE_doc_sousrub_camp_1redir(DOCUMENTS){id_article}  {extension IN pdf,doc,dot,xls,xlt,ppt,pot,pps,docx,dotx,xlsx,xltx,pptx,potx,ppsx,jpg,jpeg}  {par date}{inverse}{0,3}{tout_voir}>
+                <BOUCLE_doc_sousrub_camp_1redir(DOCUMENTS){id_article}  {extension IN pdf,doc,dot,xls,xlt,ppt,pot,pps,docx,dotx,xlsx,xltx,pptx,potx,ppsx,jpg,jpeg,zip}  {par date}{inverse}{0,3}{tout_voir}>
                 <ul>
                 	<li style="list-style-position:inside;">[(#TITRE|sinon{#FICHIER|basename})]</li>
                 </ul>
                 </BOUCLE_doc_sousrub_camp_1redir>
                 
-                <BOUCLE_doc_sousrub_camp_1redir_(DOCUMENTS){id_article}  {extension IN pdf,doc,dot,xls,xlt,ppt,pot,pps,docx,dotx,xlsx,xltx,pptx,potx,ppsx,jpg,jpeg}  {tout_voir}>
+                <BOUCLE_doc_sousrub_camp_1redir_(DOCUMENTS){id_article}  {extension IN pdf,doc,dot,xls,xlt,ppt,pot,pps,docx,dotx,xlsx,xltx,pptx,potx,ppsx,jpg,jpeg,zip}  {tout_voir}>
                 
                 </BOUCLE_doc_sousrub_camp_1redir_>
                 <br />
@@ -684,13 +684,13 @@ il y a #GRAND_TOTAL document(s), au total.
                 <a href="#URL_PAGE{fadip,id_article=#GET{plup}}">
                 <div id="portfolio_docjoints_collections_rub">
                 <h3 class="h3">#TITRE</h3>
-                <BOUCLE_doc_sousrub_camp_1(DOCUMENTS){id_article}  {extension IN pdf,doc,dot,xls,xlt,ppt,pot,pps,docx,dotx,xlsx,xltx,pptx,potx,ppsx,jpg,jpeg}  {par date}{inverse}{0,3}{tout_voir}>
+                <BOUCLE_doc_sousrub_camp_1(DOCUMENTS){id_article}  {extension IN pdf,doc,dot,xls,xlt,ppt,pot,pps,docx,dotx,xlsx,xltx,pptx,potx,ppsx,jpg,jpeg,zip}  {par date}{inverse}{0,3}{tout_voir}>
                 <ul>
                 	<li style="list-style-position:inside;">[(#TITRE|sinon{#FICHIER|basename})]</li>
                 </ul>
                 </BOUCLE_doc_sousrub_camp_1>
                 
-                <BOUCLE_doc_sousrub_camp_1_(DOCUMENTS){id_article}  {extension IN pdf,doc,dot,xls,xlt,ppt,pot,pps,docx,dotx,xlsx,xltx,pptx,potx,ppsx,jpg,jpeg}  {tout_voir}>
+                <BOUCLE_doc_sousrub_camp_1_(DOCUMENTS){id_article}  {extension IN pdf,doc,dot,xls,xlt,ppt,pot,pps,docx,dotx,xlsx,xltx,pptx,potx,ppsx,jpg,jpeg,zip}  {tout_voir}>
                 
                 </BOUCLE_doc_sousrub_camp_1_>
                 <br />
@@ -732,13 +732,13 @@ il y a #GRAND_TOTAL document(s), au total.
                 <a href="#URL_ARTICLE">
                 <div id="portfolio_docjoints_collections_rub">
                 <h3 class="h3">#TITRE</h3>
-                <BOUCLE_doc_pub_1redir(DOCUMENTS){id_article}  {extension IN pdf,doc,dot,xls,xlt,ppt,pot,pps,docx,dotx,xlsx,xltx,pptx,potx,ppsx,jpg,jpeg}  {par date}{inverse}{0,3}{tout_voir}>
+                <BOUCLE_doc_pub_1redir(DOCUMENTS){id_article}  {extension IN pdf,doc,dot,xls,xlt,ppt,pot,pps,docx,dotx,xlsx,xltx,pptx,potx,ppsx,jpg,jpeg,zip}  {par date}{inverse}{0,3}{tout_voir}>
                 <ul>
                 	<li style="list-style-position:inside;">[(#TITRE|sinon{#FICHIER|basename})]</li>
                 </ul>
                 </BOUCLE_doc_pub_1redir>
                 
-                <BOUCLE_doc_pub_1redir_(DOCUMENTS){id_article}  {extension IN pdf,doc,dot,xls,xlt,ppt,pot,pps,docx,dotx,xlsx,xltx,pptx,potx,ppsx,jpg,jpeg}  {tout_voir}>
+                <BOUCLE_doc_pub_1redir_(DOCUMENTS){id_article}  {extension IN pdf,doc,dot,xls,xlt,ppt,pot,pps,docx,dotx,xlsx,xltx,pptx,potx,ppsx,jpg,jpeg,zip}  {tout_voir}>
                 
                 </BOUCLE_doc_pub_1redir_>
                 <br />
@@ -760,13 +760,13 @@ il y a #GRAND_TOTAL document(s), au total.
                 <a href="#URL_PAGE{fadip,id_article=#GET{plup}}">
                 <div id="portfolio_docjoints_collections_rub">
                 <h3 class="h3">#TITRE</h3>
-                <BOUCLE_doc_pub_1(DOCUMENTS){id_article}  {extension IN pdf,doc,dot,xls,xlt,ppt,pot,pps,docx,dotx,xlsx,xltx,pptx,potx,ppsx,jpg,jpeg}  {par date}{inverse}{0,3}{tout_voir}>
+                <BOUCLE_doc_pub_1(DOCUMENTS){id_article}  {extension IN pdf,doc,dot,xls,xlt,ppt,pot,pps,docx,dotx,xlsx,xltx,pptx,potx,ppsx,jpg,jpeg,zip}  {par date}{inverse}{0,3}{tout_voir}>
                 <ul>
                 	<li style="list-style-position:inside;">[(#TITRE|sinon{#FICHIER|basename})]</li>
                 </ul>
                 </BOUCLE_doc_pub_1>
                 
-                <BOUCLE_doc_pub_1_(DOCUMENTS){id_article}  {extension IN pdf,doc,dot,xls,xlt,ppt,pot,pps,docx,dotx,xlsx,xltx,pptx,potx,ppsx,jpg,jpeg}  {tout_voir}>
+                <BOUCLE_doc_pub_1_(DOCUMENTS){id_article}  {extension IN pdf,doc,dot,xls,xlt,ppt,pot,pps,docx,dotx,xlsx,xltx,pptx,potx,ppsx,jpg,jpeg'zip}  {tout_voir}>
                 
                 </BOUCLE_doc_pub_1_>
                 <br />
@@ -795,13 +795,13 @@ il y a #GRAND_TOTAL document(s), au total.
                 <a href="#URL_ARTICLE">
                 <div id="portfolio_docjoints_collections_rub">
                 <h3 class="h3">#TITRE</h3>
-                <BOUCLE_doc_sousrub_pub_1redir(DOCUMENTS){id_article}  {extension IN pdf,doc,dot,xls,xlt,ppt,pot,pps,docx,dotx,xlsx,xltx,pptx,potx,ppsx,jpg,jpeg}  {par date}{inverse}{0,3}{tout_voir}>
+                <BOUCLE_doc_sousrub_pub_1redir(DOCUMENTS){id_article}  {extension IN pdf,doc,dot,xls,xlt,ppt,pot,pps,docx,dotx,xlsx,xltx,pptx,potx,ppsx,jpg,jpeg,zip}  {par date}{inverse}{0,3}{tout_voir}>
                 <ul>
                 	<li style="list-style-position:inside;">[(#TITRE|sinon{#FICHIER|basename})]</li>
                 </ul>
                 </BOUCLE_doc_sousrub_pub_1redir>
                 
-                <BOUCLE_doc_sousrub_pub_1redir_(DOCUMENTS){id_article}  {extension IN pdf,doc,dot,xls,xlt,ppt,pot,pps,docx,dotx,xlsx,xltx,pptx,potx,ppsx,jpg,jpeg}  {tout_voir}>
+                <BOUCLE_doc_sousrub_pub_1redir_(DOCUMENTS){id_article}  {extension IN pdf,doc,dot,xls,xlt,ppt,pot,pps,docx,dotx,xlsx,xltx,pptx,potx,ppsx,jpg,jpeg,zip}  {tout_voir}>
                 
                 </BOUCLE_doc_sousrub_pub_1redir_>
                 <br />
@@ -826,13 +826,13 @@ il y a #GRAND_TOTAL document(s), au total.
                 <a href="#URL_PAGE{fadip,id_article=#GET{plup}}">
                 <div id="portfolio_docjoints_collections_rub">
                 <h3 class="h3">#TITRE</h3>
-                <BOUCLE_doc_sousrub_pub_1(DOCUMENTS){id_article}  {extension IN pdf,doc,dot,xls,xlt,ppt,pot,pps,docx,dotx,xlsx,xltx,pptx,potx,ppsx,jpg,jpeg}  {par date}{inverse}{0,3}{tout_voir}>
+                <BOUCLE_doc_sousrub_pub_1(DOCUMENTS){id_article}  {extension IN pdf,doc,dot,xls,xlt,ppt,pot,pps,docx,dotx,xlsx,xltx,pptx,potx,ppsx,jpg,jpeg,zip}  {par date}{inverse}{0,3}{tout_voir}>
                 <ul>
                 	<li style="list-style-position:inside;">[(#TITRE|sinon{#FICHIER|basename})]</li>
                 </ul>
                 </BOUCLE_doc_sousrub_pub_1>
                 
-                <BOUCLE_doc_sousrub_pub_1_(DOCUMENTS){id_article}  {extension IN pdf,doc,dot,xls,xlt,ppt,pot,pps,docx,dotx,xlsx,xltx,pptx,potx,ppsx,jpg,jpeg}  {tout_voir}>
+                <BOUCLE_doc_sousrub_pub_1_(DOCUMENTS){id_article}  {extension IN pdf,doc,dot,xls,xlt,ppt,pot,pps,docx,dotx,xlsx,xltx,pptx,potx,ppsx,jpg,jpeg,zip}  {tout_voir}>
                 
                 </BOUCLE_doc_sousrub_pub_1_>
                 <br />

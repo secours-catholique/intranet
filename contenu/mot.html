@@ -15,7 +15,7 @@
       #ANCRE_PAGINATION
       <h2 class="h2"><:articles:></h2>
       <ul class="liste-items">
-          <BOUCLE_articles(ARTICLES) {id_mot} {par date}{inverse} {pagination 10}>
+          <BOUCLE_articles(ARTICLES) {id_mot} {par popularite}{inverse} {pagination 10}>
           <li class="item">
           <h3 class="h3"><a href="#URL_ARTICLE">#TITRE</a></h3>
           <div class="small">[(#DATE|affdate_jourcourt)][, <:par_auteur:> (#LESAUTEURS)]</div></li>

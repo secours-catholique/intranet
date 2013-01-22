@@ -50,15 +50,15 @@
 				<label for="fichier">Joindre votre CV * :</label>
 				<input type="hidden" name="MAX_FILE_SIZE" value="2097152" />
 				<input type="file" name="fichier" />
-				[<span class="erreur_message">(#ENV*{erreurs}|table_valeur{fichier})</span>]
-				<small>Fichiers acceptés .doc (PAS DE DOCX!), .pdf, .txt, taille maximum 2 Mo.</small> 
-			</li>
+				[<span class="erreur_message">(#ENV*{erreurs}|table_valeur{fichier})</span>]<br />
+				<small>Fichiers acceptés .doc <font style="color:red;">(PAS DE DOCX!)</font>, .pdf, .txt, taille <font style="color:red;">maximum 2 Mo</font>.</small>
+			</li><br /> 
 			<li class="joindre_fichier">
 				<label for="lettre">Joindre votre lettre * :</label>
 				<input type="hidden" name="MAX_FILE_SIZE" value="2097152" />
 				<input type="file" name="lettre" />
-				[<span class="erreur_message">(#ENV*{erreurs}|table_valeur{lettre})</span>]
-				<small>Fichiers acceptés .doc (PAS DE DOCX!), .pdf, .txt, taille maximum 2 Mo.</small> 
+				[<span class="erreur_message">(#ENV*{erreurs}|table_valeur{lettre})</span>]<br />
+				<small>Fichiers acceptés .doc <font style="color:red;">(PAS DE DOCX!)</font>, .pdf, .txt, taille <font style="color:red;">maximum 2 Mo</font>.</small> 
 			</li>
 		</ul>
 	</fieldset>

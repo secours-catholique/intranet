@@ -121,7 +121,7 @@ featuredcontentglider.init({
     <B_affiche_actu>
     #ANCRE_PAGINATION
     <BOUCLE_affiche_actu(ARTICLES){!doublons actu}{!par date}{pagination 5}>
-        <dt><img src="#CHEMIN{images/fleche.png}" /><a href="#URL_ARTICLE">#TITRE</a></dt>
+        <dt>[(#LOGO_ARTICLE|non)<img src="#CHEMIN{images/fleche.png}" />][(#LOGO_ARTICLE|image_reduire{100,100})]<a href="#URL_ARTICLE">#TITRE</a></dt>
         <dd><time>[(#DATE|date_relative)]</time> [(#INTRODUCTION{150})]</dd>
         <hr class="sepa" />
     </BOUCLE_affiche_actu>

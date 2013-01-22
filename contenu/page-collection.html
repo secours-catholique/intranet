@@ -156,37 +156,60 @@ Couleurs doublons:
 
             
 			<div id="tabs-1">
- 
-<!--contenu onglet pour ceux qui font partie de la zone 154-->
-       
-<BOUCLE_bb2(spip_zones){id_zone=154}{id_auteur=#SESSION{id_auteur}}>
+         
+
             	
-
-
         <BOUCLE_rub_fr_1(RUBRIQUES){id_rubrique=1967}{tout_voir}> <!--France-->
         
-            
+<!-- D'abord la racine de la rubrique -->
 
+<!-- On teste si article virtuel (=redirection) -->
+        
+            
+            
+            <BOUCLE_art_fr_1redir(ARTICLES){id_rubrique} {chapo == ^=}{tout_voir}{par num titre} {doublons bleu}>
+                
+                <a href="#URL_ARTICLE">
+                <div id="portfolio_docjoints_collections_rub">
+                <h3 class="h3">#TITRE</h3>
+                <BOUCLE_doc_fr_1redir(DOCUMENTS){id_article}  {extension IN jpg,jpeg,png,gif}  {par date}{inverse}{0,3}{tout_voir}>
+                
+                [(#LOGO_DOCUMENT||image_reduire{84})]
+                
+                </BOUCLE_doc_fr_1redir>
+                
+                <BOUCLE_doc_fr_1redir_(DOCUMENTS){id_article}  {extension IN jpg,jpeg,png,gif}  {tout_voir}>
+                
+                </BOUCLE_doc_fr_1redir_>
+                <br style="clear:both" />
+il y a #GRAND_TOTAL document(s), au total.
+                
+                </B_doc_fr_1redir_>
+                </div></a>
+            </BOUCLE_art_fr_1redir>
+            <!-- <hr /> -->
+            
+            
 
 <!-- si article normal  -->
         
             
             
-            <BOUCLE_art_fr_1(ARTICLES){id_rubrique}{tout_voir}{par num titre}>
+            <BOUCLE_art_fr_1(ARTICLES){id_rubrique}{tout_voir}{par num titre} {doublons bleu}>
                 #SET{plup,#ID_ARTICLE}
                 <a href="#URL_PAGE{photo,id_article=#GET{plup}}">
                 <div id="portfolio_docjoints_collections_rub">
                 <h3 class="h3">#TITRE</h3>
-                <BOUCLE_doc_fr_1(DOCUMENTS){id_article}  {extension==jpg|png|gif}  {par date}{inverse}{0,3}{tout_voir}>
+                <BOUCLE_doc_fr_1(DOCUMENTS){id_article}  {extension IN jpg,jpeg,png,gif}  {par date}{inverse}{0,3}{tout_voir}>
                 
-                	[(#LOGO_DOCUMENT||image_reduire{84})]
+                [(#LOGO_DOCUMENT||image_reduire{84})]
                 
                 </BOUCLE_doc_fr_1>
                 
-                <BOUCLE_doc_fr_1_(DOCUMENTS){id_article}  {extension==jpg|png|gif}  {tout_voir}>
+                <BOUCLE_doc_fr_1_(DOCUMENTS){id_article}  {extension IN jpg,jpeg,png,gif}  {tout_voir}>
                 
                 </BOUCLE_doc_fr_1_>
-                <br />
+                <br style="clear:both" />
 il y a #GRAND_TOTAL document(s), au total.
                 
                 </B_doc_fr_1_>
@@ -199,12 +222,38 @@ il y a #GRAND_TOTAL document(s), au total.
 
 <!-- Ensuite, les éventuelles sous-rubriques   -->
 
-
-            <BOUCLE_sousrub_fr_1(RUBRIQUES){id_parent}{par titre}> 
+<!-- On teste si article virtuel (=redirection) -->
+        
+            
+           
+            
+            <BOUCLE_sousrub_fr_1(RUBRIQUES){id_parent}{par titre}{tout_voir}> 
             	<h2 class="h2">#TITRE</h2>
                 <!--<hr class="sepa" />--><br />
-
-
+            <BOUCLE_art_sousrub_fr_1redir(ARTICLES) {chapo == ^=}{id_rubrique}{tout_voir}{par num titre} {doublons vert}>
+                
+                <a href="#URL_ARTICLE">
+                <div id="portfolio_docjoints_collections_rub">
+                <h3 class="h3">#TITRE</h3>
+                <BOUCLE_doc_sousrub_fr_1redir(DOCUMENTS){id_article}  {extension IN jpg,jpeg,png,gif}  {par date}{inverse}{0,3}{tout_voir}>
+                
+                [(#LOGO_DOCUMENT||image_reduire{84})]
+                
+                </BOUCLE_doc_sousrub_fr_1redir>
+                
+                <BOUCLE_doc_sousrub_fr_1redir_(DOCUMENTS){id_article}  {extension IN jpg,jpeg,png,gif}  {tout_voir}>
+                
+                </BOUCLE_doc_sousrub_fr_1redir_>
+                <br style="clear:both" />
+il y a #GRAND_TOTAL document(s), au total.
+                
+                </B_doc_sousrub_fr_1redir_>
+                </div></a>
+            </BOUCLE_art_sousrub_fr_1redir>
+            <!-- <hr /> -->
+            
+                        
+            
 
 <!-- si article normal  -->
             
@@ -212,21 +261,21 @@ il y a #GRAND_TOTAL document(s), au total.
             
             
 
-            <BOUCLE_art_sousrub_fr_1(ARTICLES){id_rubrique}{tout_voir}{par num titre}>
+            <BOUCLE_art_sousrub_fr_1(ARTICLES){id_rubrique}{tout_voir}{par num titre} {doublons vert}>
                 #SET{plup,#ID_ARTICLE}
                 <a href="#URL_PAGE{photo,id_article=#GET{plup}}">
                 <div id="portfolio_docjoints_collections_rub">
                 <h3 class="h3">#TITRE</h3>
-                <BOUCLE_doc_sousrub_fr_1(DOCUMENTS){id_article}  {extension==jpg|png|gif}  {par date}{inverse}{0,3}{tout_voir}>
+                <BOUCLE_doc_sousrub_fr_1(DOCUMENTS){id_article}  {extension IN jpg,jpeg,png,gif}  {par date}{inverse}{0,3}{tout_voir}>
                 
-                	[(#LOGO_DOCUMENT||image_reduire{84})]
+                [(#LOGO_DOCUMENT||image_reduire{84})]
                 
                 </BOUCLE_doc_sousrub_fr_1>
                 
-                <BOUCLE_doc_sousrub_fr_1_(DOCUMENTS){id_article}  {extension==jpg|png|gif}  {tout_voir}>
+                <BOUCLE_doc_sousrub_fr_1_(DOCUMENTS){id_article}  {extension IN jpg,jpeg,png,gif}  {tout_voir}>
                 
                 </BOUCLE_doc_sousrub_fr_1_>
-                <br />
+                <br style="clear:both" />
 il y a #GRAND_TOTAL document(s), au total.
                 
                 </B_doc_sousrub_fr_1_>
@@ -236,45 +285,76 @@ il y a #GRAND_TOTAL document(s), au total.
             
             </BOUCLE_sousrub_fr_1>          
             
-  
-
-
+            
+            
         </BOUCLE_rub_fr_1>
         
-        
-</BOUCLE_bb2>
+                    
+            
+            
+            </div> <!-- FIN div id="tabs-1"--> 
+ 
+                       
+			<div id="tabs-2">
+         
 
-<!--contenu onglet pour ceux qui ne font pas partie de la zone 154-->
+            	
+        <BOUCLE_rub_it_1(RUBRIQUES){id_rubrique=1968}{tout_voir}> <!--International-->
         
-        <BOUCLE_rub_fr_1a(RUBRIQUES){id_rubrique=1967}{tout_voir}> <!--France-->
+<!-- D'abord la racine de la rubrique -->
+
+<!-- On teste si article virtuel (=redirection) -->
         
             
-
+            
+            <BOUCLE_art_it_1redir(ARTICLES){id_rubrique} {chapo == ^=}{tout_voir}{par num titre} {doublons orange}>
+                
+                <a href="#URL_ARTICLE">
+                <div id="portfolio_docjoints_collections_rub">
+                <h3 class="h3">#TITRE</h3>
+                <BOUCLE_doc_it_1redir(DOCUMENTS){id_article}  {extension IN jpg,jpeg,png,gif}  {par date}{inverse}{0,3}{tout_voir}>
+                
+                [(#LOGO_DOCUMENT||image_reduire{84})]
+                
+                </BOUCLE_doc_it_1redir>
+                
+                <BOUCLE_doc_it_1redir_(DOCUMENTS){id_article}  {extension IN jpg,jpeg,png,gif}  {tout_voir}>
+                
+                </BOUCLE_doc_it_1redir_>
+                <br style="clear:both" />
+il y a #GRAND_TOTAL document(s), au total.
+                
+                </B_doc_it_1redir_>
+                </div></a>
+            </BOUCLE_art_it_1redir>
+            <!-- <hr /> -->
+            
+            
 
 <!-- si article normal  -->
         
             
             
-            <BOUCLE_art_fr_1a(ARTICLES){id_rubrique}{tout_voir}{par num titre}>
+            <BOUCLE_art_it_1(ARTICLES){id_rubrique}{tout_voir}{par num titre} {doublons orange}>
                 #SET{plup,#ID_ARTICLE}
                 <a href="#URL_PAGE{photo,id_article=#GET{plup}}">
                 <div id="portfolio_docjoints_collections_rub">
                 <h3 class="h3">#TITRE</h3>
-                <BOUCLE_doc_fr_1a(DOCUMENTS){id_article}  {extension==jpg|png|gif}  {par date}{inverse}{0,3}{tout_voir}>
+                <BOUCLE_doc_it_1(DOCUMENTS){id_article}  {extension IN jpg,jpeg,png,gif}  {par date}{inverse}{0,3}{tout_voir}>
                 
-                	[(#LOGO_DOCUMENT||image_reduire{84})]
+                [(#LOGO_DOCUMENT||image_reduire{84})]
                 
-                </BOUCLE_doc_fr_1a>
+                </BOUCLE_doc_it_1>
                 
-                <BOUCLE_doc_fr_1a_(DOCUMENTS){id_article}  {extension==jpg|png|gif}  {tout_voir}>
+                <BOUCLE_doc_it_1_(DOCUMENTS){id_article}  {extension IN jpg,jpeg,png,gif}  {tout_voir}>
                 
-                </BOUCLE_doc_fr_1a_>
-                <br />
+                </BOUCLE_doc_it_1_>
+                <br style="clear:both" />
 il y a #GRAND_TOTAL document(s), au total.
                 
-                </B_doc_fr_1a_>
+                </B_doc_it_1_>
                 </div></a>
-            </BOUCLE_art_fr_1a>
+            </BOUCLE_art_it_1>
             <hr />
             
            
@@ -282,12 +362,38 @@ il y a #GRAND_TOTAL document(s), au total.
 
 <!-- Ensuite, les éventuelles sous-rubriques   -->
 
-
-            <BOUCLE_sousrub_fr_1a(RUBRIQUES){id_parent}{par titre}> 
+<!-- On teste si article virtuel (=redirection) -->
+        
+            
+           
+            
+            <BOUCLE_sousrub_it_1(RUBRIQUES){id_parent}{par titre}{tout_voir}> 
             	<h2 class="h2">#TITRE</h2>
                 <!--<hr class="sepa" />--><br />
-
-
+            <BOUCLE_art_sousrub_it_1redir(ARTICLES) {chapo == ^=}{id_rubrique}{tout_voir}{par num titre} {doublons gris}>
+                
+                <a href="#URL_ARTICLE">
+                <div id="portfolio_docjoints_collections_rub">
+                <h3 class="h3">#TITRE</h3>
+                <BOUCLE_doc_sousrub_it_1redir(DOCUMENTS){id_article}  {extension IN jpg,jpeg,png,gif}  {par date}{inverse}{0,3}{tout_voir}>
+                
+                [(#LOGO_DOCUMENT||image_reduire{84})]
+                
+                </BOUCLE_doc_sousrub_it_1redir>
+                
+                <BOUCLE_doc_sousrub_it_1redir_(DOCUMENTS){id_article}  {extension IN jpg,jpeg,png,gif}  {tout_voir}>
+                
+                </BOUCLE_doc_sousrub_it_1redir_>
+                <br style="clear:both" />
+il y a #GRAND_TOTAL document(s), au total.
+                
+                </B_doc_sousrub_it_1redir_>
+                </div></a>
+            </BOUCLE_art_sousrub_it_1redir>
+            <!-- <hr /> -->
+            
+                        
+            
 
 <!-- si article normal  -->
             
@@ -295,167 +401,179 @@ il y a #GRAND_TOTAL document(s), au total.
             
             
 
-            <BOUCLE_art_sousrub_fr_1a(ARTICLES){id_rubrique}{tout_voir}{par num titre}>
+            <BOUCLE_art_sousrub_it_1(ARTICLES){id_rubrique}{tout_voir}{par num titre} {doublons gris}>
                 #SET{plup,#ID_ARTICLE}
                 <a href="#URL_PAGE{photo,id_article=#GET{plup}}">
                 <div id="portfolio_docjoints_collections_rub">
                 <h3 class="h3">#TITRE</h3>
-                <BOUCLE_doc_sousrub_fr_1a(DOCUMENTS){id_article}  {extension==jpg|png|gif}  {par date}{inverse}{0,3}{tout_voir}>
+                <BOUCLE_doc_sousrub_it_1(DOCUMENTS){id_article}  {extension IN jpg,jpeg,png,gif}  {par date}{inverse}{0,3}{tout_voir}>
                 
-                	[(#LOGO_DOCUMENT||image_reduire{84})]
+                [(#LOGO_DOCUMENT||image_reduire{84})]
                 
-                </BOUCLE_doc_sousrub_fr_1a>
+                </BOUCLE_doc_sousrub_it_1>
                 
-                <BOUCLE_doc_sousrub_fr_1a_(DOCUMENTS){id_article}  {extension==jpg|png|gif}  {tout_voir}>
+                <BOUCLE_doc_sousrub_it_1_(DOCUMENTS){id_article}  {extension IN jpg,jpeg,png,gif}  {tout_voir}>
                 
-                </BOUCLE_doc_sousrub_fr_1a_>
-                <br />
+                </BOUCLE_doc_sousrub_it_1_>
+                <br style="clear:both" />
 il y a #GRAND_TOTAL document(s), au total.
                 
-                </B_doc_sousrub_fr_1a_>
+                </B_doc_sousrub_it_1_>
                 </div></a>
-            </BOUCLE_art_sousrub_fr_1a>
+            </BOUCLE_art_sousrub_it_1>
             <hr />
             
-            </BOUCLE_sousrub_fr_1a>          
-            
-  
-
-
-        </BOUCLE_rub_fr_1a>
-        
-<//B_bb2>
+            </BOUCLE_sousrub_it_1>          
             
             
             
-            </div> <!-- FIN div id="tabs-1"--> 
-                       
-			<div id="tabs-2">
- 
-<!--contenu onglet pour ceux qui font partie de la zone 154-->
-       
-<BOUCLE_bb3(spip_zones){id_zone=154}{id_auteur=#SESSION{id_auteur}}>
-            	
-        <BOUCLE_rub_it_1(RUBRIQUES){id_rubrique=1968}{tout_voir}> <!--Vie de l'it-->
-        
-            
-            <BOUCLE_art_it_1(ARTICLES){id_rubrique}{tout_voir}{par num titre}>
-                #SET{plup,#ID_ARTICLE}
-                <a href="#URL_PAGE{photo,id_article=#GET{plup}}">
-                <div id="portfolio_docjoints_collections_rub">
-                <h3 class="h3">#TITRE</h3>
-                <BOUCLE_doc_it_1(DOCUMENTS){id_article}{extension==jpg|png|gif}{par date}{inverse}{0,3}{tout_voir}>
-                [(#FICHIER||image_reduire{100})]
-                </BOUCLE_doc_it_1>
-                
-                <BOUCLE_doc_it_1_(DOCUMENTS){id_article}{extension==jpg|png|gif}{tout_voir}>
-                
-                </BOUCLE_doc_it_1_>
-                <br />
-il y a #GRAND_TOTAL document(s), au total.
-                
-                </B_doc_it_1_>
-                </div></a>
-            </BOUCLE_art_it_1>
-            <hr />
         </BOUCLE_rub_it_1>
         
-        
-</BOUCLE_bb3>
+                    
+            
+            
+            </div> <!-- FIN div id="tabs-2"--> 
 
-<!--contenu onglet pour ceux qui ne font pas partie de la zone 154-->
+            
+            
+			<div id="tabs-3">
+         
+
+            	
+        <BOUCLE_rub_asso_1(RUBRIQUES){id_rubrique=2000}{tout_voir}> <!--Vie de l'association-->
         
-        <BOUCLE_rub_it_1a(RUBRIQUES){id_rubrique=1968}{tout_voir}> <!--Vie de l'it-->
+<!-- D'abord la racine de la rubrique -->
+
+<!-- On teste si article virtuel (=redirection) -->
         
             
-            <BOUCLE_art_it_1a(ARTICLES){id_rubrique}{tout_voir}{par num titre}>
-                #SET{plup,#ID_ARTICLE}
-                <a href="#URL_PAGE{photo,id_article=#GET{plup}}">
+            
+            <BOUCLE_art_asso_1redir(ARTICLES){id_rubrique} {chapo == ^=}{tout_voir}{par num titre} {doublons violet}>
+                
+                <a href="#URL_ARTICLE">
                 <div id="portfolio_docjoints_collections_rub">
                 <h3 class="h3">#TITRE</h3>
-                <BOUCLE_doc_it_1a(DOCUMENTS){id_article}{extension==jpg|png|gif}{par date}{inverse}{0,3}{tout_voir}>
-                [(#FICHIER||image_reduire{100})]
-                </BOUCLE_doc_it_1a>
+                <BOUCLE_doc_asso_1redir(DOCUMENTS){id_article}  {extension IN jpg,jpeg,png,gif}  {par date}{inverse}{0,3}{tout_voir}>
                 
-                <BOUCLE_doc_it_1a_(DOCUMENTS){id_article}{extension==jpg|png|gif}{tout_voir}>
+                [(#LOGO_DOCUMENT||image_reduire{84})]
                 
-                </BOUCLE_doc_it_1a_>
-                <br />
+                </BOUCLE_doc_asso_1redir>
+                
+                <BOUCLE_doc_asso_1redir_(DOCUMENTS){id_article}  {extension IN jpg,jpeg,png,gif}  {tout_voir}>
+                
+                </BOUCLE_doc_asso_1redir_>
+                <br style="clear:both" />
 il y a #GRAND_TOTAL document(s), au total.
                 
-                </B_doc_it_1a_>
+                </B_doc_asso_1redir_>
                 </div></a>
-            </BOUCLE_art_it_1a>
-            <hr />
-        </BOUCLE_rub_it_1a>
-        
-<//B_bb3>
+            </BOUCLE_art_asso_1redir>
+            <!-- <hr /> -->
             
             
-            
-            </div> <!-- FIN div id="tabs-2"-->
-            
-            
-            <div id="tabs-3">
-         
-<BOUCLE_bb1(spip_zones){id_zone=154}{id_auteur=#SESSION{id_auteur}}>
-            	
-        <BOUCLE_rub_asso_1(RUBRIQUES){id_rubrique=2000}{tout_voir}> <!--Vie de l'asso-->
+
+<!-- si article normal  -->
         
             
-            <BOUCLE_art_asso_1(ARTICLES){id_rubrique}{tout_voir}{par num titre}>
+            
+            <BOUCLE_art_asso_1(ARTICLES){id_rubrique}{tout_voir}{par num titre} {doublons violet}>
                 #SET{plup,#ID_ARTICLE}
                 <a href="#URL_PAGE{photo,id_article=#GET{plup}}">
                 <div id="portfolio_docjoints_collections_rub">
                 <h3 class="h3">#TITRE</h3>
-                <BOUCLE_doc_asso_1(DOCUMENTS){id_article}{extension==jpg|png|gif}{par date}{inverse}{0,3}{tout_voir}>
-                [(#FICHIER||image_reduire{100})]
+                <BOUCLE_doc_asso_1(DOCUMENTS){id_article}  {extension IN jpg,jpeg,png,gif}  {par date}{inverse}{0,3}{tout_voir}>
+                
+                [(#LOGO_DOCUMENT||image_reduire{84})]
+                
                 </BOUCLE_doc_asso_1>
                 
-                <BOUCLE_doc_asso_1_(DOCUMENTS){id_article}{extension==jpg|png|gif}{tout_voir}>
+                <BOUCLE_doc_asso_1_(DOCUMENTS){id_article}  {extension IN jpg,jpeg,png,gif}  {tout_voir}>
                 
                 </BOUCLE_doc_asso_1_>
-                <br />
+                <br style="clear:both" />
 il y a #GRAND_TOTAL document(s), au total.
                 
                 </B_doc_asso_1_>
                 </div></a>
             </BOUCLE_art_asso_1>
             <hr />
-        </BOUCLE_rub_asso_1>
-        
-        
-</BOUCLE_bb1>
-        
-        <BOUCLE_rub_asso_1a(RUBRIQUES){id_rubrique=2000}{tout_voir}> <!--Vie de l'asso-->
+            
+           
+            
+
+<!-- Ensuite, les éventuelles sous-rubriques   -->
+
+<!-- On teste si article virtuel (=redirection) -->
         
             
-            <BOUCLE_art_asso_1a(ARTICLES){id_rubrique}{tout_voir}{par num titre}>
+           
+            
+            <BOUCLE_sousrub_asso_1(RUBRIQUES){id_parent}{par titre}{tout_voir}> 
+            	<h2 class="h2">#TITRE</h2>
+                <!--<hr class="sepa" />--><br />
+            <BOUCLE_art_sousrub_asso_1redir(ARTICLES) {chapo == ^=}{id_rubrique}{tout_voir}{par num titre} {doublons mauve}>
+                
+                <a href="#URL_ARTICLE">
+                <div id="portfolio_docjoints_collections_rub">
+                <h3 class="h3">#TITRE</h3>
+                <BOUCLE_doc_sousrub_asso_1redir(DOCUMENTS){id_article}  {extension IN jpg,jpeg,png,gif}  {par date}{inverse}{0,3}{tout_voir}>
+                
+                [(#LOGO_DOCUMENT||image_reduire{84})]
+                
+                </BOUCLE_doc_sousrub_asso_1redir>
+                
+                <BOUCLE_doc_sousrub_asso_1redir_(DOCUMENTS){id_article}  {extension IN jpg,jpeg,png,gif}  {tout_voir}>
+                
+                </BOUCLE_doc_sousrub_asso_1redir_>
+                <br style="clear:both" />
+il y a #GRAND_TOTAL document(s), au total.
+                
+                </B_doc_sousrub_asso_1redir_>
+                </div></a>
+            </BOUCLE_art_sousrub_asso_1redir>
+            <!-- <hr /> -->
+            
+                        
+            
+
+<!-- si article normal  -->
+            
+            
+            
+            
+
+            <BOUCLE_art_sousrub_asso_1(ARTICLES){id_rubrique}{tout_voir}{par num titre} {doublons mauve}>
                 #SET{plup,#ID_ARTICLE}
                 <a href="#URL_PAGE{photo,id_article=#GET{plup}}">
                 <div id="portfolio_docjoints_collections_rub">
                 <h3 class="h3">#TITRE</h3>
-                <BOUCLE_doc_asso_1a(DOCUMENTS){id_article}{extension==jpg|png|gif}{par date}{inverse}{0,3}{tout_voir}>
-                [(#FICHIER||image_reduire{100})]
-                </BOUCLE_doc_asso_1a>
+                <BOUCLE_doc_sousrub_asso_1(DOCUMENTS){id_article}  {extension IN jpg,jpeg,png,gif}  {par date}{inverse}{0,3}{tout_voir}>
                 
-                <BOUCLE_doc_asso_1a_(DOCUMENTS){id_article}{extension==jpg|png|gif}{tout_voir}>
+                [(#LOGO_DOCUMENT||image_reduire{84})]
                 
-                </BOUCLE_doc_asso_1a_>
-                <br />
+                </BOUCLE_doc_sousrub_asso_1>
+                
+                <BOUCLE_doc_sousrub_asso_1_(DOCUMENTS){id_article}  {extension IN jpg,jpeg,png,gif}  {tout_voir}>
+                
+                </BOUCLE_doc_sousrub_asso_1_>
+                <br style="clear:both" />
 il y a #GRAND_TOTAL document(s), au total.
                 
-                </B_doc_asso_1a_>
+                </B_doc_sousrub_asso_1_>
                 </div></a>
-            </BOUCLE_art_asso_1a>
+            </BOUCLE_art_sousrub_asso_1>
             <hr />
-        </BOUCLE_rub_asso_1a>
+            
+            </BOUCLE_sousrub_asso_1>          
+            
+            
+            
+        </BOUCLE_rub_asso_1>
         
-<//B_bb1>
+                    
             
             
-            
-            </div> <!-- FIN div id="tabs-3"-->
+            </div> <!-- FIN div id="tabs-3"--> 
             		
         </div> <!-- FIN div id="tabs" -->
 	

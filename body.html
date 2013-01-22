@@ -49,7 +49,7 @@
         <div id="conteneur">
         
         [(#ENV{composition}|=={spip_pass}|oui)<INCLURE{fond=contenu/#ENV{type},env}>]
-        [(#ENV{composition}|=={spip_pass}|non)#LOGIN_PUBLIC]
+        [(#ENV{composition}|=={spip_pass}|non)#LOGIN_PUBLIC<INCLURE{fond=inc-liwio}>]
         
         </div>
     </div>

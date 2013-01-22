@@ -1,17 +1,17 @@
 <BOUCLE_extra_article(ARTICLES){id_article}>
     [(#REM) Articles dans la meme rubrique ]
-    <B_articles_rubrique>
+    <B_articles_rubrique_extra>
         #ANCRE_PAGINATION
     <div class="liste[(#ENV{blop}|?{'',#ID_SECTEUR})] articles">
         <h2 class="titre_tete"><:meme_rubrique:></h2>
         <ul class="liste-items">
-            <BOUCLE_articles_rubrique(ARTICLES) {id_rubrique} {exclus}{par num titre, titre}{inverse} {pagination 10}>
+            <BOUCLE_articles_rubrique_extra(ARTICLES) {id_rubrique} {exclus}{par num titre, titre}{inverse} {pagination 10}>
             <li class="item"><a href="#URL_ARTICLE"[ class="(#EXPOSE)"]>#TITRE</a></li>
-            </BOUCLE_articles_rubrique>
+            </BOUCLE_articles_rubrique_extra>
         </ul>
         [<p class="pagination">(#PAGINATION)</p>]
     </div>
-    </B_articles_rubrique>
+    </B_articles_rubrique_extra>
 
   [(#REM) Menu de navigation mots-cles ]
   <B_mots>

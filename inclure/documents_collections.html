@@ -3,7 +3,7 @@
 <div class="documents documents_portfolio">
     <h2 class="h2"><:info_portfolio:></h2>
     
-    <BOUCLE_documents_portfolio(DOCUMENTS) {id_article?}{id_rubrique?} {mode=document}{extension IN png,jpg,gif} {par num titre, date}{vu=non}>
+    <BOUCLE_documents_portfolio(DOCUMENTS) {id_article?}{id_rubrique?} {mode=document}{extension IN png,jpg,gif,zip} {par num titre, date}{vu=non}>
     <div id="portfolio_docjoints_collections"><strong><a href="#URL_DOCUMENT"
          type="#MIME_TYPE"
          rel="documents_portfolio[-a(#ID_ARTICLE)][-r(#ID_RUBRIQUE)]"

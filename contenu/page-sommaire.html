@@ -1,9 +1,6 @@
-[(#REM) TODO a corriger des appels direct ex:id_rubrique=112 ]
-[(#REM) DOC on utilise le descriptif général du site en cas de crise majeure ]
 [<div class="contenu-principal">
     <div id="descriptif_site_spip"><h2 class="titre_tete">COMMUNICATION NATIONALE</h2>(#DESCRIPTIF_SITE_SPIP)</div>
 </div>]
-
 
 <div class="liste articles sommaire">
     <h2 class="titre_tete">A LA UNE <!--<a href="#URL_PAGE{backend}&id_rubrique=112" title="Suivre les publications de cette rubrique"><img src="#CHEMIN{images/Picto.png}" /></a>--></h2>
@@ -42,9 +39,9 @@
         <B_www>
         #ANCRE_PAGINATION
         <BOUCLE_www(ARTICLES){id_rubrique IN 722,721}{!par date}{pagination 5}>
-        <dt><img src="#CHEMIN{images/fleche.png}" /><a href="#URL_ARTICLE">#TITRE</a></dt>
-        <dd>[<a href="#URL_ARTICLE">(#LOGO_ARTICLE|image_reduire{300})</a>]
-        <time>[(#DATE|date_relative)]</time>[ (#CHAPO|couper{130})][ (#CHAPO|choixsivide{#TEXTE|couper{130}})]</dd>
+        <dt>[(#LOGO_ARTICLE|non)<img src="#CHEMIN{images/fleche.png}" />][(#LOGO_ARTICLE|image_reduire{100,100})]<a href="#URL_ARTICLE">#TITRE</a></dt>
+        <dd>
+        <time>[(#DATE|date_relative)]</time>[ (#CHAPO|couper{200})][ (#CHAPO|choixsivide{#TEXTE|couper{200}})]</dd>
         <hr class="sepa" />
         </BOUCLE_www>
         <a href="#URL_RUBRIQUE{721}">Toutes les actualites</a>
@@ -52,10 +49,20 @@
         </B_www>
     </dl>
 </div>
-<BOUCLE_a(AUTEURS){id_auteur=#SESSION{id_auteur}}{tout}>
-<BOUCLE_b(spip_zones){id_auteur}{!id_zone IN 13}{0,1}>#SET{zone,#ID_ZONE}</BOUCLE_b>
-</BOUCLE_a>
-<BOUCLE_c(spip_zones_rubriques){id_zone=#GET{zone}}>#SET{entite,#ID_RUBRIQUE}</BOUCLE_c>
+[(#REM)on tri chaque visiteur pour savoir quel est son entité]
+<BOUCLE_auteur_session(AUTEURS){id_auteur=#SESSION{id_auteur}}{tout}>
+	<BOUCLE_entite_direction(spip_zones){id_auteur}{id_zone IN 17,18,19,31,126,127,128}{0,1}>#SET{zone,#ID_ZONE}&#160;</BOUCLE_entite_direction>
+		<BOUCLE_entite_delegation(spip_zones){id_auteur}{id_zone IN 14,15,16,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,150,151,152,157}>#SET{zone,#ID_ZONE}&#160;</BOUCLE_entite_delegation>
+			<BOUCLE_entite_region(spip_zones){id_auteur}{id_zone IN 130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146}>#SET{zone,#ID_ZONE}&#160;</BOUCLE_entite_region>
+				<BOUCLE_entite_antenne(spip_zones){id_auteur}{id_zone=147}>#SET{zone,#ID_ZONE}&#160;</BOUCLE_entite_antenne>
+					#SET{zone,148}
+				<//B_entite_antenne>
+			<//B_entite_region>
+		<//B_entite_delegation>
+	<//B_entite_direction>
+</BOUCLE_auteur_session>
+[(#REM)Maintenant chacun a forcement une zone -> sinon siege, on recherche une rubrique lier a la zone]
+    <BOUCLE_zone_rub(spip_zones_rubriques){id_zone=#GET{zone}}>#SET{entite,#ID_RUBRIQUE}&#160;</BOUCLE_zone_rub>
 <BOUCLE_d(RUBRIQUES){id_rubrique=#GET{entite}}>
 <div id="ma_#ID_SECTEUR">
     <h2 class="titre_tete#ID_SECTEUR">
@@ -67,21 +74,47 @@
     <div id="ma_actu">
         
         <h3 class="h3">L'ACTUALITE</h3>
-            <BOUCLE_rub_actu(RUBRIQUES){id_parent}{titre_mot=actu_entite}>
+
         <dl>
-    <BOUCLE_actu_portail(ARTICLES){id_rubrique}{!par date}{0,3}>
+    <BOUCLE_ss_rub_actu(RUBRIQUES){id_parent}{titre_mot=actu_entite}> 
+        <BOUCLE_test_actu(RUBRIQUES){id_rubrique}>
+            <BOUCLE_cherche_actu(RUBRIQUES){id_rubrique}{titre_mot=actu_entite}>
+                <BOUCLE_stock_art(ARTICLES){id_rubrique}{doublons actu}></BOUCLE_stock_art>
+            </BOUCLE_cherche_actu>
+        </BOUCLE_test_actu>
+        <BOUCLE_re(BOUCLE_ss_rub_actu)></BOUCLE_re>
+    </BOUCLE_ss_rub_actu>
+    <B_affiche_actu>
+  
+    <BOUCLE_affiche_actu(ARTICLES){!doublons actu}{!par date}{0,3}>
         <dt><img src="#CHEMIN{images/fleche.png}" /><a href="#URL_ARTICLE">#TITRE</a></dt>
-        <dd><time>[(#DATE|date_relative)]</time> [(#TEXTE|couper{100})]</dd>
-    </BOUCLE_actu_portail>
+        <dd><time>[(#DATE|date_relative)]</time> [(#INTRODUCTION{100})]</dd>
+        <hr class="sepa" />
+    </BOUCLE_affiche_actu>
         </dl>
-        <p><a href="#URL_RUBRIQUE">voir toutes les actualités</a></p>
+    
+    </B_affiche_actu>
+    
+    
+            <p><a href="#URL_RUBRIQUE">voir toutes les actualités</a></p>
             </BOUCLE_rub_actu>
             <p>Prochainement : les actualités de 
             [(#ID_SECTEUR|=={1}|?{'ma délégation',''})]
             [(#ID_SECTEUR|=={104}|?{'ma direction',''})]
             </p>
-            <//B_rub_actu>
-    </div>
+            <//B_ss_rub_actu>
+    </div>    
+
+
+
+
+
+
+
+
+
+
+
     <div id="ma_agenda">
         <h3 class="h3">L'AGENDA</h3>
         <dl>

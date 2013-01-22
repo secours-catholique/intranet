@@ -19,3 +19,14 @@
     </ul>
     </BOUCLE_712>
 </div>
+
+<div class="liste forums">
+    <BOUCLE_2512(RUBRIQUES){id_rubrique=2512}>
+    <h2 class="titre_tete">#TITRE</h2>
+    	<ul>
+        	<BOUCLE_art_2512(ARTICLES){id_rubrique}{par num titre, titre}>
+                <li><a href="#URL_ARTICLE">#TITRE</a></li>
+                </BOUCLE_art_2512>
+        </ul>
+    </BOUCLE_2512>
+</div>

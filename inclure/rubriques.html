@@ -3,7 +3,7 @@
 
     On fait un plan, et, quand on avance vers une rubrique,
     on l'affiche si son parent est expose ou est la racine du site. ]
-
+#CACHE{24*3600*30}
 <div class="menu">
 <div class="couleur_1">
 <h3>D&eacute;l&eacute;gations</h3>
@@ -22,7 +22,7 @@
 </div>
 
 <div class="couleur_3">
-<h3>Directions</h3>
+<h3>Siège</h3>
 <p>
 <BOUCLE_menu_direction(RUBRIQUES){id_parent=104}{par titre}>
     <a href="#URL_RUBRIQUE">[(#TITRE|strtolower|ucfirst)]</a>
@@ -40,6 +40,9 @@
 </div>
 <div class="couleur_5">
 <h3>Mes groupes</h3>
+<BOUCLE_a_groupes(AUTEURS){id_auteur=#SESSION{id_auteur}}{tout}> 
+<p><BOUCLE_liste(DATA){source tableau,#EMAIL|muto_sites}{base!=mu_intranetfee9}{base!=mu_dsiintrab230}><a href="#ADRESSE">#NOM</a></BOUCLE_liste></p>
+</BOUCLE_a_groupes>
 </div>
 
 <div class="couleur_6">

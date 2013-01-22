@@ -97,7 +97,7 @@ table.spip th {}
 /* Logos, documents et images */
 img { margin: 0; padding: 0; border: 0; }
 .spip_documents img{padding:1px;background:#FAFCFF;border:1px solid #B0B0B0; margin:7px;}  /*margin:7px; ajout hervé*/
-.spip_logos {margin:5px;} 
+.spip_logos {margin:5px;float:left} 
 .spip_documents {} /* Cf.: spip_style.css */
 .spip_documents_center {} /* Cf.: spip_style.css */
 .spip_documents_left {} /* Cf.: spip_style.css */
@@ -151,7 +151,7 @@ margin-left:0;
 clear:left;
 }
 
-#contenu,#contenu746,#contenu104,#myspace,#contenu1,#contenu113,#contenu103,#contenu681,#contenu104{
+#contenu,#contenu746,#contenu104,#myspace,#contenu1,#contenu113,#contenu103,#contenu681,#contenu104,#contenu2588{
 margin-left:0;
 }
 
@@ -259,7 +259,7 @@ margin-left:0;
     margin-bottom: 9px;
 }
 
-#actu_portail1,#actu_portail104,#actu_portail746,#actu_portail113,#actu_portail681{
+#actu_portail1,#actu_portail104,#actu_portail746,#actu_portail113,#actu_portail681,#actu_portail2588{
 width:495px;
 float:left;
 }
@@ -279,7 +279,7 @@ float:right;
 width: 200px;
 }
 
-#outils1,#outils104,#outils746,#outils113,#outils681{
+#outils1,#outils104,#outils746,#outils113,#outils681,#outils2588{
 float:right;
 width: 210px;
 }
@@ -305,7 +305,7 @@ width: 210px;
     padding-top: 24px;
 }
 #portfolio img{float:left;}
-#nous_connaitre,#organisation,#projet,#rejoint_portail,#agenda_portail681,#agenda_portail1,#agenda_portail104,#agenda_portail746,#agenda_portail113,#actu_phototheque{
+#nous_connaitre,#organisation,#projet,#rejoint_portail,#agenda_portail681,#agenda_portail1,#agenda_portail104,#agenda_portail2588,#agenda_portail746,#agenda_portail113,#actu_phototheque{
 margin:10px;
 } /*#actu_phototheque Ajout Hervé*/
 #nous_connaitre.theme{
@@ -338,6 +338,9 @@ margin:10px;
 #agenda_portail104{
     border-color:#FF8400;
 }
+#agenda_portail2588{
+    border-color:#FF8400;
+}
 #agenda_portail746{
     border-color:#A25C07;
 }
@@ -350,7 +353,7 @@ margin:10px;
 }
 
 
-#agenda_portail1,#agenda_portail104,#agenda_portail746,#agenda_portail681,#agenda_portail113{
+#agenda_portail1,#agenda_portail104,#agenda_portail2588,#agenda_portail746,#agenda_portail681,#agenda_portail113{
     width: 180px;
     float:right;
     border-width: 1px;
@@ -412,15 +415,24 @@ body {text-align: center;margin:0;padding:0;}
 }
 #entete .accueil #nom_site_spip a{text-decoration:none;font-weight:bold;}
 #entete #slogan_site_spip{
- font-size: 1.1em;
- margin-top: 6px;
+ font-size: 1.3em;
+ margin-top: 25px;
+ padding-left: 90px;
 }
 
 #entete #slogan_site_spip span{
     text-align: right;
         font-weight: bold;
 }
-
+#chiant {
+display: block;
+position: absolute;
+text-align: right;
+font-weight: bold;
+margin-left: 87px;
+margin-top: 60px;
+font-size: 1.3em;
+}
 a.right {
     float: right;
     margin: 5px;
@@ -607,12 +619,12 @@ ul#menu_haut, ul#connect {
 #pied #copyleft a {text-decoration:underline}
 
 /* contenu */
-#contenu,#contenu104,#contenu105,#contenu746,#contenu681,#contenu103,#publications,#myspace,#contenu1,#contenu113, #extra .liste1, #extra .liste104,#extra .liste746,#extra .liste681, #extra .liste113, #manager{
+#contenu,#contenu104,#contenu2588,#contenu105,#contenu746,#contenu681,#contenu103,#publications,#myspace,#contenu1,#contenu113, #extra .liste1, #extra .liste104,#extra .liste2588,#extra .liste746,#extra .liste681, #extra .liste113, #manager{
 margin-top:0.5em; 
 border-width:2px;
 border-style:solid;
 }
-#contenu,#contenu104,#contenu105,#contenu746,#contenu681,#contenu103,#publications,#myspace,#contenu1,#contenu113, #extra .liste1, #extra .liste104,#extra .liste746,#extra .liste681, #extra .liste113, #manager{
+#contenu,#contenu104,#contenu2588,#contenu105,#contenu746,#contenu681,#contenu103,#publications,#myspace,#contenu1,#contenu113, #extra .liste1, #extra .liste104,#extra .liste2588,#extra .liste746,#extra .liste681, #extra .liste113, #manager{
   -moz-border-radius:8px;
   -moz-border-radius:8px;
   -webkit-border-radius:8px;
@@ -665,7 +677,7 @@ border-style:solid;
 
 /* box */
 /*#box1,#box2,#box3,#box4,#actu,#ma_,#portrait,#rejoint{padding:0.5em 1em;}*/
-#box1,#box2,#box3,#box4,#actu,#actu_portail1,#actu_portail104,#actu_portail746,#actu_portail681,#actu_portail113,#ma_,#ma_1,#ma_104,#ma_746,#ma_681,#outils1,#outils104,#outils746,#outils681,#outils113,#portrait,#rejoint,#actu_deleg,#actu_nat,#even_une,#dossier_une, #indic, #manager, #metier, #ma_113, #ma_746{
+#box1,#box2,#box3,#box4,#actu,#actu_portail1,#actu_portail104,#actu_portail2588,#actu_portail746,#actu_portail681,#actu_portail113,#ma_,#ma_1,#ma_104,#ma_746,#ma_681,#outils1,#outils104,#outils746,#outils681,#outils113,#portrait,#rejoint,#actu_deleg,#actu_nat,#even_une,#dossier_une, #indic, #manager, #metier, #ma_113, #ma_746{
     margin-top:0.5em;
     border-width:2px;
     border-style:solid;
@@ -684,7 +696,9 @@ list-style-position: outside;
 #outils681,#actu_portail681,#ma_681{
     border-color:#717B21;
 }
-
+#outils2588,#actu_portail2588,#ma_2588{
+    border-color:#FF8400;
+}
 #outils746,#actu_portail746,#ma_746{
     border-color:#A25C07;
 }
@@ -704,7 +718,7 @@ list-style-position: outside;
 #box1,#box2,#box3,#box4{
     border-color:#00457D;
 }
-#box1,#box2,#box3,#box4,#actu,#actu_portail1,#actu_portail104,#actu_portail746,#actu_portail681,#actu_portail113,#ma_,#ma_1,#ma_104,#outils1,#outils104,#outils746,#outils681,#outils113,#portrait,#rejoint,#actu_deleg,#actu_nat,#even_une,#dossier_une, #indic, #manager, #metier, #ma_113,#ma_746{
+#box1,#box2,#box3,#box4,#actu,#actu_portail1,#actu_portail104,#actu_portail2588,#actu_portail746,#actu_portail681,#actu_portail113,#ma_,#ma_1,#ma_104,#outils1,#outils104,#outils2588,#outils746,#outils681,#outils113,#portrait,#rejoint,#actu_deleg,#actu_nat,#even_une,#dossier_une, #indic, #manager, #metier, #ma_113,#ma_746{
   -moz-border-radius:8px;
   -moz-border-radius:8px;
   -webkit-border-radius:8px;
@@ -845,7 +859,7 @@ text-decoration: none;
 
 .couleur_1{background-color:#9393EA;}
 .couleur_2{background-color:#F12C97;}
-.couleur_104,.couleur_3{background-color:#FF8400;}
+.couleur_104,.couleur_2588,.couleur_3{background-color:#FF8400;}
 .couleur746,.couleur_4{background-color:#a25c07;}
 .couleur_5,.couleur_681{background-color:#717B21;}
 .couleur_6{background-color:#ACBA37;}
@@ -1233,12 +1247,12 @@ float:left;
 .cartouche .h1 .spip_tipafriend{
 float:right
 }
-#ma_ h2,#ma_1 h2,#ma_104 h2,#ma_113 h2, #actu_portail1 h2,#actu_portail104 h2,#actu_portail746 h2,#actu_portail681 h2,#actu_portail113 h2, #outils1 h2,#outils104 h2,#outils746 h2,#outils681 h2,#outils113 h2,#indic h2, #manager h2, #metier h2 {
+#ma_ h2,#ma_1 h2,#ma_104 h2,#ma_113 h2, #actu_portail1 h2,#actu_portail104 h2,#actu_portail2588 h2,#actu_portail746 h2,#actu_portail681 h2,#actu_portail113 h2, #outils1 h2,#outils104 h2,#outils2588 h2,#outils746 h2,#outils681 h2,#outils113 h2,#indic h2, #manager h2, #metier h2 {
 margin:0px;
 }
 
 
-#organisation h2, #nous_connaitre h2, #projet h2, #rejoint_portail h2, #agenda_portail1 h2, #agenda_portail104 h2,#agenda_portail746 h2,#agenda_portail681 h2, #agenda_portail113 h2, #droite h2, #gauche h2, #actu_phototheque h2{
+#organisation h2, #nous_connaitre h2, #projet h2, #rejoint_portail h2, #agenda_portail1 h2, #agenda_portail104 h2,#agenda_portail2588 h2,#agenda_portail746 h2,#agenda_portail681 h2, #agenda_portail113 h2, #droite h2, #gauche h2, #actu_phototheque h2{
     color: black;
     font-size: 1.3em;
     font-weight: 900;
@@ -1246,6 +1260,9 @@ margin:0px;
  } /*#actu_phototheque Ajout Hervé*/
 
 .off_couleur_104{
+background-color: #FFA94C;
+}
+.off_couleur_2588{
 background-color: #FFA94C;
 }
 .off_couleur_746{
@@ -1384,7 +1401,7 @@ h2.titre_tete, h2.titre_tete105{
     }
     
     
-.titre_tete img, .titre_tete104 img, .titre_tete746 img, .titre_tete681 img,.titre_tete1 img,.titre_tete103 img, .titre_tete113 img, .titre_tete105 img {
+.titre_tete img, .titre_tete104 img,.titre_tete2588 img, .titre_tete746 img, .titre_tete681 img,.titre_tete1 img,.titre_tete103 img, .titre_tete113 img, .titre_tete105 img {
 float:right
     }    
     
@@ -1409,7 +1426,7 @@ h2.titre_tete103 {
 }
     
     
-h2.titre_tete104, h2.titre_tete113 {
+h2.titre_tete104,h2.titre_tete2588, h2.titre_tete113 {
     background-color: #FF8400;
     border-style: none;
     border-width: 0;
@@ -1486,6 +1503,27 @@ h2.titre_tete681 {
     text-shadow: 1px 1px 3px #BD6200;
     border-radius:4px 4px 0px 0px;
 }
+
+.liste2588 h2{
+    background-color: #FF8400;
+    border-style: none;
+    border-width: 0;
+    color: #FFFFFF;
+    margin: 0px;
+    padding: 5px;
+    font-weight: bold;
+    -moz-border-radius-topright:6px;
+    -moz-border-radius-topleft:6px;
+    -webkit-border-radius-topright:6px;
+    -webkit-border-radius-topleft:6px;
+    -o-border-top-right-radius:6px;
+    -o-border-top-left-radius:6px;
+    border-top-right-radius:6px;
+    border-top-left-radius:6px;
+    text-shadow: 1px 1px 3px #BD6200;
+    border-radius:4px 4px 0px 0px;
+}
+
 .liste746 h2{
     background-color: #A25C07;
     border-style: none;
@@ -1625,7 +1663,7 @@ h2.titre_teteto {
     border-radius-top:4px;
 }
 
-#agenda_portail1 h2, #agenda_portail104 h2, #agenda_portail746 h2,#agenda_portail681 h2, #agenda_portail113 h2{
+#agenda_portail1 h2, #agenda_portail104 h2,#agenda_portail2588 h2, #agenda_portail746 h2,#agenda_portail681 h2, #agenda_portail113 h2{
 font-size:1.3em;
  -moz-border-radius:4px 4px 0px 0px;
   -webkit-border-radius:4px 4px 0px 0px;
@@ -1810,6 +1848,10 @@ width: 100%;
 background-color: #FF8400;
 text-shadow: 1px 1px 3px #BD6200;
 }
+#extra .liste2588 h2.h2{
+background-color: #FF8400;
+text-shadow: 1px 1px 3px #BD6200;
+}
 #extra .liste746 h2.h2{
 background-color: #A25C07;
 text-shadow: 1px 1px 3px #BD6200;
@@ -1960,13 +2002,25 @@ float: left;
 margin-left: 0px;
 padding-left: 12px;
 }
-
+.liste2588 ul {
+margin-left: 0px;
+padding-left: 12px;
+}
 .liste104 ul li{
     list-style-image: none;
     list-style-type: none;
     margin-bottom: 3px;
 }
+.liste2588 ul li{
+    list-style-image: none;
+    list-style-type: none;
+    margin-bottom: 3px;
+}
 .liste104 ul li ul li{
+list-style-image: url("images/fleche.png");
+margin-top: 9px;
+}
+.liste2588 ul li ul li{
 list-style-image: url("images/fleche.png");
 margin-top: 9px;
 }
@@ -2056,7 +2110,7 @@ h2.voir_ttes_offres {
 	margin-top:25px;
 }
 
-/*---------------------------------------------------
+/*---------------------------------------------------*/
 /* CSS Collections (photothèque, vidéothèque, FADIP)
 -----------------------------------------------------*/
 
@@ -2073,7 +2127,7 @@ h2.voir_ttes_offres {
 #portfolio_docjoints_collections_rub{
 	 float:left;
 	 width:314px;
-	 height:150px;
+	 height:170px;
 	 margin:0 7px 15px 7px;
 	 padding:5px;
 	 border:dashed #666666 thin;

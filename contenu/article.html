@@ -1,3 +1,4 @@
+#CACHE{24*3600*30}
 <BOUCLE_contenu_article(ARTICLES){id_article}>
     <BOUCLE_emploi(HIERARCHIE){id_rubrique}{2,1}>#SET{rubNV3,#ID_RUBRIQUE}</BOUCLE_emploi>
 <div class="contenu-principal">
@@ -11,7 +12,17 @@
         <!--Ajout Hervé : ligne 12 et 16 : <div style="margin-left:5px"> ....... </div>-->
         <div style="margin-left:5px">[[(#LOGO_ARTICLE|image_reduire{100,100})]<h1 class="">(#TITRE)</h1>]
         
-        <p class="info-publi"><abbr class="published" title="[(#DATE|date_iso)]">[(#MAJ|jour|=={[(#DATE|jour)]}|?{[(#DATE|nom_jour) ][(#DATE|affdate)],[Dernière mise à jour: (#MAJ|affdate)]})]</abbr>[, <span class="auteurs"><:par_auteur:> (#LESAUTEURS)</span>]</p>
+        <p class="info-publi"><abbr class="published" title="[(#DATE|date_iso)]">[(#MAJ|jour|=={[(#DATE|jour)]}|?{[(#DATE|nom_jour) ][(#DATE|affdate)],[Dernière mise à jour: (#MAJ|affdate)]})]</abbr>
+        
+        
+        
+<BOUCLE_art_mots_fonctionnels(ARTICLES){id_article}{!id_groupe=1}>        
+        
+        [, <span class="auteurs"><:par_auteur:> (#LESAUTEURS)</span>]</p>
+        
+</BOUCLE_art_mots_fonctionnels>        
+        
+        
         [(#REM) Inclure le modele des liens de traductions ]
         #MODELE{article_traductions}</div>
     </div>

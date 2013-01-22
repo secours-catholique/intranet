@@ -1,21 +1,28 @@
 <div id="suite">
     <h2 class="titre_tete">LISTE DES PAYS</h2>
+	<p id="haut"><BOUCLE_list_pays(MOTS){id_groupe=5}{par titre}>
+		<BOUCLE_list_pays_detail(spip_mots_articles){id_mot}{fusion id_mot}>
+		<a href="##TITRE"> #TITRE, </a>
+		</BOUCLE_list_pays_detail>
+	</BOUCLE_list_pays></p>
         <BOUCLE_hh(MOTS){id_groupe=5}>
+	
             <BOUCLE_mots(spip_mots_articles){id_mot}{fusion id_mot}>
                 [(#REM) Articles lies au mot-cle ]
         
         <div class="menu articles">
             
-            <h2>#TITRE</h2>
+            <h2 id="#TITRE">#TITRE</h2>
             <B_articles>
                 #ANCRE_PAGINATION
             <ul>
-                <BOUCLE_articles(ARTICLES) {id_mot} {par popularite}{inverse} {pagination 10}>
+                <BOUCLE_articles(ARTICLES) {id_mot} {par date}{inverse} {pagination 10}>
                 <li>
-                <h3><a href="#URL_ARTICLE">#TITRE</a></h3>
+                <h2><a href="#URL_ARTICLE">#TITRE</a></h2>
                 <small>[(#DATE|affdate_jourcourt)][, <:par_auteur:> (#LESAUTEURS)]</small></li>
                 </BOUCLE_articles>
             </ul>
+		<a href="#haut">Retour haut de page</a>
             [<p class="pagination">(#PAGINATION)</p>]
        
         </B_articles>

@@ -36,14 +36,27 @@
             <li><a href="[(#URL_ARTICLE|parametre_url{blop,rh})]">#TITRE</a></li>
             </BOUCLE_art_522>
         </ul>
-        
+	<B_ss_522>
+	<ul>
+	<BOUCLE_ss_522(RUBRIQUES){id_parent}>
+		<li>#TITRE
+		<ul>
+		<BOUCLE_art_ss_522(ARTICLES){id_rubrique}{par num titre, titre}>
+			<li><a href="[(#URL_ARTICLE|parametre_url{blop,rh})]">#TITRE</a></li>
+		</BOUCLE_art_ss_522>		
+		</ul>
+		</li>
+	</BOUCLE_ss_522>
+	</ul>
+	</B_ss_522>
+        </BOUCLE_522>
     </div>
     <div id="droite">
-        </BOUCLE_522>
+        
         <h2 class="titre_connaitre couleur_8">Actualités manageriales</h2>
         <BOUCLE_523(RUBRIQUES){id_rubrique=523}>
         <ul>
-            <BOUCLE_art_523(ARTICLES){id_rubrique}{par num titre, titre}>
+            <BOUCLE_art_523(ARTICLES){id_rubrique}{!par date}>
             <li><a href="[(#URL_ARTICLE|parametre_url{blop,rh})]">#TITRE</a></li>
             </BOUCLE_art_523>
         </ul>

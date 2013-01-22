@@ -1,23 +1,24 @@
-[(#SESSION{id_auteur}|=={26035}|oui)<INCLURE{fond=inclure/emploi,env}>]<!-- mon num d'auteur 26035 -->
+<INCLURE{fond=inclure/emploi_sommaire,env}>
+
 #CACHE{0}
 [(#REM) Liens des forums ]
-<B_evenements>
+<B_evenements_extra>
             #ANCRE_PAGINATION
 <div class="liste forums">
     <h2 class="titre_tete">L'AGENDA NATIONAL </h2>
     <ul class="liste-items">
         
-            <BOUCLE_evenements(EVENEMENTS){id_article=49}{par date}{age_fin<0}{pagination 5}>
+            <BOUCLE_evenements_extra(EVENEMENTS){id_article=49}{par date}{age_fin<0}{pagination 5}>
             <li><time>[(#DATE_DEBUT|affdate)]</time>
             [<a href="#URL_EVENEMENT" class='mediabox'>(#TITRE|couper{65})</a>]</li>
-            </BOUCLE_evenements>
+            </BOUCLE_evenements_extra>
             [<p class="pagination">(#PAGINATION)</p>]
             <p><a href="#URL_ARTICLE{49}">Voir notre calendrier</a></p>
            
     </ul>
 </div>
-</B_evenements>
-[(#SESSION{id_auteur}|=={1}|oui)<INCLURE{fond=inclure/emploi,env}>]
+</B_evenements_extra>
+
 
 
 [(#REM) Sur le Web ]

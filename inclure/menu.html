@@ -1,4 +1,17 @@
-
+[(#REM)on tri chaque visiteur pour savoir quel est son entité]
+<BOUCLE_auteur_session(AUTEURS){id_auteur=#SESSION{id_auteur}}{tout}>
+	<BOUCLE_entite_direction(spip_zones){id_auteur}{id_zone IN 17,18,19,31,126,127,128}{0,1}>#SET{zone,#ID_ZONE}&#160;</BOUCLE_entite_direction>
+		<BOUCLE_entite_delegation(spip_zones){id_auteur}{id_zone IN 14,15,16,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,150,151,152,157}>#SET{zone,#ID_ZONE}&#160;</BOUCLE_entite_delegation>
+			<BOUCLE_entite_region(spip_zones){id_auteur}{id_zone IN 130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146}>#SET{zone,#ID_ZONE}&#160;</BOUCLE_entite_region>
+				<BOUCLE_entite_antenne(spip_zones){id_auteur}{id_zone=147}>#SET{zone,#ID_ZONE}&#160;</BOUCLE_entite_antenne>
+					#SET{zone,148}
+				<//B_entite_antenne>
+			<//B_entite_region>
+		<//B_entite_delegation>
+	<//B_entite_direction>
+</BOUCLE_auteur_session>
+[(#REM)Maintenant chacun a forcement une zone -> sinon siege, on recherche une rubrique lier a la zone]
+    <BOUCLE_zone_rub(spip_zones_rubriques){id_zone=#GET{zone}}>#SET{entite,#ID_RUBRIQUE}&#160;</BOUCLE_zone_rub>
 <BOUCLE_menu(MENUS){id_menu?}{identifiant?}>
     
     <B_entrees>
@@ -23,14 +36,11 @@
 <ul id="menu_haut">
     <li class="menu_haut"><a href="#URL_PAGE{espace-national}">Espace national</a></li>
     <li class="menu_haut">
-    <BOUCLE_a(AUTEURS){id_auteur=#SESSION{id_auteur}}{tout}>
-        <BOUCLE_b(spip_zones){id_auteur}{!id_zone IN '13'}{0,1}>#SET{zone,#ID_ZONE}</BOUCLE_b>
-    </BOUCLE_a>
-    <BOUCLE_c(spip_zones_rubriques){id_zone=#GET{zone}}>#SET{entite,#ID_RUBRIQUE}</BOUCLE_c>
-    <BOUCLE_d(RUBRIQUES){id_rubrique=#GET{entite}}>
+[(#REM)On retrouve le secteur de la rubrique et en fonction des resultats on affiche un groupe]
+    <BOUCLE_rub_secteur(RUBRIQUES){id_rubrique=#GET{entite}}>
     <a href="#URL_RUBRIQUE">[(#ID_SECTEUR|=={1}|?{'Ma d&eacute;l&eacute;gation',''})][(#ID_SECTEUR|=={104}|?{'Ma direction',''})][(#ID_SECTEUR|=={113}|?{'Ma region',''})]
         [(#ID_SECTEUR|=={746}|?{'Mon antenne',''})]</a>
-    </BOUCLE_d>
+    </BOUCLE_rub_secteur>
     </li>
     <BOUCLE_aa(AUTEURS){id_auteur=#SESSION{id_auteur}}{tout}>
         <BOUCLE_bb(spip_zones){id_auteur}>

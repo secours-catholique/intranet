@@ -23,7 +23,7 @@
 <div id="nous_connaitre" class="theme">
     <h2 class="titre_connaitre off_couleur_#GET{puch}">#TITRE</h2>
     [(#AUTORISER{modifier, article,#ID_ARTICLE})[(#ID_RUBRIQUE|=={681}|oui)<a href="#URL_PAGE{travail}">Suivre le travail sur l'intranet</a>]]
-    [(#TEXTE|choixsivide{<p style="font-size:25px"><font color="red">Cet espace n’est pas encore ouvert. Les délégations ainsi que les directions et départements du siège ouvriront leurs espaces progressivement d’ici avril 2012.</font></p> , [(#DESCRIPTIF)<br /><a href="#URL_ARTICLE">Lire la suite</a>][(#DESCRIPTIF|choixsivide{[(#TEXTE*|couper{200}|propre)<br /><a href="#URL_ARTICLE">Lire la suite</a>]})]})]
+    [(#TEXTE|choixsivide{<p style="font-size:25px"><font color="red">Cet espace n’est pas encore ouvert.</font></p> , [(#DESCRIPTIF)<br /><a href="#URL_ARTICLE">Lire la suite</a>][(#DESCRIPTIF|choixsivide{[(#TEXTE*|couper{200}|propre)<br /><a href="#URL_ARTICLE">Lire la suite</a>]})]})]
     [(#INCLURE{fond=inc-documents}{id_article}{env})]
     
 </div>

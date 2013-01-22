@@ -1,5 +1,45 @@
 <?php
 
+/* on va chercher l'url de la page */
+$monUrl = "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']; 
+
+/*on récupère le contenu de la balise <title> lié à cette url
+
+Avant cela on crée l'affichage du titre de l'annonce en <title> de la page par l'ajout de 
+themes/intranet/head/page_voir_annonce.html qui contient:
+<BOUCLE_annonce_head(ARTICLES) {id_article}>
+<title>[(#TITRE|textebrut)]</title>
+</BOUCLE_annonce_head>
+*/
+function RecupererTitre($Site)
+{
+	$Titre = 'Pas de titre';
+
+	$Fichier = file_get_contents($Site);
+	
+	if (eregi("<title>(.*)</title>", $Fichier, $Sortie)) $Titre = $Sortie[1];
+	
+	return $Titre;
+}
+
+
+/* Exemple: */
+/* echo RecupererTitre($monUrl); */
+
+
+
+/* on stock le titre de la page dans une nouvelle variable */
+$bip = RecupererTitre($monUrl);
+
+/* echo $bip; */
+
+
+
+
+
+
+
+
 $GLOBALS['formats'] = array(
     'pdf' => 'application/pdf',
     'doc' => 'application/msword',
@@ -105,10 +145,9 @@ function formulaires_cv_traiter_dist($id_article = null){
     }
     
 
-
     
     
-    $titre = '[(#TITRE|texte_script)]';
+   
     
     //Déclarer un mail en partie multiple
     $boundary .= "piecejointe";
@@ -118,16 +157,22 @@ function formulaires_cv_traiter_dist($id_article = null){
     //Le corps de mail
     $message_mail ="--".$boundary."\n";
     $message_mail .="Content-Type: text/plain; charset=utf-8\r\n\n";
-    $message_mail.= "Un cv a &eacute;t&eacute; post&eacute; depuis le site par ".$prenom." ".$nom." \n";
-    $message_mail.= $article;
-    $message_mail.= " \r\n";
-    $message_mail.= $titre;
-    $message_mail.= " \r\n";
-    $message_mail.= "E-mail: ".$email_from."\n";
-    $message_mail.= "Adresse: ".$adresse." ".$cp." ".$ville." \n";
-    $message_mail.= "T&eacute;l&eacute;phone: ".$tel." \n";
-    $message_mail.= "Sujet: ".$sujet." \n";
-    $message_mail.= "Message « ".$texte." »\n\n";
+    $message_mail .= " \r\n";
+    $message_mail .= "offre d'emploi interne : \r\n";
+    $message_mail .= " \r\n";
+    $message_mail .= " \r\n";
+    $message_mail .= $bip;
+    $message_mail .= " \r\n";
+    $message_mail .= " \r\n";
+    $message_mail .= "Un cv a &eacute;t&eacute; post&eacute; depuis le site par ".$prenom." ".$nom." \n";
+    $message_mail .= $article;
+    $message_mail .= " \r\n";
+    $message_mail .= " \r\n";
+    $message_mail .= "E-mail: ".$email_from."\n";
+    $message_mail .= "Adresse: ".$adresse." ".$cp." ".$ville." \n";
+    $message_mail .= "T&eacute;l&eacute;phone: ".$tel." \n";
+    $message_mail .= "Sujet: ".$sujet." \n";
+    $message_mail .= "Message « ".$texte." »\n\n";
 
     //Connaitre les piéces jointes
     $_FILES ? $_FILES : $GLOBALS['HTTP_POST_FILES'];
@@ -179,6 +224,10 @@ function formulaires_cv_traiter_dist($id_article = null){
      
 // Consruction du message de confirmation d'envoi 
 $confirm_message .= "Bonjour ".$_POST['prenom']." ".$_POST['nom'].", \r\n";
+$confirm_message .= " \r\n";
+$confirm_message .= "En référence à l'offre d'emploi interne : \r\n";
+$confirm_message .= $bip;
+$confirm_message .= " \r\n";
 $confirm_message .= " \r\n";
 $confirm_message .= "Nous avons bien reçu votre candidature et nous vous en remercions. \r\n";
 $confirm_message .= "Nous allons étudier votre dossier et un responsable ressources humaines prendra contact avec vous dans les plus proches délais. \r\n";

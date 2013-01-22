@@ -27,7 +27,7 @@
         <dl class="faq">
         <BOUCLE_articles(ARTICLES) {recherche?} {!par #ENV{tri,points}} {!par date} {age<(#ENV{depuis,1E100})} {id_mot?}  {id_groupe?} {branche?} {pagination 20} >
             <dt>
-                <a href="#URL_ARTICLE" title="Lire la suite de l'article &laquo;&nbsp;#TITRE&nbsp;&raquo;.">#TITRE</a>
+                <a href="#URL_ARTICLE" title="Lire la suite de l'article &laquo;&nbsp;#TITRE&nbsp;&raquo;.">#TITRE - (#POINTS)</a>
             </dt>
             <dd><a href="#URL_ARTICLE" title="Lire la suite de l'article &laquo;&nbsp;#TITRE&nbsp;&raquo;.">Voir l'article</a>
                 <br />
@@ -65,7 +65,13 @@
                 </div>
                     <ul>
                     <BOUCLE_auteur(AUTEURS){recherche}{tout}{pagination 20}>
-                        <li>[<a href="#URL_PAGE{auteurs,id_auteur=#ID_AUTEUR}">(#NOM|strtolower|ucfirst)</a>]</li>
+                        <li>[<a href="#URL_PAGE{auteurs,id_auteur=#ID_AUTEUR}">(#NOM|strtolower|ucfirst)</a>]
+			<BOUCLE_corvart(AUTEURS_LIENS){id_objet=1257} {objet=article} {id_auteur}{lecture=true}>
+			[(#SESSION{id_auteur}|in_array{#ARRAY{0,1,26042,65}}|oui)oui déjà connecté]
+			</BOUCLE_corvart>
+			[(#SESSION{id_auteur}|in_array{#ARRAY{0,1,26042,65}}|oui)aucune connection]
+			<//B_corvart>
+			</li>
                     </BOUCLE_auteur>
                     </ul>
             </div>
@@ -106,7 +112,7 @@
             </h1>
             <dl class="faq">
             <BOUCLE_doc_rech(DOCUMENTS) {recherche} {!par #ENV{tri,points}} {age<(#ENV{depuis,1E100})} {id_mot?}   {pagination 20} {!doublons doc}>
-                <dt><a href="#URL_DOCUMENT" title="Voir le document">[(#TITRE|sinon{[(#FICHIER|basename)]})]</a></dt>
+                <dt><a href="#URL_DOCUMENT" title="Voir le document">[(#TITRE|sinon{[(#FICHIER|basename)]})] - (#POINTS)</a></dt>
                 <dd>
                     [le (#DATE|affdate)]
                     <br />
@@ -136,7 +142,7 @@
             </h1>
             <dl class="faq">
             <BOUCLE_doc_rech2(DOCUMENTS) {recherche} {!par #ENV{tri,points}} {age<(#ENV{depuis,1E100})} {id_mot?}   {pagination 20} >
-                <dt><a href="#URL_DOCUMENT" title="Voir le document">[(#TITRE|sinon{[(#FICHIER|basename)]})]</a></dt>
+                <dt><a href="#URL_DOCUMENT" title="Voir le document">[(#TITRE|sinon{[(#FICHIER|basename)]})] - (#POINTS)</a></dt>
                 <dd>
                     [le (#DATE|affdate)]
                     <br />

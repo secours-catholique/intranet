@@ -1,4 +1,10 @@
-[(#SESSION{id_auteur}|=={26035}|oui)<INCLURE{fond=inclure/emploi,env}>]<!-- mon num d'auteur26035 -->
+<BOUCLE_bb0(spip_zones){id_zone=149}{id_auteur=#SESSION{id_auteur}}> <!-- zone 149 espace salarié -->
+
+
+
+<INCLURE{fond=inclure/emploi,env}>
+
+</BOUCLE_bb0>
 <BOUCLE_extra_rubrique(RUBRIQUES){id_rubrique}>
 
     [(#REM) Menu de navigation themes ]
